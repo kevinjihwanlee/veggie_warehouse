@@ -21,6 +21,8 @@ public class shippingDock : MonoBehaviour
 	
 	void OnMouseDown()
 	{
+
+		
 		_storage.GetComponent<storage>().RemoveStorage("corn", 5);
 	}
 }
