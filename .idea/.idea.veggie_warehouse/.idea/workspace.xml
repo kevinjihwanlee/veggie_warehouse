@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/shippingDock.cs" afterPath="$PROJECT_DIR$/Assets/shippingDock.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/supplyDock.cs" afterPath="$PROJECT_DIR$/Assets/supplyDock.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/warehouse_screen.unity" afterPath="$PROJECT_DIR$/Assets/warehouse_screen.unity" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="supplyDock.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="supplyDock.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/supplyDock.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="510">
+              <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
               <folding>
                 <marker date="1518218358213" expanded="false" signature="6:78" ph="..." />
                 <marker date="1518218358213" expanded="true" signature="119:745" ph="{...}" />
@@ -49,6 +46,21 @@
                 <marker date="1518218358213" expanded="true" signature="487:743" ph="{...}" />
                 <marker date="1518218358213" expanded="true" signature="636:685" ph="{...}" />
                 <marker date="1518218358213" expanded="true" signature="692:740" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buyMenu.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/buyMenu.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <marker date="1518219302768" expanded="false" signature="6:78" ph="..." />
+                <marker date="1518219302768" expanded="true" signature="116:268" ph="{...}" />
+                <marker date="1518219302768" expanded="true" signature="200:204" ph="{...}" />
+                <marker date="1518219302768" expanded="true" signature="259:266" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -84,6 +96,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/storage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/buyMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/supplyDock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/shippingDock.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -92,6 +105,8 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/shippingDock.cs" />
         <option value="$PROJECT_DIR$/Assets/supplyDock.cs" />
+        <option value="$PROJECT_DIR$/Assets/buyButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/buyMenu.cs" />
       </list>
     </option>
   </component>
@@ -234,12 +249,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518216252325</updated>
-      <workItem from="1518216259292" duration="1860000" />
+      <workItem from="1518216259292" duration="2471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1860000" />
+    <option name="totallyTimeSpent" value="2471000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -252,7 +267,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="23" width="1280" height="709" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -283,7 +297,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/supplyDock.cs</url>
+          <line>26</line>
+          <properties startOffset="489" endOffset="490" documentPath="$PROJECT_DIR$/Assets/supplyDock.cs" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -298,14 +321,6 @@
             <marker date="1518216652609" expanded="true" signature="309:316" ph="{...}" />
             <marker date="1518216652609" expanded="true" signature="340:411" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/buyMenu.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -330,10 +345,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/buyButton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/supplyDock.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state relative-caret-position="510">
+          <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
           <folding>
             <marker date="1518218358213" expanded="false" signature="6:78" ph="..." />
             <marker date="1518218358213" expanded="true" signature="119:745" ph="{...}" />
@@ -342,6 +365,19 @@
             <marker date="1518218358213" expanded="true" signature="487:743" ph="{...}" />
             <marker date="1518218358213" expanded="true" signature="636:685" ph="{...}" />
             <marker date="1518218358213" expanded="true" signature="692:740" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/buyMenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1518219302768" expanded="false" signature="6:78" ph="..." />
+            <marker date="1518219302768" expanded="true" signature="116:268" ph="{...}" />
+            <marker date="1518219302768" expanded="true" signature="200:204" ph="{...}" />
+            <marker date="1518219302768" expanded="true" signature="259:266" ph="{...}" />
           </folding>
         </state>
       </provider>

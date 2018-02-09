@@ -637,6 +637,7 @@ GameObject:
   - component: {fileID: 1522041082}
   - component: {fileID: 1522041081}
   - component: {fileID: 1522041080}
+  - component: {fileID: 1522041083}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -737,6 +738,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1522041078}
+--- !u!114 &1522041083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1522041078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c37af36eb2d04aebb610d35b6daee0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1546756833
 GameObject:
   m_ObjectHideFlags: 0
