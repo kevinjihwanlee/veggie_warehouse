@@ -39,6 +39,8 @@ public class WarehouseManager : MonoBehaviour
 		};
 
 		Satisfaction = 50f;
+
+		Money = 500;
 	}
 
 
