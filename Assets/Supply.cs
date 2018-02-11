@@ -35,7 +35,7 @@ public class Supply : MonoBehaviour
 		Debug.Log(StoredItems);
 	}
 
-	public int RemoveStorage(string productName, int value)
+	public void RemoveStorage(string productName, int value)
 	{
 		if (StoredItems.ContainsKey(productName))
 		{
@@ -43,16 +43,23 @@ public class Supply : MonoBehaviour
 			{
 				// how should we handle this case?
 				Debug.Log("this should break because there's not enough of the item in storage");
-				return 0;
 			}
 			else
 			{
 				StoredItems[productName] -= value;
-				return 1;
 			}
 			
 		}
 	}
+
+	public bool AvailableItem(string productName, int value)
+	{
+		if (StoredItems.ContainsKey(productName) && StoredItems[productName] >= value )
+		{
+			return true;
+		}
+		return false;
+	}
 	
 }
-}
+
