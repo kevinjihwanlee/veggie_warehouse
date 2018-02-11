@@ -26,12 +26,12 @@ public class storage : MonoBehaviour
 		if (!StoredItems.ContainsKey(productName))
 		{
 			StoredItems[productName] = value;
-			Debug.Log("just added new item: " + productName + " to storage");
+//			Debug.Log("just added new item: " + productName + " to storage");
 		}
 		else
 		{
 			StoredItems[productName] += value;
-			Debug.Log("updated existing item: " + productName);
+/*			Debug.Log("updated existing item: " + productName);*/
 		}
 
 		Debug.Log(StoredItems);
@@ -54,7 +54,4 @@ public class storage : MonoBehaviour
 		}
 	}
 	
-	void OnMouseDown(){
-		AddStorage("corn", 5);
-	}
 }

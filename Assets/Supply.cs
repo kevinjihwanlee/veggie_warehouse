@@ -4,27 +4,55 @@ using UnityEngine;
 
 public class Supply : MonoBehaviour
 {
-	// component for supply of current object
-	// this could include supply docks, shipping docks, storage?, and employees moving items
-	private int _supply;
+	// initializing public variables
+	public Dictionary<string, int> 	StoredItems;		// dictionary of all items stored
+	
 	
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		StoredItems = new Dictionary<string, int>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+	
 	}
 
-	void SendSupply(int quantity)
+	public void AddStorage(string productName, int value)
 	{
-		
+		if (!StoredItems.ContainsKey(productName))
+		{
+			StoredItems[productName] = value;
+//			Debug.Log("just added new item: " + productName + " to storage");
+		}
+		else
+		{
+			StoredItems[productName] += value;
+/*			Debug.Log("updated existing item: " + productName);*/
+		}
+
+		Debug.Log(StoredItems);
 	}
 
-	void ReceiveSupply(int quantity)
+	public int RemoveStorage(string productName, int value)
 	{
-		
+		if (StoredItems.ContainsKey(productName))
+		{
+			if (StoredItems[productName] < value)
+			{
+				// how should we handle this case?
+				Debug.Log("this should break because there's not enough of the item in storage");
+				return 0;
+			}
+			else
+			{
+				StoredItems[productName] -= value;
+				return 1;
+			}
+			
+		}
 	}
+	
+}
 }
