@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Supply : MonoBehaviour
 {
@@ -11,7 +12,12 @@ public class Supply : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		StoredItems = new Dictionary<string, int>();
+        //StoredItems = new Dictionary<string, int>();
+        //List<string> SupportedProducts = GameObject.FindObjectOfType<WarehouseManager>().SupportedProducts;
+        //foreach (string s in SupportedProducts)
+        //{
+        //    AddStorage(s, 200);
+        //}
 	}
 	
 	// Update is called once per frame
@@ -25,14 +31,14 @@ public class Supply : MonoBehaviour
 		{
 			StoredItems[productName] = value;
 //			Debug.Log("just added new item: " + productName + " to storage");
+            //Debug.Log(StoredItems[productName]);
 		}
 		else
 		{
 			StoredItems[productName] += value;
 /*			Debug.Log("updated existing item: " + productName);*/
 		}
-
-		Debug.Log(StoredItems);
+        GameObject.FindObjectOfType<Panels>().UpdateSupply();
 	}
 
 	public void RemoveStorage(string productName, int value)
@@ -48,8 +54,8 @@ public class Supply : MonoBehaviour
 			{
 				StoredItems[productName] -= value;
 			}
-			
-		}
+        }
+        GameObject.FindObjectOfType<Panels>().UpdateSupply();
 	}
 
 	public bool AvailableItem(string productName, int value)
