@@ -6,19 +6,27 @@ using UnityEngine.UI;
 public class Supply : MonoBehaviour
 {
 	// initializing public variables
-	public Dictionary<string, int> 	StoredItems;		// dictionary of all items stored
+	public Dictionary<string, int> StoredItems;
+    public Dictionary<string, int> StagedItems;// dictionary of all items stored
 	
 	
 	// Use this for initialization
 	void Start ()
-	{
+    {
         StoredItems = new Dictionary<string, int>();
-        List<string> SupportedProducts = GameObject.FindObjectOfType<WarehouseManager>().SupportedProducts;
+        StagedItems = new Dictionary<string, int>();
+	}
+
+    public void initialize(List<string> SupportedProducts, int quantity)
+    {
+        StoredItems = new Dictionary<string, int>();
+        StagedItems = new Dictionary<string, int>();
         foreach (string s in SupportedProducts)
         {
-            AddStorage(s, 200);
+            AddStorage(s, quantity);
+            AddStaged(s, 0);
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,8 +46,22 @@ public class Supply : MonoBehaviour
 			StoredItems[productName] += value;
 /*			Debug.Log("updated existing item: " + productName);*/
 		}
-        GameObject.FindObjectOfType<Panels>().UpdateSupply();
 	}
+
+    public void AddStaged(string productName, int value)
+    {
+        if (!StagedItems.ContainsKey(productName))
+        {
+            StagedItems[productName] = value;
+            //          Debug.Log("just added new item: " + productName + " to storage");
+            //Debug.Log(StoredItems[productName]);
+        }
+        else
+        {
+            StagedItems[productName] += value;
+            /*          Debug.Log("updated existing item: " + productName);*/
+        }
+    }
 
 	public void RemoveStorage(string productName, int value)
 	{
@@ -55,12 +77,20 @@ public class Supply : MonoBehaviour
 				StoredItems[productName] -= value;
 			}
         }
-        GameObject.FindObjectOfType<Panels>().UpdateSupply();
 	}
+
+    public void RemoveStaged(string productName)
+    {
+        if (StagedItems.ContainsKey(productName))
+        {
+            StoredItems[productName] -= StagedItems[productName];
+            StagedItems[productName] = 0;
+        }
+    }
 
 	public bool AvailableItem(string productName, int value)
 	{
-		if (StoredItems.ContainsKey(productName) && StoredItems[productName] >= value )
+        if (StoredItems.ContainsKey(productName) && StoredItems[productName] >= value + StagedItems[productName])
 		{
 			return true;
 		}

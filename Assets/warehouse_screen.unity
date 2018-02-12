@@ -560,6 +560,8 @@ MonoBehaviour:
   Satisfaction: 0
   Orders: []
   _supply: {fileID: 0}
+  OrderCompanies: []
+  _panels: {fileID: 0}
   Money: 0
 --- !u!4 &892231394 stripped
 Transform:
@@ -605,6 +607,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114577444245983826, guid: 6864b557004094cd5850338d03416a8a,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Day: 0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6864b557004094cd5850338d03416a8a, type: 2}
   m_IsPrefabParent: 0
@@ -621,6 +628,7 @@ GameObject:
   - component: {fileID: 1184024110}
   - component: {fileID: 1184024114}
   - component: {fileID: 1184024115}
+  - component: {fileID: 1184024116}
   m_Layer: 0
   m_Name: ShippingDock
   m_TagString: Untagged
@@ -705,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ec1c35af8ee499e94bbb404b964df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _storage: {fileID: 0}
 --- !u!114 &1184024115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +723,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdd80fbc50bed4c51929ef9108232547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1184024116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184024109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a90ebf11710a4885975e8c639b2ecd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1522041078

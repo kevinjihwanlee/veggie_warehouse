@@ -8,6 +8,8 @@ public class Order : MonoBehaviour {
     public Dictionary<string, int> order;
     public string ClientName;
     public bool Fulfilled;
+    public int magnitude;
+    public bool FulfillFail;
 
     // Use this for initialization
     void Start()
@@ -17,17 +19,22 @@ public class Order : MonoBehaviour {
         B.onClick.AddListener(f);
 
         Fulfilled = false;
+        FulfillFail = false;
     }
 
-    void f(){
-        if (!Fulfilled && GameObject.FindObjectOfType<WarehouseManager>().FulfillOrder(this))
+    void f()
+    {
+        if (!Fulfilled && GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
         {
             Fulfilled = true;
         }
     }
 
-    public void set()
+    public void initialize(Dictionary<string,int> o, string client)
     {
+        ClientName = client;
+        order = o;
+        magnitude = order["Corn"] + order["Squash"] + order["Beets"];
         Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
         foreach (Component c in comps)
         {
@@ -41,25 +48,16 @@ public class Order : MonoBehaviour {
                 ((Text)c).text = "Beets: " + order["Beets"].ToString();
         }
     }
-
-    //private void OnMouseDown()
-    //{
-    //    bool fulfill = true;
-    //    Supply s = GameObject.Find("Storage").GetComponent<Supply>();
-    //    foreach(string a in order.Keys){
-    //        if (order[a] < s.StoredItems[a])
-    //            fulfill = false;
-    //        Debug.Log(a);
-    //    }
-    //    if (fulfill)
-    //        GameObject.FindObjectOfType<WarehouseManager>().FulfillOrder(order);
-    //}
-
-    // Update is called once per frame
     void Update()
     {
-        if (Fulfilled){
-            GetComponent<Image>().color = new Color32(21,189,12,255);
+        //change the colors based on what happened when the user hit fulfill
+        if (Fulfilled)
+        {
+            GetComponent<Image>().color = new Color32(21, 189, 12, 255);
+        }
+        if (FulfillFail)
+        {
+            GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
     }
 }

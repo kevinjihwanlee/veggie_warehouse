@@ -5,24 +5,14 @@ using UnityEngine.UI;
 
 public class Panels : MonoBehaviour {
 
-	// Use this for initialization
-    void Start () {
-        Dictionary<string,int> storage = GameObject.Find("Storage").GetComponent<Supply>().StoredItems;
+    public Button _nextDayButton;
 
-        //RectTransform o = GameObject.Find("Left").GetComponent<RectTransform>();
-        //Vector3 pos = o.localPosition;
-        //pos.x = -55;
-        //o.localPosition = pos;
-
-        RectTransform o = GameObject.Find("Top").GetComponent<RectTransform>();
-        //pos = o.localPosition;
-        //pos.y = 35;
-        //o.localPosition = pos;
-        Button b = o.gameObject.GetComponentInChildren<Button>();
-        b.onClick.AddListener(GameObject.FindObjectOfType<WarehouseManager>().NextDay);
-
-        UpdateDay();
-        UpdateMoney();
+    // Use this for initialization
+    void Start()
+    {
+        //adding button listener to Next Day Button
+        _nextDayButton = GameObject.Find("Top").GetComponentInChildren<Button>();
+        _nextDayButton.onClick.AddListener(GameObject.FindObjectOfType<WarehouseManager>().NextDay);
     }
 	
 	// Update is called once per frame
@@ -32,6 +22,7 @@ public class Panels : MonoBehaviour {
 
     public void UpdateSupply()
     {
+        //This function updates the counts that are shown for the users current supply
         Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
         GameObject g = GameObject.Find("Corn Inventory");
         g.GetComponent<Text>().text = "Corn: " + StoredItems["Corn"].ToString();
@@ -45,12 +36,14 @@ public class Panels : MonoBehaviour {
 
     public void UpdateMoney()
     {
+        //This function updates the current money that the player has
         GameObject g = GameObject.Find("Money");
         g.GetComponent<Text>().text = "Money: $" + GameObject.FindObjectOfType<WarehouseManager>().Money.ToString();
     }
 
     public void UpdateDay()
     {
+        //This function updates the current Day that the player is on
         GameObject g = GameObject.Find("Day");
         g.GetComponent<Text>().text = "Day: " + GameObject.FindObjectOfType<WarehouseManager>().Day.ToString();
     }
