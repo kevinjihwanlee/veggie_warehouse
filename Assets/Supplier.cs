@@ -14,7 +14,7 @@ public class Supplier : MonoBehaviour
 	void Start ()
 	{
 		vendorName = "Wholesale Supplier Foo";
-		vegetable = "Broccoli";
+		vegetable = "Beets";
 		stock = 5;
 		price = 5;
 	}

@@ -12,12 +12,12 @@ public class Supply : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-        //StoredItems = new Dictionary<string, int>();
-        //List<string> SupportedProducts = GameObject.FindObjectOfType<WarehouseManager>().SupportedProducts;
-        //foreach (string s in SupportedProducts)
-        //{
-        //    AddStorage(s, 200);
-        //}
+        StoredItems = new Dictionary<string, int>();
+        List<string> SupportedProducts = GameObject.FindObjectOfType<WarehouseManager>().SupportedProducts;
+        foreach (string s in SupportedProducts)
+        {
+            AddStorage(s, 200);
+        }
 	}
 	
 	// Update is called once per frame
