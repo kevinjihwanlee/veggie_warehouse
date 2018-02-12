@@ -78,7 +78,10 @@ public class WarehouseManager : MonoBehaviour
             else
             {
                 o.FulfillFail = false;
-                Money -= 50;
+                if (Money > 100)
+                    Money -= 100;
+                else
+                    Money = 0;
             }
         }
         foreach (Order o in remove)

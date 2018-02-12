@@ -30,7 +30,7 @@ public class buyMenu : MonoBehaviour
 
 		//_beetGuiStock = GameObject.Find("Beets Inventory").GetComponent<Text>();
 
-		_displayText.text = "Buy Corn, Squash, or Beets to increase your stock\nin one day!\n$50 for a bundle of 5.";
+		_displayText.text = "Buy Corn, Squash, or Beets to increase your\nstock in one day!\n\n$50 for a bundle of 5.";
 		
         _buyCorn.onClick.AddListener(buyCorn);
         _buySquash.onClick.AddListener(buySquash);

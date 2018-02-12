@@ -13,6 +13,13 @@ public class Panels : MonoBehaviour {
         //adding button listener to Next Day Button
         _nextDayButton = GameObject.Find("Top").GetComponentInChildren<Button>();
         _nextDayButton.onClick.AddListener(GameObject.FindObjectOfType<WarehouseManager>().NextDay);
+
+        //Camera cam = GameObject.FindObjectOfType<Camera>();
+        //Vector3 left = new Vector3(225, cam.pixelHeight / 2, 0);
+        //Vector3 top = new Vector3(cam.pixelWidth / 2 + 150, cam.pixelHeight + 300, 0);
+
+        //GameObject.Find("Left").GetComponent<Transform>().position = cam.WorldToScreenPoint(left);
+        //GameObject.Find("Top").GetComponent<Transform>().position = cam.WorldToScreenPoint(top);
     }
 	
 	// Update is called once per frame
