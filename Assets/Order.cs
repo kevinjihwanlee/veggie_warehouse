@@ -24,15 +24,19 @@ public class Order : MonoBehaviour {
 
     void f()
     {
-        if (!Fulfilled && GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
+        if (!Fulfilled)
         {
-            Fulfilled = true;
+            if (GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
+                Fulfilled = true;
+            else
+                FulfillFail = true;
         }
     }
 
     public void initialize(Dictionary<string,int> o, string client)
     {
         ClientName = client;
+        GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1.4f,1,1);
         order = o;
         magnitude = order["Corn"] + order["Squash"] + order["Beets"];
         Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
@@ -55,9 +59,11 @@ public class Order : MonoBehaviour {
         {
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
         }
-        if (FulfillFail)
+        else if (FulfillFail)
         {
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
+        else
+            GetComponent<Image>().color = new Color32(83, 65, 36, 255);
     }
 }

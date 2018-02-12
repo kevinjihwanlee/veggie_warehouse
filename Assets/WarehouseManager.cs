@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WarehouseManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class WarehouseManager : MonoBehaviour
 		Satisfaction = 50f;
 
         Day = 0;
-        Money = 500;
+        Money = 50;
 
         //to be indexed randomly as orders are created
         OrderCompanies = new List<string> { "Whole Jewels", "Trader Bills", "Food Osco", "Bullseye", "Floormart", "DangerWay" };
@@ -54,8 +55,9 @@ public class WarehouseManager : MonoBehaviour
 
         //getting the gameobject for the storage and staged orders
         _supply = GameObject.FindObjectOfType<Supply>();
-        _supply.initialize(SupportedProducts, 50);
+        _supply.initialize(SupportedProducts, 20);
         _panels.UpdateSupply();
+        GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
 	}
 
 
@@ -69,10 +71,14 @@ public class WarehouseManager : MonoBehaviour
             //if the player has hit fulfill and has enough inventory
             if (o.Fulfilled)
             {
-                Debug.Log("just fulfilled this order");
                 Object.Destroy(o.gameObject);
                 remove.Add(o);
-                Money += o.magnitude * 10;
+                Money += o.magnitude * 15;
+            }
+            else
+            {
+                o.FulfillFail = false;
+                Money -= 50;
             }
         }
         foreach (Order o in remove)
@@ -82,17 +88,18 @@ public class WarehouseManager : MonoBehaviour
         foreach (string s in SupportedProducts)
         {
             _supply.RemoveStaged(s);
+            _supply.RemoveOrdered(s);
         }
 		
 		Day += 1;
-		
-		Debug.Log("It's a new day");
-		
-		Orders.Add(GenerateNewOrder());
+
+        if(Orders.Count == 0)
+            Orders.Add(GenerateNewOrder());
 
         _panels.UpdateMoney();
         _panels.UpdateDay();
         _panels.UpdateSupply();
+        _panels.UpdateOrdered();
 	}
 
 	// very basic new order generator
@@ -104,12 +111,12 @@ public class WarehouseManager : MonoBehaviour
         o.transform.localScale = new Vector3(2, .5f, 1);
 
         Vector3 oldpos = o.transform.position;
-        oldpos = oldpos + new Vector3(500,250,0);
+        oldpos = oldpos + new Vector3(500,500,0);
         o.transform.position = oldpos;
 
 		var ord = new Dictionary<string, int>();
         foreach (string product in SupportedProducts)
-            ord[product] = Random.Range(0, 10);
+            ord[product] = Random.Range(0, 15);
         
         int index = (int)(Random.value * OrderCompanies.Count);
 

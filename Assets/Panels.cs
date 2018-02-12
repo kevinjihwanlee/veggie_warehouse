@@ -34,6 +34,20 @@ public class Panels : MonoBehaviour {
         g.GetComponent<Text>().text = "Beets: " + StoredItems["Beets"].ToString();
     }
 
+    public void UpdateOrdered()
+    {
+        //This function updates the counts that are shown for the users current supply
+        Dictionary<string, int> OrderedItems = GameObject.FindObjectOfType<Supply>().OrderedItems;
+        GameObject g = GameObject.Find("Ordered Corn");
+        g.GetComponent<Text>().text = "Corn: " + OrderedItems["Corn"].ToString();
+
+        g = GameObject.Find("Ordered Squash");
+        g.GetComponent<Text>().text = "Squash: " + OrderedItems["Squash"].ToString();
+
+        g = GameObject.Find("Ordered Beets");
+        g.GetComponent<Text>().text = "Beets: " + OrderedItems["Beets"].ToString();
+    }
+
     public void UpdateMoney()
     {
         //This function updates the current money that the player has

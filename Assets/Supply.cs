@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Supply : MonoBehaviour
 {
 	// initializing public variables
-	public Dictionary<string, int> StoredItems;
-    public Dictionary<string, int> StagedItems;// dictionary of all items stored
+	public Dictionary<string, int> StoredItems; //Items we have in inventory
+    public Dictionary<string, int> StagedItems; //Inventory items to be taken out at the end of the day
+    public Dictionary<string, int> OrderedItems; //Products we've ordered to be put in inventory at the end of the day
+    // dictionary of all items stored
 	
 	
 	// Use this for initialization
@@ -15,16 +17,19 @@ public class Supply : MonoBehaviour
     {
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
+        OrderedItems = new Dictionary<string, int>();
 	}
 
     public void initialize(List<string> SupportedProducts, int quantity)
     {
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
+        OrderedItems = new Dictionary<string, int>();
         foreach (string s in SupportedProducts)
         {
             AddStorage(s, quantity);
             AddStaged(s, 0);
+            AddOrdered(s, 0);
         }
     }
 	
@@ -63,6 +68,21 @@ public class Supply : MonoBehaviour
         }
     }
 
+    public void AddOrdered(string productName, int value)
+    {
+        if (!OrderedItems.ContainsKey(productName))
+        {
+            OrderedItems[productName] = value;
+            //          Debug.Log("just added new item: " + productName + " to storage");
+            //Debug.Log(StoredItems[productName]);
+        }
+        else
+        {
+            OrderedItems[productName] += value;
+            /*          Debug.Log("updated existing item: " + productName);*/
+        }
+    }
+
 	public void RemoveStorage(string productName, int value)
 	{
 		if (StoredItems.ContainsKey(productName))
@@ -85,6 +105,15 @@ public class Supply : MonoBehaviour
         {
             StoredItems[productName] -= StagedItems[productName];
             StagedItems[productName] = 0;
+        }
+    }
+
+    public void RemoveOrdered(string productName)
+    {
+        if (OrderedItems.ContainsKey(productName))
+        {
+            StoredItems[productName] += OrderedItems[productName];
+            OrderedItems[productName] = 0;
         }
     }
 

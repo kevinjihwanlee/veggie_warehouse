@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class buyMenu : MonoBehaviour
 {
 
-	private Button _buyButton;
+    private Button _buyButton;
+    private Button _buyCorn;
+    private Button _buySquash;
+    private Button _buyBeets;
 	private Supplier _supplier;
 	private Text _displayText;
 	private Supply _supply;
@@ -17,19 +20,21 @@ public class buyMenu : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_buyButton = GameObject.Find("BuyButton").GetComponent<Button>();
-		_supplier = gameObject.GetComponent<Supplier>();
+        _buyCorn = GameObject.Find("BuyCorn").GetComponent<Button>();
+        _buySquash = GameObject.Find("BuySquash").GetComponent<Button>();
+        _buyBeets = GameObject.Find("BuyBeets").GetComponent<Button>();
+		//_supplier = gameObject.GetComponent<Supplier>();
 		_displayText = gameObject.GetComponent<Text>();
-		_supply = GameObject.Find("Storage").GetComponent<Supply>();
+        _supply = GameObject.FindObjectOfType<Supply>();
 		_warehouseManager = GameObject.Find("Main Camera").GetComponent<WarehouseManager>();
 
-		_beetGuiStock = GameObject.Find("Beets Inventory").GetComponent<Text>();
+		//_beetGuiStock = GameObject.Find("Beets Inventory").GetComponent<Text>();
 
-		_displayText.text = _supplier.vendorName + "\r\n" + _supplier.vegetable + ": " + _supplier.stock + "\r\n" +
-		                    "Price: $" + _supplier.price;
-		_buyButton.GetComponentInChildren<Text>().text = "Buy";
+		_displayText.text = "Buy Corn, Squash, or Beets to increase your stock\nin one day!\n$50 for a bundle of 5.";
 		
-		_buyButton.onClick.AddListener(getSupply);
+        _buyCorn.onClick.AddListener(buyCorn);
+        _buySquash.onClick.AddListener(buySquash);
+        _buyBeets.onClick.AddListener(buyBeets);
 	}
 	
 	// Update is called once per frame
@@ -40,7 +45,7 @@ public class buyMenu : MonoBehaviour
 	void getSupply()
 	{
 		// for now just buys the supplier out, can later add an option to the gui for how much you want to buy 
-		_supply.AddStorage(_supplier.vegetable, _supplier.stock);
+		//_supply.AddStorage(_supplier.vegetable, _supplier.stock);
 
 		_buyButton.interactable = false;
 		_displayText.text = _supplier.vendorName + "\r\n" + _supplier.vegetable + ": " + _supplier.stock + "\r\n" +
@@ -55,4 +60,33 @@ public class buyMenu : MonoBehaviour
 		
 		_supplier.stock = 0;
 	}
+
+    void buyCorn()
+    {
+        buyVeggie("Corn");
+    }
+    void buySquash()
+    {
+        buyVeggie("Squash");
+    }
+    void buyBeets()
+    {
+        buyVeggie("Beets");
+    }
+
+    public void buyVeggie(string veg)
+    {
+        int total = 0;
+        foreach (string s in _warehouseManager.SupportedProducts)
+        {
+            total += _supply.OrderedItems[s];
+        }
+        if(_warehouseManager.Money >= 50)
+        {
+            _supply.AddOrdered(veg, 5);
+            _warehouseManager.Money -= 50;
+            GameObject.FindObjectOfType<Panels>().UpdateMoney();
+            GameObject.FindObjectOfType<Panels>().UpdateOrdered();
+        }
+    }
 }
