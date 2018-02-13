@@ -114,7 +114,7 @@ public class WarehouseManager : MonoBehaviour
         o.transform.localScale = new Vector3(2, .5f, 1);
 
         Vector3 oldpos = o.transform.position;
-        oldpos = oldpos + new Vector3(500,500,0);
+        oldpos = oldpos + new Vector3(572,730,0);
         o.transform.position = oldpos;
 
 		var ord = new Dictionary<string, int>();
