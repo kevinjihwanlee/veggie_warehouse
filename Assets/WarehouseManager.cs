@@ -26,6 +26,7 @@ public class WarehouseManager : MonoBehaviour
 	// i'm just doing it like a stack rn cuz it's easy and makes a bit of sense
 	public int Money;
 
+	private Dictionary<string, int> _supplyTotalOrder;
 	// Use this for initialization
 	void Start()
 	{
@@ -65,6 +66,11 @@ public class WarehouseManager : MonoBehaviour
 	{
 
         List<Order> remove = new List<Order>();
+
+		var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>(); 
+		_supplyTotalOrder = orderSupplyMenu._totalOrder;
+		BuyMoreSupply(_supplyTotalOrder);
+		orderSupplyMenu.NextDayReset();
 
         foreach (Order o in Orders)
         {
@@ -150,6 +156,15 @@ public class WarehouseManager : MonoBehaviour
 
 		return true;
 
+	}
+
+	void BuyMoreSupply(Dictionary<string, int> supplyOrder)
+	{
+		var currentOrder = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>()._totalOrder;
+		foreach (KeyValuePair<string, int> product in currentOrder)
+		{
+			_supply.AddStorage(product.Key, product.Value);
+		}
 	}
 
 }
