@@ -7,6 +7,7 @@ public class Panels : MonoBehaviour {
 
     public Button _nextDayButton;
     private int Day;
+    public Order[] Orders;
 
     // Use this for initialization
     void Start()
@@ -16,6 +17,8 @@ public class Panels : MonoBehaviour {
         _nextDayButton.onClick.AddListener(GameObject.FindObjectOfType<WarehouseManager>().NextDay);
 
         Day = 0;
+
+        Orders = GameObject.FindObjectsOfType<Order>();
 
         //Camera cam = GameObject.FindObjectOfType<Camera>();
         //Vector3 left = new Vector3(cam.pixelWidth * .1f, cam.pixelHeight * .5f, 0);

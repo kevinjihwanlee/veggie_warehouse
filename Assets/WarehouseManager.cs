@@ -7,19 +7,20 @@ using UnityEngine.UI;
 
 public class WarehouseManager : MonoBehaviour
 {
-	// I'm attaching this to the camera cuz idk where to rlly put this
+    // I'm attaching this to the camera cuz idk where to rlly put this
 
-	// basically just holds shit like actions, pay, satisfaction, etc all in a 
-	// consolidated public place so we can edit it however we want @dt is this bad practice?
+    // basically just holds shit like actions, pay, satisfaction, etc all in a 
+    // consolidated public place so we can edit it however we want @dt is this bad practice?
 
-	public List<string> Actions;
-	public int Day;
-	public List<string> SupportedProducts;
-	public float Satisfaction; // tbd if we want scale or less analog measure (rn out of 100)
-    public List<Order> Orders; // please tell me there's a better way to do this
+    public List<string> Actions;
+    public int Day;
+    public List<string> SupportedProducts;
+    public float Satisfaction; // tbd if we want scale or less analog measure (rn out of 100)
     public Supply _supply;
     public List<string> OrderCompanies;
+    public List<Order> Orders; 
     public Panels _panels;
+    public int OrderCount;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
 	// but orders should eventually be a dictionary so you can choose which order you want to ignore and which to fulfill
@@ -59,40 +60,44 @@ public class WarehouseManager : MonoBehaviour
         _supply.initialize(SupportedProducts, 20);
         _panels.UpdateSupply();
         GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
+        OrderCount = 1;
+
+        Orders = new List<Order>();
+        for (int i = 1; i < 6; i ++)
+            Orders.Add(GameObject.Find("Order" + i.ToString()).GetComponent<Order>()); 
 	}
 
 
 	public void NextDay()
 	{
-
-        List<Order> remove = new List<Order>();
-
 		var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>(); 
 		_supplyTotalOrder = orderSupplyMenu._totalOrder;
 		BuyMoreSupply(_supplyTotalOrder);
 		orderSupplyMenu.NextDayReset();
 
-        foreach (Order o in Orders)
+        int active = -1;
+
+        for (int j = 0; j < Orders.Count; j++)
         {
-            //if the player has hit fulfill and has enough inventory
-            if (o.Fulfilled)
+            Order o = Orders[j];
+            if (o.active)
             {
-                Object.Destroy(o.gameObject);
-                remove.Add(o);
-                Money += o.magnitude * 15;
-            }
-            else
-            {
-                o.FulfillFail = false;
-                if (Money > 100)
-                    Money -= 100;
+                active = j;
+                //if the player has hit fulfill and has enough inventory
+                if (o.Fulfilled)
+                {
+                    Money += o.value;
+                    GenerateNewOrder(o);
+                }
                 else
-                    Money = 0;
+                {
+                    o.FulfillFail = false;
+                    if (Money > 100)
+                        Money -= 100;
+                    else
+                        Money = 0;
+                }
             }
-        }
-        foreach (Order o in remove)
-        {
-            Orders.Remove(o);
         }
         foreach (string s in SupportedProducts)
         {
@@ -102,8 +107,12 @@ public class WarehouseManager : MonoBehaviour
 		
 		Day += 1;
 
-        if(Orders.Count == 0)
-            Orders.Add(GenerateNewOrder());
+        int i = 1;
+        while (OrderCount > active + i)
+        {
+            GenerateNewOrder(Orders[active + i]);
+            i++;
+        }
 
         _panels.UpdateMoney();
         _panels.UpdateDay();
@@ -112,26 +121,20 @@ public class WarehouseManager : MonoBehaviour
 	}
 
 	// very basic new order generator
-    private Order GenerateNewOrder()
+    private void GenerateNewOrder(Order o)
     {
-        var o = (GameObject)Object.Instantiate((GameObject)Resources.Load("Order"));
-
-        o.transform.SetParent(GameObject.Find("Canvas").transform);
-        o.transform.localScale = new Vector3(2, .5f, 1);
-
-        Vector3 oldpos = o.transform.position;
-        oldpos = oldpos + new Vector3(567,600,0);
-        o.transform.position = oldpos;
-
+        int magnitude = 0;
 		var ord = new Dictionary<string, int>();
         foreach (string product in SupportedProducts)
+        {
             ord[product] = Random.Range(0, 15);
-        
-        int index = (int)(Random.value * OrderCompanies.Count);
-
-        o.GetComponent<Order>().initialize(ord,OrderCompanies[index]);
-
-        return o.GetComponent<Order>();
+            magnitude += ord[product];
+        }
+        int multiplier = Random.Range(11, 16);
+        int value = multiplier * magnitude;
+        string client = OrderCompanies[Random.Range(0, OrderCompanies.Count)];
+        o.initialize(ord,client,value,magnitude);
+        o.gameObject.GetComponent<Transform>().localScale = new Vector3(2, .6f, 1);
 	}
 
 	// this function checks the shipping dock to see if orders can be fulfilled

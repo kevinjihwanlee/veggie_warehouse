@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Order : MonoBehaviour {
 
@@ -9,17 +10,46 @@ public class Order : MonoBehaviour {
     public string ClientName;
     public bool Fulfilled;
     public int magnitude;
+    public int value;
     public bool FulfillFail;
+    public bool active;
+    public Button stage;
 
     // Use this for initialization
     void Start()
     {
+        this.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
 
-        Button B = this.GetComponentInChildren<Button>();
-        B.onClick.AddListener(f);
+        stage = gameObject.GetComponentInChildren<Button>();
+        stage.onClick.AddListener(f);
 
         Fulfilled = false;
         FulfillFail = false;
+        active = false;
+    }
+
+    public void initialize(Dictionary<string, int> o, string client, int val, int mag)
+    {
+        Start();
+        active = true;
+        ClientName = client;
+        order = o;
+        value = val;
+        magnitude = mag;
+        Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
+        foreach (Component c in comps)
+        {
+            if (c.name == "Client")
+                ((Text)c).text = ClientName;
+            else if (c.name == "OrderValue")
+                ((Text)c).text = "$" + value.ToString();
+            else if (c.name == "Corn")
+                ((Text)c).text = "Corn: " + order["Corn"].ToString();
+            else if (c.name == "Squash")
+                ((Text)c).text = "Squash: " + order["Squash"].ToString();
+            else if (c.name == "Beets")
+                ((Text)c).text = "Beets: " + order["Beets"].ToString();
+        }
     }
 
     void f()
@@ -33,25 +63,6 @@ public class Order : MonoBehaviour {
         }
     }
 
-    public void initialize(Dictionary<string,int> o, string client)
-    {
-        ClientName = client;
-        GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1.4f,1,1);
-        order = o;
-        magnitude = order["Corn"] + order["Squash"] + order["Beets"];
-        Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
-        foreach (Component c in comps)
-        {
-            if (c.name == "Client")
-                ((Text)c).text = ClientName;
-            else if (c.name == "Corn")
-                ((Text)c).text = "Corn: " + order["Corn"].ToString();
-            else if (c.name == "Squash")
-                ((Text)c).text = "Squash: " + order["Squash"].ToString();
-            else if (c.name == "Beets")
-                ((Text)c).text = "Beets: " + order["Beets"].ToString();
-        }
-    }
     void Update()
     {
         //change the colors based on what happened when the user hit fulfill
