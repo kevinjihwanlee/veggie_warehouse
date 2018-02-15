@@ -25,15 +25,15 @@ public class supplyDock : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		// _storage.GetComponent<storage>().RemoveStorage("corn", 5);
-		// on click should open a menu UI for buying
-		if (_buymenu.gameObject.activeSelf)
-		{
-			_buymenu.gameObject.SetActive(false);
-		}
-		else
-		{
-			_buymenu.gameObject.SetActive(true);
-		}
+		//// _storage.GetComponent<storage>().RemoveStorage("corn", 5);
+		//// on click should open a menu UI for buying
+		//if (_buymenu.gameObject.activeSelf)
+		//{
+		//	_buymenu.gameObject.SetActive(false);
+		//}
+		//else
+		//{
+		//	_buymenu.gameObject.SetActive(true);
+		//}
 	}
 }

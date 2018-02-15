@@ -108,7 +108,7 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateMoney();
         _panels.UpdateDay();
         _panels.UpdateSupply();
-        _panels.UpdateOrdered();
+        //_panels.UpdateOrdered();
 	}
 
 	// very basic new order generator
@@ -120,7 +120,7 @@ public class WarehouseManager : MonoBehaviour
         o.transform.localScale = new Vector3(2, .5f, 1);
 
         Vector3 oldpos = o.transform.position;
-        oldpos = oldpos + new Vector3(572,730,0);
+        oldpos = oldpos + new Vector3(567,600,0);
         o.transform.position = oldpos;
 
 		var ord = new Dictionary<string, int>();

@@ -77,6 +77,7 @@ public class BuyMenu2 : MonoBehaviour {
 
 	public void NextDayReset()
 	{
+        GameObject.FindObjectOfType<WarehouseManager>().Money -= TotalOrderCost;
 		foreach (Transform child in transform)
 		{
 			var product = child.gameObject.GetComponent<ModifyOrder>();
