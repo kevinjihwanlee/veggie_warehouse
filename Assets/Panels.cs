@@ -8,6 +8,7 @@ public class Panels : MonoBehaviour {
     public Button _nextDayButton;
     private int Day;
     public Order[] Orders;
+    public int lastDay;
 
     // Use this for initialization
     void Start()
@@ -48,18 +49,12 @@ public class Panels : MonoBehaviour {
         g.GetComponent<Text>().text = "Beets: " + StoredItems["Beets"].ToString();
     }
 
-    public void UpdateOrdered()
+    public void UpdateReceipt(int orderRev, int veggieCost)
     {
-        //This function updates the counts that are shown for the users current supply
-        //Dictionary<string, int> OrderedItems = GameObject.FindObjectOfType<Supply>().OrderedItems;
-        //GameObject g = GameObject.Find("Ordered Corn");
-        //g.GetComponent<Text>().text = "Corn: " + OrderedItems["Corn"].ToString();
-
-        //g = GameObject.Find("Ordered Squash");
-        //g.GetComponent<Text>().text = "Squash: " + OrderedItems["Squash"].ToString();
-
-        //g = GameObject.Find("Ordered Beets");
-        //g.GetComponent<Text>().text = "Beets: " + OrderedItems["Beets"].ToString();
+        GameObject.Find("Receipt").GetComponent<Text>().text = "Recap Day " + lastDay.ToString() + ":";
+        GameObject.Find("OrderRevenueValue").GetComponentInChildren<Text>().text = "$" + orderRev.ToString();
+        GameObject.Find("VeggieCostValue").GetComponentInChildren<Text>().text = "$" + (-veggieCost).ToString();
+        GameObject.Find("ProfitValue").GetComponentInChildren<Text>().text = "$" + (orderRev - veggieCost).ToString();
     }
 
     public void UpdateMoney()
@@ -73,6 +68,7 @@ public class Panels : MonoBehaviour {
     {
         //This function updates the current Day that the player is on
         GameObject g = GameObject.Find("Day");
+        lastDay = Day;
         Day = GameObject.FindObjectOfType<WarehouseManager>().Day;
         g.GetComponent<Text>().text = "Day: " + Day.ToString();
     }

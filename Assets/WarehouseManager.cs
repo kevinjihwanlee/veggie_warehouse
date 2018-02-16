@@ -70,10 +70,12 @@ public class WarehouseManager : MonoBehaviour
 
 	public void NextDay()
 	{
-		var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>(); 
-		_supplyTotalOrder = orderSupplyMenu._totalOrder;
-		BuyMoreSupply(_supplyTotalOrder);
-		orderSupplyMenu.NextDayReset();
+        int orderRev = 0;
+        int veggieCost = GameObject.FindObjectOfType<BuyMenu2>().TotalOrderCost;
+        var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>();
+        _supplyTotalOrder = orderSupplyMenu._totalOrder;
+        BuyMoreSupply(_supplyTotalOrder);
+        orderSupplyMenu.NextDayReset();
 
         int active = -1;
 
@@ -87,15 +89,14 @@ public class WarehouseManager : MonoBehaviour
                 if (o.Fulfilled)
                 {
                     Money += o.value;
+                    orderRev += o.value;
                     GenerateNewOrder(o);
                 }
                 else
                 {
                     o.FulfillFail = false;
-                    if (Money > 100)
-                        Money -= 100;
-                    else
-                        Money = 0;
+                    Money -= 100;
+                    orderRev -= 100;
                 }
             }
         }
@@ -114,10 +115,10 @@ public class WarehouseManager : MonoBehaviour
             i++;
         }
 
-        _panels.UpdateMoney();
         _panels.UpdateDay();
+        _panels.UpdateReceipt(orderRev, veggieCost);
+        _panels.UpdateMoney();
         _panels.UpdateSupply();
-        //_panels.UpdateOrdered();
 	}
 
 	// very basic new order generator
