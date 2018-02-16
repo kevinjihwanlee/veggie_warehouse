@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class BuyMenu2 : MonoBehaviour {
 
     private Button _buyButton;
-	private Supplier _supplier;
 	private Text _displayText;
-	private Supply _supply;
 	
 	private WarehouseManager _warehouseManager;
 	public int AvailableFunds;
@@ -21,7 +19,6 @@ public class BuyMenu2 : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-        _supply = GameObject.FindObjectOfType<Supply>();
 		_warehouseManager = GameObject.Find("Main Camera").GetComponent<WarehouseManager>();
 		
 		_totalOrder = new Dictionary<string, int>();
@@ -54,25 +51,6 @@ public class BuyMenu2 : MonoBehaviour {
 		}
 
 		transform.Find("Cost").gameObject.GetComponent<Text>().text = "Total Cost: " + TotalOrderCost;
-	}
-	
-	void getSupply()
-	{
-		// for now just buys the supplier out, can later add an option to the gui for how much you want to buy 
-		//_supply.AddStorage(_supplier.vegetable, _supplier.stock);
-
-		_buyButton.interactable = false;
-		_displayText.text = _supplier.vendorName + "\r\n" + _supplier.vegetable + ": " + _supplier.stock + "\r\n" +
-		                    "Price: " + _supplier.price;
-		// have to subtract money but there is currently no revenue
-
-		_warehouseManager.Money -= _supplier.price * _supplier.stock;
-
-		GameObject.FindObjectOfType<Panels>().UpdateMoney();
-		
-		// need to update the stock as well
-		
-		_supplier.stock = 0;
 	}
 
 	public void NextDayReset()
