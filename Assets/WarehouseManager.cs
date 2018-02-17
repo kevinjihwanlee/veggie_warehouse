@@ -109,8 +109,7 @@ public class WarehouseManager : MonoBehaviour
 		Day += 1;
         if (OrderCount < 5)
         {
-            float calculatedOrderCount = (Day * 150 + Money) / 800;
-            Debug.Log(calculatedOrderCount);
+            float calculatedOrderCount = (Day * 60 + Money) / 500;
             if (calculatedOrderCount > OrderCount)
                 OrderCount = (int)calculatedOrderCount;
         }
@@ -159,15 +158,22 @@ public class WarehouseManager : MonoBehaviour
 				return false;
 			}
 		}
-		
 		foreach (KeyValuePair<string, int> item in order)
 		{
             _supply.AddStaged(item.Key, item.Value);
 		}
-
 		return true;
+    }
 
-	}
+    public void UnstageOrder(Order o)
+    {
+        Dictionary<string, int> order = o.order;
+        // sorry this is gross, prob a better way to do this
+        foreach (KeyValuePair<string, int> item in order)
+        {
+            _supply.UndoStaged(item.Key, item.Value);
+        }
+    }
 
 	void BuyMoreSupply(Dictionary<string, int> supplyOrder)
 	{

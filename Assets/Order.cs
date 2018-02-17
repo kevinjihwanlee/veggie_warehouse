@@ -14,6 +14,7 @@ public class Order : MonoBehaviour {
     public bool FulfillFail;
     public bool active;
     public Button stage;
+    private float time;
 
     // Use this for initialization
     void Start()
@@ -26,6 +27,7 @@ public class Order : MonoBehaviour {
         Fulfilled = false;
         FulfillFail = false;
         active = false;
+        time = UnityEngine.Time.time;
     }
 
     public void initialize(Dictionary<string, int> o, string client, int val, int mag)
@@ -54,12 +56,20 @@ public class Order : MonoBehaviour {
 
     void f()
     {
-        if (!Fulfilled)
+        bool t = UnityEngine.Time.time - time > .1f;
+        if (!Fulfilled && t)
         {
             if (GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
                 Fulfilled = true;
             else
                 FulfillFail = true;
+            time = UnityEngine.Time.time;
+        }
+        else if (t)
+        {
+            GameObject.FindObjectOfType<WarehouseManager>().UnstageOrder(this);
+            Fulfilled = false;
+            time = UnityEngine.Time.time;
         }
     }
 
@@ -68,6 +78,8 @@ public class Order : MonoBehaviour {
         //change the colors based on what happened when the user hit fulfill
         if (Fulfilled)
         {
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Unstage Order";
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(.8f, .8f, .8f);
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
         }
         else if (FulfillFail)
@@ -75,6 +87,10 @@ public class Order : MonoBehaviour {
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
         else
+        {
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
             GetComponent<Image>().color = new Color32(83, 65, 36, 255);
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

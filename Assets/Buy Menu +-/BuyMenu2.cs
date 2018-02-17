@@ -6,14 +6,9 @@ using UnityEngine.UI;
 
 public class BuyMenu2 : MonoBehaviour {
 
-    private Button _buyButton;
-	private Text _displayText;
-	
 	private WarehouseManager _warehouseManager;
 	public int AvailableFunds;
 	public int TotalOrderCost;
-
-	private Text _beetGuiStock;
 	public Dictionary<string, int> _totalOrder;
 
 	// Use this for initialization

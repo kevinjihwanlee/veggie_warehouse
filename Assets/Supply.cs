@@ -68,6 +68,11 @@ public class Supply : MonoBehaviour
         }
     }
 
+    public void UndoStaged(string productName, int value)
+    {
+        StagedItems[productName] -= value;
+    }
+
     public void AddOrdered(string productName, int value)
     {
         if (!OrderedItems.ContainsKey(productName))
