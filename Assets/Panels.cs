@@ -40,13 +40,13 @@ public class Panels : MonoBehaviour {
         //This function updates the counts that are shown for the users current supply
         Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
         GameObject g = GameObject.Find("Corn Inventory");
-        g.GetComponent<Text>().text = "Corn: " + StoredItems["Corn"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Corn"].ToString();
 
         g = GameObject.Find("Squash Inventory");
-        g.GetComponent<Text>().text = "Squash: " + StoredItems["Squash"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Squash"].ToString();
 
         g = GameObject.Find("Beets Inventory");
-        g.GetComponent<Text>().text = "Beets: " + StoredItems["Beets"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Beets"].ToString();
     }
 
     public void UpdateReceipt(int orderRev, int veggieCost)
