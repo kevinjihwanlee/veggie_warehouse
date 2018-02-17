@@ -107,6 +107,13 @@ public class WarehouseManager : MonoBehaviour
         }
 		
 		Day += 1;
+        if (OrderCount < 5)
+        {
+            float calculatedOrderCount = (Day * 150 + Money) / 800;
+            Debug.Log(calculatedOrderCount);
+            if (calculatedOrderCount > OrderCount)
+                OrderCount = (int)calculatedOrderCount;
+        }
 
         int i = 1;
         while (OrderCount > active + i)
