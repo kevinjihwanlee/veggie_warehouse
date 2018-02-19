@@ -163,8 +163,6 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateMoney();
         _panels.UpdateSupply();
 
-		Debug.Log(Money);
-		//Debug.Log(Orders.Count);
 		if (Money > 1000 && Day > 10)
 		{
 			WinGame();	
@@ -252,13 +250,11 @@ public class WarehouseManager : MonoBehaviour
 
 	void WinGame()
 	{
-		Debug.Log("YOU WIN");	
 		EndGame(true);
 	}
 
 	void LoseGame()
 	{
-		Debug.Log("YOU LOSE");
 		EndGame(false);
 	}
 
