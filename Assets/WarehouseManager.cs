@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class WarehouseManager : MonoBehaviour
 {
@@ -140,10 +142,23 @@ public class WarehouseManager : MonoBehaviour
             i++;
         }
 
+		// ******* //
+		// temporary code for the decay, need to put into a function later //
+		// ******* //
+		
+		//int cornSupply = _supply.StoredItems["Corn"];
+		//int squashSupply = _supply.StoredItems["Squash"];
+		//int beetsSupply = _supply.StoredItems["Beets"];
+		//_supply.RemoveStorage("Corn", Convert.ToInt32(cornSupply * 0.5));
+		
+		// ******* //
+		
         _panels.UpdateDay();
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
         _panels.UpdateSupply();
+		
+
 
 
 	}
