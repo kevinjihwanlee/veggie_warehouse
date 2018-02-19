@@ -128,7 +128,7 @@ public class StorageObject : MonoBehaviour {
 					{
 						entry.GetComponent<Text>().text = oBuy["Beets"].ToString();
 						totalVeg += oBuy["Beets"];
-						totalBought += oBuy["Squash"];
+						totalBought += oBuy["Beets"];
 					}
 					if (counter == 3)
 					{

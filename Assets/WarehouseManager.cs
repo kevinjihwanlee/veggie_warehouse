@@ -101,26 +101,33 @@ public class WarehouseManager : MonoBehaviour
         for (int j = 0; j < Orders.Count; j++)
         {
             Order o = Orders[j];
-            if (o.active)
-            {
-	            
-                active = j;
-                //if the player has hit fulfill and has enough inventory
-                if (o.Fulfilled)
-                {
-                    Money += o.value;
-	                orderRev += o.value;
-	                _storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
-                    GenerateNewOrder(o);
-                }
-                else
-                {
-                    o.FulfillFail = false;
-                    Money -= 100;
-                    orderRev -= 100;
-	                _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
-                }
-            }
+	        if (o.active)
+	        {
+
+		        active = j;
+		        //if the player has hit fulfill and has enough inventory
+		        if (o.Fulfilled)
+		        {
+			        Money += o.value;
+			        orderRev += o.value;
+			        _storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
+			        GenerateNewOrder(o);
+		        }
+		        else
+		        {
+			        o.FulfillFail = false;
+			        Money -= 100;
+			        orderRev -= 100;
+			        _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
+		        }
+	        }
+	        
+	        // hacky way of accounting for buying something before the game starts
+	        else if (j == 0)
+	        {
+		        _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
+
+	        }
         }
 
 
