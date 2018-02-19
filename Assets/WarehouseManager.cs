@@ -130,6 +130,7 @@ public class WarehouseManager : MonoBehaviour
         {
             _supply.RemoveStaged(s);
             _supply.RemoveOrdered(s);
+            _supplyTotalOrder[s] = 0;
         }
 		
 		Day += 1;
