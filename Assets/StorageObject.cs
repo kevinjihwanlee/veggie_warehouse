@@ -51,13 +51,22 @@ public class StorageObject : MonoBehaviour {
 
 	public void UpdateInventoryReceipt(Order oSup, Dictionary<string, int> oBuy)
 	{
+		
+		// can be made more readable at a later date
+		
 		int counter;
 		int totalVeg;
+
+		int totalShipped = 0;
+		int totalBought = 0;
+		int totalSpoiled = 0;
+		int totalGained = 0;
 		
 		foreach (Transform child in _inventoryTitleTransforms)
 		{
 			counter = 0;
 			totalVeg = 0;
+			
 			
 			if (child.name.Equals("Titles"))
 			{
@@ -65,23 +74,26 @@ public class StorageObject : MonoBehaviour {
 			}
 			foreach (Transform entry in child)
 			{
-				Debug.Log(entry.name);
 				_veggieTypeComp = entry.name.Substring(0, 4);
 				
 				if (_veggieTypeComp.Equals("Corn"))
 				{
 					if (counter == 0 && oSup != null)
 					{
-						entry.GetComponent<Text>().text = oSup.order[entry.name.Substring(0, 4)].ToString();
-						totalVeg += oSup.order[entry.name.Substring(0, 4)];
+						entry.GetComponent<Text>().text = oSup.order["Corn"].ToString();
+						totalVeg -= oSup.order["Corn"];
+						totalShipped += oSup.order["Corn"];
 					}
 					if (counter == 1)
 					{
 						entry.GetComponent<Text>().text = oBuy["Corn"].ToString();
+						totalVeg += oBuy["Corn"];
+						totalBought += oBuy["Corn"];
 					}
 					if (counter == 3)
 					{
 						entry.GetComponent<Text>().text = totalVeg.ToString();
+						totalGained += totalVeg;
 					}
 					counter++;
 				}
@@ -89,27 +101,59 @@ public class StorageObject : MonoBehaviour {
 				{
 					if (counter == 0 && oSup != null)
 					{
-						entry.GetComponent<Text>().text = oSup.order[entry.name.Substring(0, 6)].ToString();
-						/*totalVeggies += o.order[entry.name.Substring(0, 6)];
-						Debug.Log(totalVeggies);*/
+						entry.GetComponent<Text>().text = oSup.order["Squash"].ToString();
+						totalVeg -= oSup.order["Squash"];
+						totalShipped += oSup.order["Squash"];
 					}
-					//Debug.Log(entry.GetComponent<Text>().text);
+					if (counter == 1)
+					{
+						entry.GetComponent<Text>().text = oBuy["Squash"].ToString();
+						totalVeg += oBuy["Squash"];
+						totalBought += oBuy["Squash"];
+					}
+					if (counter == 3)
+					{
+						entry.GetComponent<Text>().text = totalVeg.ToString();
+						totalGained += totalVeg;
+					}
 					counter++;
 				}
 				else if (_veggieTypeComp.Equals("Beet"))
 				{
 					if (counter == 0 && oSup != null)
 					{
-						entry.GetComponent<Text>().text = oSup.order[entry.name.Substring(0, 5)].ToString();
-						/*totalVeggies += o.order[entry.name.Substring(0, 5)];
-						Debug.Log(totalVeggies);*/
+						entry.GetComponent<Text>().text = oSup.order["Beets"].ToString();
+						totalVeg -= oSup.order["Beets"];
+						totalShipped += oSup.order["Beets"];
 					}
-					//Debug.Log(entry.GetComponent<Text>().text);
+					if (counter == 1)
+					{
+						entry.GetComponent<Text>().text = oBuy["Beets"].ToString();
+						totalVeg += oBuy["Beets"];
+						totalBought += oBuy["Squash"];
+					}
+					if (counter == 3)
+					{
+						entry.GetComponent<Text>().text = totalVeg.ToString();
+						totalGained += totalVeg;
+					}
 					counter++;
 				}
 				else
 				{
-					
+					if (counter == 0 && oSup != null)
+					{
+						entry.GetComponent<Text>().text = totalShipped.ToString();
+					}
+					if (counter == 1)
+					{
+						entry.GetComponent<Text>().text = totalBought.ToString();
+					}
+					if (counter == 3)
+					{
+						entry.GetComponent<Text>().text = totalGained.ToString();
+					}
+					counter++;
 				}
 			}
 		}

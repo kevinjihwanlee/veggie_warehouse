@@ -96,7 +96,6 @@ public class WarehouseManager : MonoBehaviour
             Order o = Orders[j];
             if (o.active)
             {
-	            //Debug.Log(o.order["Corn"]);
 	            
                 active = j;
                 //if the player has hit fulfill and has enough inventory
@@ -112,11 +111,12 @@ public class WarehouseManager : MonoBehaviour
                     o.FulfillFail = false;
                     Money -= 100;
                     orderRev -= 100;
+	                _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
                 }
             }
         }
 
-		_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
+
 		orderSupplyMenu.NextDayReset();
 		
         foreach (string s in SupportedProducts)
