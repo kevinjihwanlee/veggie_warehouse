@@ -63,11 +63,11 @@ public class WarehouseManager : MonoBehaviour
         _supply = GameObject.FindObjectOfType<Supply>();
         _supply.initialize(SupportedProducts, 20);
         _panels.UpdateSupply();
-		
-		// setting colors and active state of 3D models and UI
+
+        // setting colors and active state of 3D models and UI
         //GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
 
-		GameObject.Find("InventoryReceipt").gameObject.SetActive(false);
+        GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(0, 0, 0);
 		
         OrderCount = 1;
 
