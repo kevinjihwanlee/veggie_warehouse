@@ -21,6 +21,8 @@ public class WarehouseManager : MonoBehaviour
     public List<Order> Orders; 
     public Panels _panels;
     public int OrderCount;
+
+	public StorageObject _storage;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
 	// but orders should eventually be a dictionary so you can choose which order you want to ignore and which to fulfill
@@ -61,8 +63,8 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateSupply();
 		
 		// setting colors and active state of 3D models and UI
-        GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
-		GameObject.Find("Storage").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
+        //GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
+
 		GameObject.Find("InventoryReceipt").gameObject.SetActive(false);
 		
         OrderCount = 1;
@@ -70,6 +72,9 @@ public class WarehouseManager : MonoBehaviour
         Orders = new List<Order>();
         for (int i = 1; i < 6; i ++)
             Orders.Add(GameObject.Find("Order" + i.ToString()).GetComponent<Order>()); 
+		
+		//the StorageObject used for the inventory receipt
+		_storage = GameObject.Find("Storage").GetComponent<StorageObject>();
 	}
 
 
@@ -77,11 +82,13 @@ public class WarehouseManager : MonoBehaviour
 	{
         int orderRev = 0;
         int veggieCost = GameObject.FindObjectOfType<BuyMenu2>().TotalOrderCost;
+		 
         var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>();
+		
         _supplyTotalOrder = orderSupplyMenu._totalOrder;
+		
         BuyMoreSupply(_supplyTotalOrder);
-        orderSupplyMenu.NextDayReset();
-
+		
         int active = -1;
 
         for (int j = 0; j < Orders.Count; j++)
@@ -89,12 +96,15 @@ public class WarehouseManager : MonoBehaviour
             Order o = Orders[j];
             if (o.active)
             {
+	            //Debug.Log(o.order["Corn"]);
+	            
                 active = j;
                 //if the player has hit fulfill and has enough inventory
                 if (o.Fulfilled)
                 {
                     Money += o.value;
-                    orderRev += o.value;
+	                orderRev += o.value;
+	                _storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
                     GenerateNewOrder(o);
                 }
                 else
@@ -105,6 +115,10 @@ public class WarehouseManager : MonoBehaviour
                 }
             }
         }
+
+		_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
+		orderSupplyMenu.NextDayReset();
+		
         foreach (string s in SupportedProducts)
         {
             _supply.RemoveStaged(s);
@@ -130,6 +144,8 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
         _panels.UpdateSupply();
+
+
 	}
 
 	// very basic new order generator
@@ -186,7 +202,9 @@ public class WarehouseManager : MonoBehaviour
 		foreach (KeyValuePair<string, int> product in currentOrder)
 		{
 			_supply.AddStorage(product.Key, product.Value);
+
 		}
+	
 	}
 
 }
