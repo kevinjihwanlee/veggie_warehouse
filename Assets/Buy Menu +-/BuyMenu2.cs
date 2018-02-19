@@ -18,32 +18,27 @@ public class BuyMenu2 : MonoBehaviour {
 		
 		_totalOrder = new Dictionary<string, int>();
 
-		foreach(Transform child in transform)
+        foreach(string product in GameObject.FindObjectOfType<WarehouseManager>().SupportedProducts)
 		{
-			var product = child.gameObject.GetComponent<ModifyOrder>();
-			if (product != null)
-			{
-				_totalOrder[product.ProductName] = 0;
-			}
+			_totalOrder[product] = 0;
 		}
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		AvailableFunds = _warehouseManager.Money;
 
-		TotalOrderCost = 0;
+		//TotalOrderCost = 0;
 		
-		foreach(Transform child in transform)
-		{
-			var product = child.gameObject.GetComponent<ModifyOrder>();
-			if (product != null)
-			{
-                TotalOrderCost += product.SupplyOrderQuantity * 10;
-                _totalOrder[product.ProductName] = product.SupplyOrderQuantity;
-			}
-		}
+		//foreach(Transform child in transform)
+		//{
+		//	var product = child.gameObject.GetComponent<ModifyOrder>();
+		//	if (product != null)
+		//	{
+  //              TotalOrderCost += product.SupplyOrderQuantity * 10;
+  //              _totalOrder[product.ProductName] = product.SupplyOrderQuantity;
+		//	}
+		//}
 
 		transform.Find("Cost").gameObject.GetComponent<Text>().text = "Total Cost: " + TotalOrderCost;
 	}
@@ -51,6 +46,7 @@ public class BuyMenu2 : MonoBehaviour {
 	public void NextDayReset()
 	{
         GameObject.FindObjectOfType<WarehouseManager>().Money -= TotalOrderCost;
+        TotalOrderCost = 0;
 		foreach (Transform child in transform)
 		{
 			var product = child.gameObject.GetComponent<ModifyOrder>();

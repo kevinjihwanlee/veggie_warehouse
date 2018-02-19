@@ -30,8 +30,6 @@ public class StorageObject : MonoBehaviour {
 
 		_inventoryTitles = GameObject.Find("Labels");
 		_inventoryTitleTransforms= _inventoryTitles.gameObject.transform;
-		
-
 	}
 	
 	// Update is called once per frame

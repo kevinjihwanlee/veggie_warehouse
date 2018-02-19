@@ -21,12 +21,13 @@ public class ModifyOrder : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		SupplyOrderQuantity = 0;
+        SupplyOrderQuantity = 0;
 		_add = transform.Find("Add").gameObject.GetComponent<Button>();
 		_remove = transform.Find("Remove").gameObject.GetComponent<Button>();
 		DeltaQuantity = 5;
 
-		_originalText = GetComponent<Text>().text;
+        _originalText = GetComponent<Text>().text;
+        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 		
 		_add.onClick.AddListener(AddOrder);
 		_remove.onClick.AddListener(RemoveOrder);
@@ -34,45 +35,56 @@ public class ModifyOrder : MonoBehaviour
 		// hardcoded for now
 		_price = 50;
 
-		ProductName = gameObject.name;
+        ProductName = name;
 	}
 
 	void Update()
 	{
-		GetComponent<Text>().text = _originalText + SupplyOrderQuantity;
-
 		_availableFunds = GetComponentInParent<BuyMenu2>().AvailableFunds;
 		_totalOrderCost = GetComponentInParent<BuyMenu2>().TotalOrderCost;
 		
 		if (_totalOrderCost + _price > _availableFunds)
-		{
 			DisableAddButton();
-		}
 
 		if (_totalOrderCost + _price <= _availableFunds)
-		{
 			EnableButton();
-		}
+
+        if (SupplyOrderQuantity > 0)
+            _remove.interactable = true;
+        else
+            _remove.interactable = false;
 	}
 
 	public void Reset()
 	{
-		SupplyOrderQuantity = 0;
+        SupplyOrderQuantity = 0;
+        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 	}
 
 	void AddOrder()
 	{
 		SupplyOrderQuantity += DeltaQuantity;
+        BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
+        bm.TotalOrderCost += DeltaQuantity * 10;
+        bm._totalOrder[ProductName] = SupplyOrderQuantity;
+        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 	}
 	
 	void RemoveOrder()
 	{
 		SupplyOrderQuantity -= DeltaQuantity;
-		
-		if (SupplyOrderQuantity < 0)
-		{
-			SupplyOrderQuantity = 0;
-		}
+
+        if (SupplyOrderQuantity < 0)
+        {
+            SupplyOrderQuantity = 0;
+        }
+        else
+        {
+            BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
+            bm.TotalOrderCost -= DeltaQuantity * 10;
+            bm._totalOrder[ProductName] = SupplyOrderQuantity;
+            GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        }
 	}
 
 	public void DisableAddButton()
