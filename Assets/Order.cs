@@ -85,13 +85,15 @@ public class Order : MonoBehaviour {
         }
         else if (FulfillFail)
         {
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
+            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
         else
         {
             GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
-            GetComponent<Image>().color = new Color32(83, 65, 36, 255);
             GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
+            GetComponent<Image>().color = new Color32(83, 65, 36, 255);
         }
     }
 
