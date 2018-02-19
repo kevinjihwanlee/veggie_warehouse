@@ -28,6 +28,7 @@ public class Order : MonoBehaviour {
         FulfillFail = false;
         active = false;
         time = UnityEngine.Time.time;
+        
     }
 
     public void initialize(Dictionary<string, int> o, string client, int val, int mag)
@@ -93,4 +94,5 @@ public class Order : MonoBehaviour {
             GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
         }
     }
+
 }

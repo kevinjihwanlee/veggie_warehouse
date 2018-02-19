@@ -31,10 +31,14 @@ public class WarehouseManager : MonoBehaviour
 	// i'm just doing it like a stack rn cuz it's easy and makes a bit of sense
 	public int Money;
 
+	private GameObject _endScreen;
+
 	private Dictionary<string, int> _supplyTotalOrder;
 	// Use this for initialization
 	void Start()
 	{
+		_endScreen = GameObject.Find("EndGame");
+		_endScreen.SetActive(false);
 		// initializing actions
 		// tbh not sure this is necessary
 		Actions = new List<string> {"addItem"};
@@ -93,6 +97,7 @@ public class WarehouseManager : MonoBehaviour
 		
         int active = -1;
 
+		var orderFailed = false;
         for (int j = 0; j < Orders.Count; j++)
         {
             Order o = Orders[j];
@@ -157,7 +162,30 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
         _panels.UpdateSupply();
+
+		Debug.Log(Money);
+		//Debug.Log(Orders.Count);
+		if (Money > 1000 && Day > 10)
+		{
+			WinGame();	
+		}
 		
+		if (Money < 0)
+		{
+			var lose = true;
+			foreach (Order o in Orders)
+			{
+				if (o.active && CanFulfillOrders())
+				{
+					lose = false;
+				}
+			}
+
+			if (lose)
+			{
+				LoseGame();
+			}
+		}
 
 
 
@@ -220,6 +248,62 @@ public class WarehouseManager : MonoBehaviour
 
 		}
 	
+	}
+
+	void WinGame()
+	{
+		Debug.Log("YOU WIN");	
+		EndGame(true);
+	}
+
+	void LoseGame()
+	{
+		Debug.Log("YOU LOSE");
+		EndGame(false);
+	}
+
+	void EndGame(bool win)
+	{
+		_endScreen.SetActive(true);
+		if (!win)
+		{
+//			_endScreen.GetComponent<Text>().text = "You Lose";
+			_endScreen.GetComponentInChildren<Text>().text = "You Lose";
+		}
+	}
+
+	bool CanFulfillOrders()
+	{
+		var fulfillableOrder = false;
+		
+		foreach (Order o in Orders)
+		{
+			var lackSupply = false;
+
+			if (!o.active)
+			{
+				continue;
+			}
+			
+			foreach (KeyValuePair<string, int> item in o.order)
+			{
+				if (!_supply.AvailableItem(item.Key, item.Value))
+				{
+					lackSupply = true;
+					break;
+				}					
+			}
+
+			if (lackSupply)
+			{
+				continue;
+			}
+
+			fulfillableOrder = true;
+
+		}
+
+		return fulfillableOrder;
 	}
 
 }
