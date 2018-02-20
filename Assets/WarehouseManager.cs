@@ -53,7 +53,7 @@ public class WarehouseManager : MonoBehaviour
 		Satisfaction = 50f;
 
         Day = 0;
-        Money = 50;
+        Money = 150;
 
         //to be indexed randomly as orders are created
         OrderCompanies = new List<string> { "Whole Jewels", "Trader Bills", "Food Osco", "Bullseye", "Floormart", "DangerWay" };
