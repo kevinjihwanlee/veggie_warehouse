@@ -61,7 +61,10 @@ public class Order : MonoBehaviour {
         if (!Fulfilled && t)
         {
             if (GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
+            {
                 Fulfilled = true;
+                FulfillFail = false;
+            }
             else
                 FulfillFail = true;
             time = UnityEngine.Time.time;
