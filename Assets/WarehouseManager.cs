@@ -134,7 +134,9 @@ public class WarehouseManager : MonoBehaviour
                         orderRev -= 100;
                     }
                     else
-                        o.daysRemaining -= 1;
+                    {
+                        o.decrementDays();
+                    }
 			        //_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
 		        }
 	        }

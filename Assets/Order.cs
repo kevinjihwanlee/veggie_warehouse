@@ -79,6 +79,16 @@ public class Order : MonoBehaviour {
         }
     }
 
+    public void decrementDays()
+    {
+        daysRemaining -= 1;
+        foreach (Text t in GetComponentsInChildren<Text>())
+        {
+            if (t.name == "DaysRemaining")
+                t.text = "Days Left: " + daysRemaining.ToString();
+        }
+    }
+
     void Update()
     {
         //change the colors based on what happened when the user hit fulfill
