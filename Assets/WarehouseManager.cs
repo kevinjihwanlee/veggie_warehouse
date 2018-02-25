@@ -17,6 +17,8 @@ public class WarehouseManager : MonoBehaviour
     public List<string> Actions;
     public int Day;
     public List<string> SupportedProducts;
+    public Dictionary<string, int> buyPrices;
+    public Dictionary<string, int> sellPrices;
     public float Satisfaction; // tbd if we want scale or less analog measure (rn out of 100)
     public Supply _supply;
     public List<string> OrderCompanies;
@@ -60,6 +62,16 @@ public class WarehouseManager : MonoBehaviour
         //to be indexed randomly as orders are created
         OrderCompanies = new List<string> { "Whole Jewels", "Trader Bills", "Food Osco", "Bullseye", "Floormart", "DangerWay" };
 
+        buyPrices = new Dictionary<string, int>();
+        sellPrices = new Dictionary<string, int>();
+
+        buyPrices["Corn"] = 12;
+        buyPrices["Squash"] = 10;
+        buyPrices["Beets"] = 8;
+        sellPrices["Corn"] = 16;
+        sellPrices["Squash"] = 13;
+        sellPrices["Beets"] = 10;
+
         //the UI game object that has all the static UI functions
         _panels = GameObject.FindObjectOfType<Panels>();
         _panels.UpdateDay();
@@ -98,8 +110,6 @@ public class WarehouseManager : MonoBehaviour
         BuyMoreSupply(_supplyTotalOrder);
 		
         int active = -1;
-
-		var orderFailed = false;
         for (int j = 0; j < Orders.Count; j++)
         {
             Order o = Orders[j];
@@ -118,8 +128,13 @@ public class WarehouseManager : MonoBehaviour
 		        else
 		        {
 			        o.FulfillFail = false;
-			        Money -= 100;
-			        orderRev -= 100;
+                    if (o.daysRemaining == 0)
+                    {
+                        Money -= 100;
+                        orderRev -= 100;
+                    }
+                    else
+                        o.daysRemaining -= 1;
 			        //_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
 		        }
 	        }
@@ -162,7 +177,11 @@ public class WarehouseManager : MonoBehaviour
 		Day += 1;
         if (OrderCount < 5)
         {
-            float calculatedOrderCount = (Day * 60 + Money) / 500;
+            int v = Money;
+            foreach(string s in SupportedProducts){
+                v += _supply.StoredItems[s] * buyPrices[s];
+            }
+            float calculatedOrderCount = (Day * 60 + v) / 800;
             if (calculatedOrderCount > OrderCount)
                 OrderCount = (int)calculatedOrderCount;
         }
@@ -179,6 +198,7 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
         _panels.UpdateSupply();
+        _panels.UpdateBuySellPrices();
 
 		if (Money > 1000 && Day > 10)
 		{
@@ -208,15 +228,19 @@ public class WarehouseManager : MonoBehaviour
     {
         int magnitude = 0;
 		var ord = new Dictionary<string, int>();
+        int value = 0;
+        int duration = 0;
+        if (Random.Range(1, 3) == 1)
+            duration = Random.Range(1, 2);
         foreach (string product in SupportedProducts)
         {
-            ord[product] = Random.Range(0, 15);
+            ord[product] = Random.Range(0, 15 + 10 * duration);
+            value += ord[product] * sellPrices[product];
             magnitude += ord[product];
         }
-        int multiplier = Random.Range(11, 16);
-        int value = multiplier * magnitude;
+        value += 50 * duration;
         string client = OrderCompanies[Random.Range(0, OrderCompanies.Count)];
-        o.initialize(ord,client,value,magnitude);
+        o.initialize(ord, client, value, duration);
         o.gameObject.GetComponent<Transform>().localScale = new Vector3(2, .6f, 1);
 	}
 

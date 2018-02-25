@@ -30,12 +30,11 @@ public class ModifyOrder : MonoBehaviour
         GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 		
 		_add.onClick.AddListener(AddOrder);
-		_remove.onClick.AddListener(RemoveOrder);
-
-		// hardcoded for now
-		_price = 50;
+        _remove.onClick.AddListener(RemoveOrder);
 
         ProductName = name;
+
+        _price = 10;
 	}
 
 	void Update()
@@ -53,6 +52,8 @@ public class ModifyOrder : MonoBehaviour
             _remove.interactable = true;
         else
             _remove.interactable = false;
+        
+        _price = GameObject.FindObjectOfType<WarehouseManager>().buyPrices[ProductName];
 	}
 
 	public void Reset()
@@ -65,7 +66,7 @@ public class ModifyOrder : MonoBehaviour
 	{
 		SupplyOrderQuantity += DeltaQuantity;
         BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
-        bm.TotalOrderCost += DeltaQuantity * 10;
+        bm.TotalOrderCost += DeltaQuantity * _price;
         bm._totalOrder[ProductName] = SupplyOrderQuantity;
         GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 	}
@@ -81,7 +82,7 @@ public class ModifyOrder : MonoBehaviour
         else
         {
             BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
-            bm.TotalOrderCost -= DeltaQuantity * 10;
+            bm.TotalOrderCost -= DeltaQuantity * _price;
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
             GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
         }

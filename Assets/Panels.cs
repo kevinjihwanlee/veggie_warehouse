@@ -49,6 +49,25 @@ public class Panels : MonoBehaviour {
         g.GetComponent<Text>().text = StoredItems["Beets"].ToString();
     }
 
+    public void UpdateBuySellPrices()
+    {
+        //This function updates the prices of the veggies in the panel
+        Dictionary<string, int> SellPrices = GameObject.FindObjectOfType<WarehouseManager>().sellPrices;
+        Dictionary<string, int> BuyPrices = GameObject.FindObjectOfType<WarehouseManager>().buyPrices;
+        GameObject g = GameObject.Find("CornBPrice");
+        g.GetComponent<Text>().text = "$" + BuyPrices["Corn"].ToString();
+        g = GameObject.Find("SquashBPrice");
+        g.GetComponent<Text>().text = "$" + BuyPrices["Squash"].ToString();
+        g = GameObject.Find("BeetsBPrice");
+        g.GetComponent<Text>().text = "$" + BuyPrices["Beets"].ToString();
+        g = GameObject.Find("CornSPrice");
+        g.GetComponent<Text>().text = "$" + SellPrices["Corn"].ToString();
+        g = GameObject.Find("SquashSPrice");
+        g.GetComponent<Text>().text = "$" + SellPrices["Squash"].ToString();
+        g = GameObject.Find("BeetsSPrice");
+        g.GetComponent<Text>().text = "$" + SellPrices["Beets"].ToString();
+    }
+
     public void UpdateReceipt(int orderRev, int veggieCost)
     {
         GameObject.Find("Receipt").GetComponent<Text>().text = "Recap Day " + lastDay.ToString() + ":";

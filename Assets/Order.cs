@@ -9,19 +9,19 @@ public class Order : MonoBehaviour {
     public Dictionary<string, int> order;
     public string ClientName;
     public bool Fulfilled;
-    public int magnitude;
     public int value;
     public bool FulfillFail;
     public bool active;
     public Button stage;
     private float time;
+    public int daysRemaining;
 
     // Use this for initialization
     void Start()
     {
         this.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
 
-        stage = gameObject.GetComponentInChildren<Button>();
+        stage = GetComponentInChildren<Button>();
         stage.onClick.AddListener(f);
 
         Fulfilled = false;
@@ -31,14 +31,14 @@ public class Order : MonoBehaviour {
         
     }
 
-    public void initialize(Dictionary<string, int> o, string client, int val, int mag)
+    public void initialize(Dictionary<string, int> o, string client, int val, int days)
     {
         Start();
+        daysRemaining = days;
         active = true;
         ClientName = client;
         order = o;
         value = val;
-        magnitude = mag;
         Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
         foreach (Component c in comps)
         {
@@ -52,6 +52,8 @@ public class Order : MonoBehaviour {
                 ((Text)c).text = "Squash: " + order["Squash"].ToString();
             else if (c.name == "Beets")
                 ((Text)c).text = "Beets: " + order["Beets"].ToString();
+            else if (c.name == "DaysRemaining")
+                ((Text)c).text = "Days Left: " + days.ToString();
         }
     }
 
@@ -82,20 +84,20 @@ public class Order : MonoBehaviour {
         //change the colors based on what happened when the user hit fulfill
         if (Fulfilled)
         {
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Unstage Order";
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(.8f, .8f, .8f);
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Unstage Order";
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(.8f, .8f, .8f);
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
         }
         else if (FulfillFail)
         {
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
         else
         {
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
-            GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
+            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Image>().color = new Color32(83, 65, 36, 255);
         }
     }
