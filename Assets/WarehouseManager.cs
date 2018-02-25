@@ -107,7 +107,7 @@ public class WarehouseManager : MonoBehaviour
 		
         _supplyTotalOrder = orderSupplyMenu._totalOrder;
 		
-        BuyMoreSupply(_supplyTotalOrder);
+        // BuyMoreSupply(_supplyTotalOrder);
 		
         int active = -1;
         for (int j = 0; j < Orders.Count; j++)
@@ -158,19 +158,30 @@ public class WarehouseManager : MonoBehaviour
 		// I stuck UpdateInventoryReceipt logic in here for now
         foreach (string s in SupportedProducts)
         {
+	        // sets some variables
 	        var stageVal = _supply.StagedItems[s];
 	        var boughtVal = _supplyTotalOrder[s];
+	        
+	        // removes the staged order(s) from supply
 	        _inventoryRecap = GameObject.Find(s + "Shipped");
 	        _inventoryRecap.GetComponent<Text>().text = stageVal.ToString();
             _supply.RemoveStaged(s);
+	        
+	        // removes the spoiled items from remaining supply
 		    var spoiledVal = _supply.Spoil(s, Day);
 		    _inventoryRecap = GameObject.Find(s + "Spoiled");
 		    _inventoryRecap.GetComponent<Text>().text = spoiledVal.ToString();
 		    _supply.RemoveStorage(s, spoiledVal);
+	        
+	        // adds bought items to supply
 	        _inventoryRecap = GameObject.Find(s + "Bought");
 	        _inventoryRecap.GetComponent<Text>().text = boughtVal.ToString();
-            _supply.RemoveOrdered(s);
+            //_supply.RemoveOrdered(s);
+	        BuyMoreSupply(_supplyTotalOrder);
+	        
             _supplyTotalOrder[s] = 0;
+	        
+	        // updates net totals
 	        var totalVeg = boughtVal - stageVal - spoiledVal;
 	        _storage.UpdateInventoryReceiptNet(s, totalVeg.ToString());
 
