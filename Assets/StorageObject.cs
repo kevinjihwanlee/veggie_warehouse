@@ -12,8 +12,8 @@ public class StorageObject : MonoBehaviour {
 	private Button _exitButton;
 	
 	// trying to get the children of each title
-	private GameObject _inventoryTitles;
-	private Transform _inventoryTitleTransforms;
+	//private GameObject _inventoryTitles;
+	//private Transform _inventoryTitleTransforms;
 
 	// used in UpdateInventoryReceipt
 	private string _veggieTypeComp;
@@ -28,8 +28,8 @@ public class StorageObject : MonoBehaviour {
 		_exitButton = GameObject.Find("ExitInvRecButton").GetComponent<Button>();
 		_exitButton.onClick.AddListener(ExitMenu);
 
-		_inventoryTitles = GameObject.Find("Labels");
-		_inventoryTitleTransforms= _inventoryTitles.gameObject.transform;
+		//_inventoryTitles = GameObject.Find("Labels");
+		//_inventoryTitleTransforms= _inventoryTitles.gameObject.transform;
 	}
 	
 	// Update is called once per frame
@@ -46,13 +46,39 @@ public class StorageObject : MonoBehaviour {
     {
         _inventoryReceiptObject.gameObject.transform.localScale = new Vector3(0, 0, 0);
 	}
-
-	public void UpdateInventoryReceipt(Order oSup, Dictionary<string, int> oBuy)
+	
+	
+	// handles the net totals of the inventory receipt
+	public void UpdateInventoryReceiptNet(string veg, string val)
 	{
 		
 		// can be made more readable at a later date
+
+		var cornTotal = GameObject.Find("CornTotal");
+		var squashTotal = GameObject.Find("SquashTotal");
+		var beetsTotal = GameObject.Find("BeetsTotal");
 		
-		int counter;
+		if (veg == "Corn")
+		{
+			cornTotal.GetComponent<Text>().text = val;
+		}
+		
+		else if (veg == "Squash")
+		{
+			squashTotal.GetComponent<Text>().text = val;
+		}
+		
+		else if (veg == "Beets")
+		{
+			beetsTotal.GetComponent<Text>().text = val;
+
+		}
+		else
+		{
+			Debug.Log("You are trying to update an unsupported veggie.");
+		}
+		
+/*		int counter;
 		int totalVeg;
 
 		int totalShipped = 0;
@@ -76,11 +102,11 @@ public class StorageObject : MonoBehaviour {
 				
 				if (_veggieTypeComp.Equals("Corn"))
 				{
-					if (counter == 0 && oSup != null)
+					if (counter == 0)
 					{
-						entry.GetComponent<Text>().text = oSup.order["Corn"].ToString();
-						totalVeg -= oSup.order["Corn"];
-						totalShipped += oSup.order["Corn"];
+						entry.GetComponent<Text>().text = oSup["Corn"].ToString();
+						totalVeg -= oSup["Corn"];
+						totalShipped += oSup["Corn"];
 					}
 					if (counter == 1)
 					{
@@ -97,11 +123,11 @@ public class StorageObject : MonoBehaviour {
 				}
 				else if (_veggieTypeComp.Equals("Squa"))
 				{
-					if (counter == 0 && oSup != null)
+					if (counter == 0)
 					{
-						entry.GetComponent<Text>().text = oSup.order["Squash"].ToString();
-						totalVeg -= oSup.order["Squash"];
-						totalShipped += oSup.order["Squash"];
+						entry.GetComponent<Text>().text = oSup["Squash"].ToString();
+						totalVeg -= oSup["Squash"];
+						totalShipped += oSup["Squash"];
 					}
 					if (counter == 1)
 					{
@@ -118,11 +144,11 @@ public class StorageObject : MonoBehaviour {
 				}
 				else if (_veggieTypeComp.Equals("Beet"))
 				{
-					if (counter == 0 && oSup != null)
+					if (counter == 0)
 					{
-						entry.GetComponent<Text>().text = oSup.order["Beets"].ToString();
-						totalVeg -= oSup.order["Beets"];
-						totalShipped += oSup.order["Beets"];
+						entry.GetComponent<Text>().text = oSup["Beets"].ToString();
+						totalVeg -= oSup["Beets"];
+						totalShipped += oSup["Beets"];
 					}
 					if (counter == 1)
 					{
@@ -139,7 +165,7 @@ public class StorageObject : MonoBehaviour {
 				}
 				else
 				{
-					if (counter == 0 && oSup != null)
+					if (counter == 0)
 					{
 						entry.GetComponent<Text>().text = totalShipped.ToString();
 					}
@@ -154,6 +180,6 @@ public class StorageObject : MonoBehaviour {
 					counter++;
 				}
 			}
-		}
+		}*/
 	}
 }

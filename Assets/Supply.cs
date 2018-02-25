@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -121,6 +122,25 @@ public class Supply : MonoBehaviour
             OrderedItems[productName] = 0;
         }
     }
+
+	public int Spoil(string productName, int day)
+	{	
+		double spoilRate = 0.1;
+		int amountSpoiled = Convert.ToInt32(spoilRate * StoredItems[productName]);
+
+/*		if (StoredItems.ContainsKey(productName))
+		{
+			RemoveStorage(productName, amountSpoiled);
+		}*/
+
+		if (day == 0)
+		{
+			amountSpoiled = 0;
+		}
+
+		return amountSpoiled;
+
+	}
 
 	public bool AvailableItem(string productName, int value)
 	{

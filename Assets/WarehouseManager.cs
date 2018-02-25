@@ -25,6 +25,8 @@ public class WarehouseManager : MonoBehaviour
     public int OrderCount;
 
 	public StorageObject _storage;
+
+	public GameObject _inventoryRecap;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
 	// but orders should eventually be a dictionary so you can choose which order you want to ignore and which to fulfill
@@ -88,7 +90,7 @@ public class WarehouseManager : MonoBehaviour
 	{
         int orderRev = 0;
         int veggieCost = GameObject.FindObjectOfType<BuyMenu2>().TotalOrderCost;
-		 
+		
         var orderSupplyMenu = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>();
 		
         _supplyTotalOrder = orderSupplyMenu._totalOrder;
@@ -110,7 +112,7 @@ public class WarehouseManager : MonoBehaviour
 		        {
 			        Money += o.value;
 			        orderRev += o.value;
-			        _storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
+			        //_storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
 			        GenerateNewOrder(o);
 		        }
 		        else
@@ -118,26 +120,43 @@ public class WarehouseManager : MonoBehaviour
 			        o.FulfillFail = false;
 			        Money -= 100;
 			        orderRev -= 100;
-			        _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
+			        //_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
 		        }
 	        }
 	        
 	        // hacky way of accounting for buying something before the game starts
-	        else if (j == 0)
+	        /*else if (j == 0)
 	        {
 		        _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
 
-	        }
+	        }*/
         }
 
-
+		//_storage.UpdateInventoryReceipt(_supplyTotalOrder, _supply.StagedItems);
+		
+		//_storage.UpdateInventoryReceipt(_supply.StagedItems, _supplyTotalOrder);
+		
 		orderSupplyMenu.NextDayReset();
 		
+		// I stuck UpdateInventoryReceipt logic in here for now
         foreach (string s in SupportedProducts)
         {
+	        var stageVal = _supply.StagedItems[s];
+	        var boughtVal = _supplyTotalOrder[s];
+	        _inventoryRecap = GameObject.Find(s + "Shipped");
+	        _inventoryRecap.GetComponent<Text>().text = stageVal.ToString();
             _supply.RemoveStaged(s);
+		    var spoiledVal = _supply.Spoil(s, Day);
+		    _inventoryRecap = GameObject.Find(s + "Spoiled");
+		    _inventoryRecap.GetComponent<Text>().text = spoiledVal.ToString();
+		    _supply.RemoveStorage(s, spoiledVal);
+	        _inventoryRecap = GameObject.Find(s + "Bought");
+	        _inventoryRecap.GetComponent<Text>().text = boughtVal.ToString();
             _supply.RemoveOrdered(s);
             _supplyTotalOrder[s] = 0;
+	        var totalVeg = boughtVal - stageVal - spoiledVal;
+	        _storage.UpdateInventoryReceiptNet(s, totalVeg.ToString());
+
         }
 		
 		Day += 1;
@@ -155,16 +174,6 @@ public class WarehouseManager : MonoBehaviour
             i++;
         }
 
-		// ******* //
-		// temporary code for the decay, need to put into a function later //
-		// ******* //
-		
-		//int cornSupply = _supply.StoredItems["Corn"];
-		//int squashSupply = _supply.StoredItems["Squash"];
-		//int beetsSupply = _supply.StoredItems["Beets"];
-		//_supply.RemoveStorage("Corn", Convert.ToInt32(cornSupply * 0.5));
-		
-		// ******* //
 		
         _panels.UpdateDay();
         _panels.UpdateReceipt(orderRev, veggieCost);
@@ -192,9 +201,6 @@ public class WarehouseManager : MonoBehaviour
 				LoseGame();
 			}
 		}
-
-
-
 	}
 
 	// very basic new order generator
