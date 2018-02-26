@@ -6,6 +6,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using UnityEngine.Audio;
 
 public class WarehouseManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class WarehouseManager : MonoBehaviour
     public List<Order> Orders; 
     public Panels _panels;
     public int OrderCount;
+
+    public AudioClip chaching;
 
 	public StorageObject _storage;
 
@@ -216,6 +219,8 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateMoney();
         _panels.UpdateSupply();
         _panels.UpdateBuySellPrices();
+
+        GameObject.Find("ChachingSound").GetComponent<AudioSource>().Play();
 
 		if (Money > 1000 && Day > 10)
 		{

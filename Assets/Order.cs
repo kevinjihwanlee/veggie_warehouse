@@ -63,13 +63,17 @@ public class Order : MonoBehaviour {
         {
             if (GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
             {
+                GameObject.Find("GoodSound").GetComponent<AudioSource>().Play();
                 Fulfilled = true;
                 FulfillFail = false;
             }
             else if (FulfillFail)
                 FulfillFail = false;
             else
+            {
+                GameObject.Find("BadSound").GetComponent<AudioSource>().Play();
                 FulfillFail = true;
+            }
             time = UnityEngine.Time.time;
         }
         else if (t)
