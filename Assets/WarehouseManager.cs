@@ -107,6 +107,8 @@ public class WarehouseManager : MonoBehaviour
 		
         _supplyTotalOrder = orderSupplyMenu._totalOrder;
 		
+		
+		
         // BuyMoreSupply(_supplyTotalOrder);
 		
         int active = -1;
@@ -177,7 +179,7 @@ public class WarehouseManager : MonoBehaviour
 	        _inventoryRecap = GameObject.Find(s + "Bought");
 	        _inventoryRecap.GetComponent<Text>().text = boughtVal.ToString();
             //_supply.RemoveOrdered(s);
-	        BuyMoreSupply(_supplyTotalOrder);
+	        BuyMoreSupply(_supplyTotalOrder, s);
 	        
             _supplyTotalOrder[s] = 0;
 	        
@@ -288,14 +290,15 @@ public class WarehouseManager : MonoBehaviour
         }
     }
 
-	void BuyMoreSupply(Dictionary<string, int> supplyOrder)
+	void BuyMoreSupply(Dictionary<string, int> supplyOrder, string veg)
 	{
-		var currentOrder = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>()._totalOrder;
+		_supply.AddStorage(veg, supplyOrder[veg]);
+		/*var currentOrder = GameObject.Find("OrderSupplyMenu").gameObject.GetComponent<BuyMenu2>()._totalOrder;
 		foreach (KeyValuePair<string, int> product in currentOrder)
 		{
 			_supply.AddStorage(product.Key, product.Value);
 
-		}
+		}*/
 	
 	}
 
