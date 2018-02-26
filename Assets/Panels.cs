@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,7 @@ public class Panels : MonoBehaviour {
 
         //GameObject.Find("Left").GetComponent<Transform>().position = cam.ScreenToWorldPoint(left);
         //GameObject.Find("Top").GetComponent<Transform>().position = cam.ScreenToWorldPoint(top);
+        UpdateSpoilRate();
     }
 	
 	// Update is called once per frame
@@ -38,15 +40,23 @@ public class Panels : MonoBehaviour {
     public void UpdateSupply()
     {
         //This function updates the counts that are shown for the users current supply
+        var maxStorage = GameObject.FindObjectOfType<Supply>().MaxStorage;
         Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
         GameObject g = GameObject.Find("Corn Inventory");
-        g.GetComponent<Text>().text = StoredItems["Corn"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Corn"].ToString() + '/' + maxStorage;
 
         g = GameObject.Find("Squash Inventory");
-        g.GetComponent<Text>().text = StoredItems["Squash"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Squash"].ToString() + '/' + maxStorage;
 
         g = GameObject.Find("Beets Inventory");
-        g.GetComponent<Text>().text = StoredItems["Beets"].ToString();
+        g.GetComponent<Text>().text = StoredItems["Beets"].ToString() + '/' + maxStorage;
+    }
+
+    public void UpdateSpoilRate()
+    {
+        var spoilPercent = Math.Round(FindObjectOfType<Supply>().spoilRate * 100.0, 2);
+        GameObject g = GameObject.Find("SpoilRate");
+        g.GetComponent<Text>().text = "Spoil Rate: " + spoilPercent.ToString() + '%';
     }
 
     public void UpdateBuySellPrices()

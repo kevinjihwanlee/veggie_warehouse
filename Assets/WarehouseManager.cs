@@ -28,6 +28,7 @@ public class WarehouseManager : MonoBehaviour
 
 	public StorageObject _storage;
 
+	private GameObject _buyMenu;
 	public GameObject _inventoryRecap;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
@@ -41,6 +42,7 @@ public class WarehouseManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		_buyMenu = GameObject.Find("OrderSupplyMenu");
 		_endScreen = GameObject.Find("EndGame");
 		_endScreen.SetActive(false);
 		// initializing actions
@@ -354,6 +356,12 @@ public class WarehouseManager : MonoBehaviour
 		}
 
 		return fulfillableOrder;
+	}
+
+	public void Buy(int amount)
+	{
+		Money -= amount;
+		FindObjectOfType<Panels>().UpdateMoney();
 	}
 
 }

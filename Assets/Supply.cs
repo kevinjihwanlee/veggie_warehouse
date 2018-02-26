@@ -10,12 +10,17 @@ public class Supply : MonoBehaviour
 	public Dictionary<string, int> StoredItems; //Items we have in inventory
     public Dictionary<string, int> StagedItems; //Inventory items to be taken out at the end of the day
     public Dictionary<string, int> OrderedItems; //Products we've ordered to be put in inventory at the end of the day
+
+	public int MaxStorage;
+	public double spoilRate;
     // dictionary of all items stored
 	
 	
 	// Use this for initialization
 	void Start ()
-    {
+	{
+		MaxStorage = 50;
+		spoilRate = 0.1;
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
         OrderedItems = new Dictionary<string, int>();
@@ -33,21 +38,39 @@ public class Supply : MonoBehaviour
             AddOrdered(s, 0);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void UpgradeStorage(int multiplier)
+	{
+		MaxStorage *= multiplier;
+		FindObjectOfType<Panels>().UpdateSupply();
+	}
+
+	public void ReduceSpoilRate(double reducer)
+	{
+		spoilRate = spoilRate/reducer;
+		Debug.Log(spoilRate * 100);
+		FindObjectOfType<Panels>().UpdateSpoilRate();
 	}
 
 	public void AddStorage(string productName, int value)
 	{
 		if (!StoredItems.ContainsKey(productName))
 		{
+			if (value > MaxStorage)
+			{
+				StoredItems[productName] = MaxStorage;
+			}
+			
 			StoredItems[productName] = value;
 		}
 		else
 		{
+			// check if you have more than max storage
 			StoredItems[productName] += value;
+			if (StoredItems[productName] > MaxStorage)
+			{
+				StoredItems[productName] = MaxStorage;
+			}
 		}
 	}
 
@@ -116,7 +139,6 @@ public class Supply : MonoBehaviour
 
 	public int Spoil(string productName, int day)
 	{	
-		double spoilRate = 0.1;
 		int amountSpoiled = Convert.ToInt32(spoilRate * StoredItems[productName]);
 
 /*		if (StoredItems.ContainsKey(productName))
