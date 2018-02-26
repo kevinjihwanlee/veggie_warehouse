@@ -19,7 +19,7 @@ public class Order : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        this.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+        GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
 
         stage = GetComponentInChildren<Button>();
         stage.onClick.AddListener(f);
@@ -27,7 +27,7 @@ public class Order : MonoBehaviour {
         Fulfilled = false;
         FulfillFail = false;
         active = false;
-        time = UnityEngine.Time.time;
+        time = Time.time;
         
     }
 
@@ -39,7 +39,7 @@ public class Order : MonoBehaviour {
         ClientName = client;
         order = o;
         value = val;
-        Component[] comps = this.gameObject.GetComponentsInChildren<Text>();
+        Component[] comps = gameObject.GetComponentsInChildren<Text>();
         foreach (Component c in comps)
         {
             if (c.name == "Client")
@@ -52,14 +52,13 @@ public class Order : MonoBehaviour {
                 ((Text)c).text = "Squash: " + order["Squash"].ToString();
             else if (c.name == "Beets")
                 ((Text)c).text = "Beets: " + order["Beets"].ToString();
-            else if (c.name == "DaysRemaining")
-                ((Text)c).text = "Days Left: " + days.ToString();
         }
+        setDay();
     }
 
     void f()
     {
-        bool t = UnityEngine.Time.time - time > .1f;
+        bool t = Time.time - time > .1f;
         if (!Fulfilled && t)
         {
             if (GameObject.FindObjectOfType<WarehouseManager>().StageOrder(this))
@@ -67,6 +66,8 @@ public class Order : MonoBehaviour {
                 Fulfilled = true;
                 FulfillFail = false;
             }
+            else if (FulfillFail)
+                FulfillFail = false;
             else
                 FulfillFail = true;
             time = UnityEngine.Time.time;
@@ -75,17 +76,25 @@ public class Order : MonoBehaviour {
         {
             GameObject.FindObjectOfType<WarehouseManager>().UnstageOrder(this);
             Fulfilled = false;
-            time = UnityEngine.Time.time;
+            time = Time.time;
         }
     }
 
     public void decrementDays()
     {
         daysRemaining -= 1;
+        setDay();
+    }
+
+    public void setDay()
+    {
+        string prestring = "Stage Today!";
+        if (daysRemaining > 0)
+            prestring = "Days Left: " + daysRemaining.ToString();
         foreach (Text t in GetComponentsInChildren<Text>())
         {
             if (t.name == "DaysRemaining")
-                t.text = "Days Left: " + daysRemaining.ToString();
+                t.text = prestring;
         }
     }
 
@@ -94,20 +103,14 @@ public class Order : MonoBehaviour {
         //change the colors based on what happened when the user hit fulfill
         if (Fulfilled)
         {
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Unstage Order";
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(.8f, .8f, .8f);
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
         }
         else if (FulfillFail)
         {
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
         }
         else
         {
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Stage Order";
-            //GetComponentInChildren<Button>().GetComponentInChildren<Text>().transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Image>().color = new Color32(83, 65, 36, 255);
         }
     }

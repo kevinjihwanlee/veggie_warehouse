@@ -44,13 +44,10 @@ public class Supply : MonoBehaviour
 		if (!StoredItems.ContainsKey(productName))
 		{
 			StoredItems[productName] = value;
-//			Debug.Log("just added new item: " + productName + " to storage");
-            //Debug.Log(StoredItems[productName]);
 		}
 		else
 		{
 			StoredItems[productName] += value;
-/*			Debug.Log("updated existing item: " + productName);*/
 		}
 	}
 
@@ -59,13 +56,10 @@ public class Supply : MonoBehaviour
         if (!StagedItems.ContainsKey(productName))
         {
             StagedItems[productName] = value;
-            //          Debug.Log("just added new item: " + productName + " to storage");
-            //Debug.Log(StoredItems[productName]);
         }
         else
         {
             StagedItems[productName] += value;
-            /*          Debug.Log("updated existing item: " + productName);*/
         }
     }
 
@@ -79,13 +73,10 @@ public class Supply : MonoBehaviour
         if (!OrderedItems.ContainsKey(productName))
         {
             OrderedItems[productName] = value;
-            //          Debug.Log("just added new item: " + productName + " to storage");
-            //Debug.Log(StoredItems[productName]);
         }
         else
         {
             OrderedItems[productName] += value;
-            /*          Debug.Log("updated existing item: " + productName);*/
         }
     }
 

@@ -42,10 +42,10 @@ public class ModifyOrder : MonoBehaviour
 		_availableFunds = GetComponentInParent<BuyMenu2>().AvailableFunds;
 		_totalOrderCost = GetComponentInParent<BuyMenu2>().TotalOrderCost;
 		
-		if (_totalOrderCost + _price > _availableFunds)
+        if (_totalOrderCost + DeltaQuantity*_price > _availableFunds)
 			DisableAddButton();
 
-		if (_totalOrderCost + _price <= _availableFunds)
+		if (_totalOrderCost + DeltaQuantity*_price <= _availableFunds)
 			EnableButton();
 
         if (SupplyOrderQuantity > 0)
