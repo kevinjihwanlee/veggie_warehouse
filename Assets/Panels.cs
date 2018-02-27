@@ -56,7 +56,7 @@ public class Panels : MonoBehaviour {
     {
         var spoilPercent = Math.Round(FindObjectOfType<Supply>().spoilRate * 100.0, 2);
         GameObject g = GameObject.Find("SpoilRate");
-        g.GetComponent<Text>().text = "Spoil Rate: " + spoilPercent.ToString() + '%';
+        g.GetComponent<Text>().text = spoilPercent.ToString() + '%';
     }
 
     public void UpdateBuySellPrices()
@@ -100,5 +100,20 @@ public class Panels : MonoBehaviour {
         lastDay = Day;
         Day = GameObject.FindObjectOfType<WarehouseManager>().Day;
         g.GetComponent<Text>().text = "Day: " + Day.ToString();
+    }
+
+    public void UpdateLives()
+    {
+        //This function updates the current Day that the player is on
+        GameObject g = GameObject.Find("Lives");
+        int lives = 3 - FindObjectOfType<WarehouseManager>().failed;
+        string extra = "XXX";
+        if (lives == 2)
+            extra = "XX";
+        else if (lives == 1)
+            extra = "X";
+        else if (lives == 0)
+            extra = "";
+        g.GetComponent<Text>().text = "Lives: " + extra;
     }
 }

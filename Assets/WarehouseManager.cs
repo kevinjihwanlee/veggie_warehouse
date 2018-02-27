@@ -33,6 +33,8 @@ public class WarehouseManager : MonoBehaviour
 
 	private GameObject _buyMenu;
 	public GameObject _inventoryRecap;
+
+    public int failed;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
 	// but orders should eventually be a dictionary so you can choose which order you want to ignore and which to fulfill
@@ -63,6 +65,7 @@ public class WarehouseManager : MonoBehaviour
 
         Day = 0;
         Money = 150;
+        failed = 0;
 
         //to be indexed randomly as orders are created
         OrderCompanies = new List<string> { "Whole Jewels", "Trader Bills", "Food Osco", "Bullseye", "Floormart", "DangerWay" };
@@ -129,7 +132,6 @@ public class WarehouseManager : MonoBehaviour
 		        {
 			        Money += o.value;
 			        orderRev += o.value;
-			        //_storage.UpdateInventoryReceipt(o, _supplyTotalOrder);
 			        GenerateNewOrder(o);
 		        }
 		        else
@@ -137,28 +139,16 @@ public class WarehouseManager : MonoBehaviour
 			        o.FulfillFail = false;
                     if (o.daysRemaining == 0)
                     {
-                        Money -= 100;
-                        orderRev -= 100;
+                        failed += 1;
+                        GenerateNewOrder(o);
                     }
                     else
                     {
                         o.decrementDays();
                     }
-			        //_storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
 		        }
 	        }
-	        
-	        // hacky way of accounting for buying something before the game starts
-	        /*else if (j == 0)
-	        {
-		        _storage.UpdateInventoryReceipt(null, _supplyTotalOrder);
-
-	        }*/
         }
-
-		//_storage.UpdateInventoryReceipt(_supplyTotalOrder, _supply.StagedItems);
-		
-		//_storage.UpdateInventoryReceipt(_supply.StagedItems, _supplyTotalOrder);
 		
 		orderSupplyMenu.NextDayReset();
 		
@@ -201,7 +191,7 @@ public class WarehouseManager : MonoBehaviour
             foreach(string s in SupportedProducts){
                 v += _supply.StoredItems[s] * buyPrices[s];
             }
-            float calculatedOrderCount = (Day * 60 + v) / 800;
+            float calculatedOrderCount = (Day * 60 + v) / 550;
             if (calculatedOrderCount > OrderCount)
                 OrderCount = (int)calculatedOrderCount;
         }
@@ -218,31 +208,33 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
         _panels.UpdateSupply();
-        _panels.UpdateBuySellPrices();
+        _panels.UpdateLives();
 
         GameObject.Find("ChachingSound").GetComponent<AudioSource>().Play();
 
-		if (Money > 1000 && Day > 10)
+		if (Money > 1000 && Day > 15)
 		{
 			WinGame();	
 		}
-		
-		if (Money < 0)
-		{
-			var lose = true;
-			foreach (Order o in Orders)
-			{
-				if (o.active && CanFulfillOrders())
-				{
-					lose = false;
-				}
-			}
 
-			if (lose)
-			{
-				LoseGame();
-			}
-		}
+        //if (Money < 0)
+        //{
+        //	var lose = true;
+        //	foreach (Order o in Orders)
+        //	{
+        //		if (o.active && CanFulfillOrders())
+        //		{
+        //			lose = false;
+        //		}
+        //	}
+
+        //	if (lose)
+        //	{
+        //		LoseGame();
+        //	}
+        //}
+        if (failed > 2)
+            LoseGame();
 	}
 
 	// very basic new order generator
@@ -262,7 +254,7 @@ public class WarehouseManager : MonoBehaviour
         }
         value += 50 * duration;
         string client = OrderCompanies[Random.Range(0, OrderCompanies.Count)];
-        o.initialize(ord, client, value, duration);
+        o.initialize(ord, client, value, duration, sellPrices);
         o.gameObject.GetComponent<Transform>().localScale = new Vector3(2, .6f, 1);
 	}
 

@@ -31,7 +31,7 @@ public class Order : MonoBehaviour {
         
     }
 
-    public void initialize(Dictionary<string, int> o, string client, int val, int days)
+    public void initialize(Dictionary<string, int> o, string client, int val, int days, Dictionary<string,int> prices)
     {
         Start();
         daysRemaining = days;
@@ -52,6 +52,12 @@ public class Order : MonoBehaviour {
                 ((Text)c).text = "Squash: " + order["Squash"].ToString();
             else if (c.name == "Beets")
                 ((Text)c).text = "Beets: " + order["Beets"].ToString();
+            else if (c.name == "CornP")
+                ((Text)c).text = "$" + prices["Corn"].ToString() + " ea";
+            else if (c.name == "SquashP")
+                ((Text)c).text = "$" + prices["Squash"].ToString() + " ea";
+            else if (c.name == "BeetsP")
+                ((Text)c).text = "$" + prices["Beets"].ToString() + " ea";
         }
         setDay();
     }
