@@ -12,6 +12,8 @@ public class ModifyOrder : MonoBehaviour
 
 	private Button _add;
 	private Button _remove;
+	private Button _addOne;
+	private Button _removeOne;
 	private string _originalText;
 	public int _availableFunds;
 	public int _totalOrderCost;
@@ -24,6 +26,8 @@ public class ModifyOrder : MonoBehaviour
         SupplyOrderQuantity = 0;
 		_add = transform.Find("Add").gameObject.GetComponent<Button>();
 		_remove = transform.Find("Remove").gameObject.GetComponent<Button>();
+		_addOne = transform.Find("Add 1").gameObject.GetComponent<Button>();
+		_removeOne = transform.Find("Remove 1").gameObject.GetComponent<Button>();
 		DeltaQuantity = 5;
 
         _originalText = GetComponent<Text>().text;
@@ -31,6 +35,8 @@ public class ModifyOrder : MonoBehaviour
 		
 		_add.onClick.AddListener(AddOrder);
         _remove.onClick.AddListener(RemoveOrder);
+		_addOne.onClick.AddListener(AddOrderOne);
+        _removeOne.onClick.AddListener(RemoveOrderOne);
 
         ProductName = name;
 
@@ -39,6 +45,7 @@ public class ModifyOrder : MonoBehaviour
 
 	void Update()
 	{
+        _price = GameObject.FindObjectOfType<WarehouseManager>().buyPrices[ProductName];
 		_availableFunds = GetComponentInParent<BuyMenu2>().AvailableFunds;
 		_totalOrderCost = GetComponentInParent<BuyMenu2>().TotalOrderCost;
 		
@@ -47,13 +54,31 @@ public class ModifyOrder : MonoBehaviour
 
 		if (_totalOrderCost + DeltaQuantity*_price <= _availableFunds)
 			EnableButton();
+		
+        if (_totalOrderCost + _price > _availableFunds)
+			DisableAddOneButton();
 
-        if (SupplyOrderQuantity > 0)
-            _remove.interactable = true;
-        else
+		if (_totalOrderCost + _price <= _availableFunds)
+			EnableOneButton();
+
+		if (SupplyOrderQuantity > 0)
+		{
+			_removeOne.interactable = true;
+		}
+		else
+		{
+			_removeOne.interactable = false;
+		} 
+		
+		if (SupplyOrderQuantity >= 5)
+		{
+			_remove.interactable = true;
+		}
+		else
+		{
             _remove.interactable = false;
+		}
         
-        _price = GameObject.FindObjectOfType<WarehouseManager>().buyPrices[ProductName];
 	}
 
 	public void Reset()
@@ -79,10 +104,37 @@ public class ModifyOrder : MonoBehaviour
         {
             SupplyOrderQuantity = 0;
         }
+        
         else
         {
             BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
             bm.TotalOrderCost -= DeltaQuantity * _price;
+            bm._totalOrder[ProductName] = SupplyOrderQuantity;
+            GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        }
+	}
+	
+	void AddOrderOne()
+	{
+		SupplyOrderQuantity += 1;
+        BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
+        bm.TotalOrderCost += _price;
+        bm._totalOrder[ProductName] = SupplyOrderQuantity;
+        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+	}
+	
+	void RemoveOrderOne()
+	{
+		SupplyOrderQuantity -= 1;
+
+        if (SupplyOrderQuantity < 0)
+        {
+            SupplyOrderQuantity = 0;
+        }
+        else
+        {
+            BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
+            bm.TotalOrderCost -= _price;
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
             GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
         }
@@ -93,9 +145,19 @@ public class ModifyOrder : MonoBehaviour
 		_add.interactable = false;
 	}
 	
-	public void EnableButton()
+	private void EnableButton()
 	{
 		_add.interactable = true;
+	}
+
+	public void DisableAddOneButton()
+	{
+		_addOne.interactable = false;
+	}
+
+	public void EnableOneButton()
+	{
+		_addOne.interactable = true;
 	}
 	
 	
