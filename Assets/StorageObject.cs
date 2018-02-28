@@ -43,6 +43,7 @@ public class StorageObject : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		Debug.Log("we good");
         _inventoryReceiptObject.gameObject.transform.localScale = new Vector3(1, 1, 1);
 	}
 

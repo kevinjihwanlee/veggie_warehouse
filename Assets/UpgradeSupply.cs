@@ -20,7 +20,7 @@ public class UpgradeSupply : MonoBehaviour
 		GetComponent<Button>().onClick.AddListener(UpgradeStorage);
 		_count = 1;
 		UpgradePrice = _count * 250;
-		GetComponentInChildren<Text>().text = "Upgrade Supply: " + UpgradePrice;
+		GetComponentInChildren<Text>().text = "Upgrade Storage: " + UpgradePrice;
 	}
 
 	void Update()
