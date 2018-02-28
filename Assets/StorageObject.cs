@@ -24,6 +24,10 @@ public class StorageObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+		foreach (Transform child in gameObject.transform)
+		{
+			child.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+		}
 		_inventoryReceiptObject = GameObject.Find("InventoryReceipt");
 		_exitButton = GameObject.Find("ExitInvRecButton").GetComponent<Button>();
 		_exitButton.onClick.AddListener(ExitMenu);
