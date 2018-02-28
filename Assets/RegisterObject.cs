@@ -11,8 +11,8 @@ public class RegisterObject : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		_buyMenu = GameObject.Find("OrderSupplyMenu");
-		_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
-		_present = false;
+		//_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
+		_present = true;
 		
 
 	}

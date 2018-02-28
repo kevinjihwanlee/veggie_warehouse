@@ -105,7 +105,6 @@ public class WarehouseManager : MonoBehaviour
 		_storage = GameObject.Find("Storage").GetComponent<StorageObject>();
 	}
 
-
 	public void NextDay()
 	{
         int orderRev = 0;
