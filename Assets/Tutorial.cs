@@ -20,14 +20,17 @@ public class Tutorial : MonoBehaviour
 	void Start ()
 	{
 		index = 0;
-		tutorialText = new string[7];
-		tutorialText[0] = "Look at the top.";
-		tutorialText[1] = "Look at the top left.";
-		tutorialText[2] = "Look at the left.";
-		tutorialText[3] = "Look at the buy menu.";
-		tutorialText[4] = "Click things for menus.";
-		tutorialText[5] = "Click next and then start once you're ready!";
-		tutorialText[6] = "Win conditions.";
+		tutorialText = new string[9];
+		tutorialText[0] = "At the top right, you can see what day we are on, how many lives you have, and the button that allows you to go to the next day.";
+		tutorialText[1] = "To the left of that, you can see how much money you have spent and earned the previous day.";
+		tutorialText[2] = "At the top left, you can see how much of each vegetable you have.";
+		tutorialText[3] = "Notice that there is a spoilage rate and a limit - my storage racks aren't the best. You should invest in upgrading storage later down the road, when you start making money.";
+		tutorialText[4] = "To the left, there are orders that you need to fulfill. You can stage an order and prepare it for shipment by clicking on it.";
+		tutorialText[5] =
+			"The order shows the buyer name, revenue made from completing it, how much you need of each vegetable, and when you need to fulfill the order by.";
+		tutorialText[6] = "This is the buy menu for replenishing your stock. Staged orders and buying for your stock both happen at end of day, when you click on the Next Day button.";
+		tutorialText[7] = "I invested my life savings into this warehouse,  so I have very high expectations. Miss 3 orders, and you're fired. I'll check up on you in 15 days, so you better impress me by then.";
+		tutorialText[8] = "I will be heading out now. Press Next and then Start to get going.";
 		
 		
 		_yesButton = GameObject.Find("YesButton").GetComponent<Button>();
@@ -51,7 +54,7 @@ public class Tutorial : MonoBehaviour
 
 	void nextStage()
 	{
-		if (index == 7)
+		if (index == 9)
 		{
 			
 			PlayGame();
