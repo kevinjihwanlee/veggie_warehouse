@@ -103,7 +103,7 @@ public class WarehouseManager : MonoBehaviour
 		
 		//the StorageObject used for the inventory receipt
 		_storage = GameObject.Find("Storage").GetComponent<StorageObject>();
-	}
+}
 
 	public void NextDay()
 	{
