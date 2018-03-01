@@ -190,7 +190,7 @@ public class WarehouseManager : MonoBehaviour
             foreach(string s in SupportedProducts){
                 v += _supply.StoredItems[s] * buyPrices[s];
             }
-            float calculatedOrderCount = (Day * 60 + v) / 550;
+            float calculatedOrderCount = (Day * 60 + v) / 675;
             if (calculatedOrderCount > OrderCount)
                 OrderCount = (int)calculatedOrderCount;
         }
@@ -244,7 +244,7 @@ public class WarehouseManager : MonoBehaviour
         int value = 0;
         int duration = 0;
         if (Random.Range(1, 3) == 1)
-            duration = Random.Range(1, 2);
+            duration = Random.Range(1, 4);
         foreach (string product in SupportedProducts)
         {
             ord[product] = Random.Range(0, 15 + 10 * duration);
