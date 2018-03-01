@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -19,10 +20,13 @@ public class ModifyOrder : MonoBehaviour
 	public int _totalOrderCost;
 	public int _price;
 	public string ProductName;
+	private Dictionary<string, int> _buyPrices;
+	private bool _firstTime;
 	
 	// Use this for initialization
 	void Start ()
 	{
+		_firstTime = false;
         SupplyOrderQuantity = 0;
 		_add = transform.Find("Add").gameObject.GetComponent<Button>();
 		_remove = transform.Find("Remove").gameObject.GetComponent<Button>();
@@ -30,8 +34,6 @@ public class ModifyOrder : MonoBehaviour
 		_removeOne = transform.Find("Remove 1").gameObject.GetComponent<Button>();
 		DeltaQuantity = 5;
 
-        _originalText = GetComponent<Text>().text;
-        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 		
 		_add.onClick.AddListener(AddOrder);
         _remove.onClick.AddListener(RemoveOrder);
@@ -39,12 +41,22 @@ public class ModifyOrder : MonoBehaviour
         _removeOne.onClick.AddListener(RemoveOrderOne);
 
         ProductName = name;
+		
+        _originalText = GetComponent<Text>().text;
+		Debug.Log(ProductName);
+        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 
         _price = 10;
 	}
 
 	void Update()
 	{
+		if (!_firstTime)
+		{
+			_firstTime = true;
+			UpdatePrices();
+		}
+		
         _price = GameObject.FindObjectOfType<WarehouseManager>().buyPrices[ProductName];
 		_availableFunds = GetComponentInParent<BuyMenu2>().AvailableFunds;
 		_totalOrderCost = GetComponentInParent<BuyMenu2>().TotalOrderCost;
@@ -84,20 +96,22 @@ public class ModifyOrder : MonoBehaviour
 	public void Reset()
 	{
         SupplyOrderQuantity = 0;
-        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
 	}
 
 	void AddOrder()
 	{
+		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
 		SupplyOrderQuantity += DeltaQuantity;
         BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
         bm.TotalOrderCost += DeltaQuantity * _price;
         bm._totalOrder[ProductName] = SupplyOrderQuantity;
-        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
 	}
 	
 	void RemoveOrder()
 	{
+		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
 		SupplyOrderQuantity -= DeltaQuantity;
 
         if (SupplyOrderQuantity < 0)
@@ -110,21 +124,23 @@ public class ModifyOrder : MonoBehaviour
             BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
             bm.TotalOrderCost -= DeltaQuantity * _price;
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
-            GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        	GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
         }
 	}
 	
 	void AddOrderOne()
 	{
+		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
 		SupplyOrderQuantity += 1;
         BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
         bm.TotalOrderCost += _price;
         bm._totalOrder[ProductName] = SupplyOrderQuantity;
-        GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
 	}
 	
 	void RemoveOrderOne()
 	{
+		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
 		SupplyOrderQuantity -= 1;
 
         if (SupplyOrderQuantity < 0)
@@ -136,8 +152,14 @@ public class ModifyOrder : MonoBehaviour
             BuyMenu2 bm = GameObject.Find("OrderSupplyMenu").GetComponent<BuyMenu2>();
             bm.TotalOrderCost -= _price;
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
-            GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
+        	GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
         }
+	}
+
+	public void UpdatePrices()
+	{
+		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
+		GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): ";
 	}
 
 	public void DisableAddButton()
