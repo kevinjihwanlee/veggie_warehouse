@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security.AccessControl;
 using NUnit.Framework;
 using UnityEngine;
@@ -203,6 +204,7 @@ public class WarehouseManager : MonoBehaviour
         }
 
 		
+		RandomEventGenerator();
         _panels.UpdateDay();
         _panels.UpdateReceipt(orderRev, veggieCost);
         _panels.UpdateMoney();
@@ -211,29 +213,32 @@ public class WarehouseManager : MonoBehaviour
 
         GameObject.Find("ChachingSound").GetComponent<AudioSource>().Play();
 
-		if (Money > 1000 && Day > 15)
+		if (Day > 15)
 		{
 			WinGame();	
 		}
-
-        //if (Money < 0)
-        //{
-        //	var lose = true;
-        //	foreach (Order o in Orders)
-        //	{
-        //		if (o.active && CanFulfillOrders())
-        //		{
-        //			lose = false;
-        //		}
-        //	}
-
-        //	if (lose)
-        //	{
-        //		LoseGame();
-        //	}
-        //}
+		
         if (failed > 2)
             LoseGame();
+		
+	}
+
+	void RandomEventGenerator()
+	{
+		// we'll probably wanna put this in a recap change
+		var prob = Random.Range(0, 100);
+		
+		// percentage of the time we want random events to occur
+		var eventProbability = 10;
+		if (prob > eventProbability) return;
+		
+        var selector = prob % 3;
+        var veggie = SupportedProducts[selector];
+		var priceChange = Random.Range(-3, 3);
+		
+		ChangeVeggiePrice(veggie, priceChange);
+		
+		_buyMenu.GetComponent<BuyMenu2>().UpdateAllPrices();
 	}
 
 	// very basic new order generator
@@ -360,4 +365,22 @@ public class WarehouseManager : MonoBehaviour
 		FindObjectOfType<Panels>().UpdateMoney();
 	}
 
+
+	void ChangeVeggiePrice(string veggie, int amount)
+	{
+		var minPrice = 5;
+
+		if (buyPrices[veggie] + amount > sellPrices[veggie])
+		{
+			buyPrices[veggie] = amount;
+		}
+		else if (buyPrices[veggie] + amount < minPrice)
+		{
+			buyPrices[veggie] = amount;
+		}
+		else
+		{
+			buyPrices[veggie] += amount;
+		}
+	}
 }
