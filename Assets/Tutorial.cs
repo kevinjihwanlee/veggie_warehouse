@@ -42,9 +42,6 @@ public class Tutorial : MonoBehaviour
 		_yesButton.onClick.AddListener(Stage1);
 		_noButton.onClick.AddListener(PlayGame);
 		_nextButton.onClick.AddListener(nextStage);
-		
-		
-
 	}
 	
 	// Update is called once per frame
@@ -54,14 +51,70 @@ public class Tutorial : MonoBehaviour
 
 	void nextStage()
 	{
-		if (index == 9)
+		switch (index)
+		{
+			case 0: // highlight top right
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				GameObject.Find("Money").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				GameObject.Find("Day").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				GameObject.Find("Lives").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				GameObject.Find("Progress Button").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				GameObject.Find("Progress Button").GetComponent<Button>().interactable = false; 
+				index++;
+				break;
+			case 1: // highlight recap panel
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				GameObject.Find("Receipt").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				index++;
+				break;
+			case 2: // highlight supply
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				//GameObject.Find("Inventory").gameObject.transform.localScale = new Vector3(1, 1, 2);
+				foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
+				{
+					//child.localScale = new Vector3(1, 1, 1);
+					child.gameObject.SetActive(true);
+				}
+				index++;
+				break;
+			case 3: // highlight spoilage rate and limit
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				GameObject.Find("Upgrade Storage").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				index++;
+				break;
+			case 4: // show order
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				index++;
+				GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				break;
+			case 5: // highlight attributes of an order
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				index++;
+				break;
+			case 6: // highlight buy menu
+				GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
+
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				index++;
+				break;
+			case 9:
+				PlayGame();
+				break;
+			default: // otherwise just show tutorial text
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				index++;
+				Debug.Log("no need to highlight anything");
+				break;
+		}
+		
+/*		if (index == 9)
 		{
 			
 			PlayGame();
 		}
 		gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 		Debug.Log(index);
-		index++;
+		index++;*/
 		
 	}
 
@@ -76,6 +129,7 @@ public class Tutorial : MonoBehaviour
 
 	void PlayGame()
 	{
+		GameObject.Find("Progress Button").GetComponent<Button>().interactable = true; 
 		gameObject.transform.localScale = new Vector3(0, 0, 0);
 		bossman = GameObject.Find("Boss");
 		bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);

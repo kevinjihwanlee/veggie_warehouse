@@ -104,7 +104,28 @@ public class WarehouseManager : MonoBehaviour
 		
 		//the StorageObject used for the inventory receipt
 		_storage = GameObject.Find("Storage").GetComponent<StorageObject>();
-}
+		
+		// for the tutorial
+		GameObject.Find("Money").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("Day").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("Lives").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("Progress Button").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("Receipt").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("Upgrade Storage").gameObject.transform.localScale = new Vector3(0, 0, 0);
+
+		//GameObject.Find("Inventory Title").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		//GameObject.Find("Inventory").gameObject.transform.localScale = new Vector3(0, 0, 0);
+
+		foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
+		{
+			//child.localScale = new Vector3(0, 0, 0);
+			child.gameObject.SetActive(false);
+		}
+		
+		GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(0, 0, 0);
+
+		_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
+	}
 
 	public void NextDay()
 	{
