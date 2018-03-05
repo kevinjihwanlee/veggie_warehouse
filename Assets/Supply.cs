@@ -48,7 +48,6 @@ public class Supply : MonoBehaviour
 	public void ReduceSpoilRate(double reducer)
 	{
 		spoilRate = spoilRate/reducer;
-		Debug.Log(spoilRate * 100);
 		FindObjectOfType<Panels>().UpdateSpoilRate();
 	}
 

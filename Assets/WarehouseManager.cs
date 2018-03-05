@@ -21,13 +21,15 @@ public class WarehouseManager : MonoBehaviour
     public List<string> SupportedProducts;
     public Dictionary<string, int> buyPrices;
     public Dictionary<string, int> sellPrices;
+    public Dictionary<string, int> capPrices;
     public float Satisfaction; // tbd if we want scale or less analog measure (rn out of 100)
     public Supply _supply;
     public List<string> OrderCompanies;
     public List<Order> Orders; 
     public Panels _panels;
     public int OrderCount;
-
+	public int NewOrderDurationOffset;
+	
     public AudioClip chaching;
 
 	public StorageObject _storage;
@@ -48,6 +50,7 @@ public class WarehouseManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		NewOrderDurationOffset = 0;
 		_buyMenu = GameObject.Find("OrderSupplyMenu");
 		_endScreen = GameObject.Find("EndGame");
 		_endScreen.SetActive(false);
@@ -73,13 +76,19 @@ public class WarehouseManager : MonoBehaviour
 
         buyPrices = new Dictionary<string, int>();
         sellPrices = new Dictionary<string, int>();
-
+		capPrices = new Dictionary<string, int>();
+		
         buyPrices["Corn"] = 12;
         buyPrices["Squash"] = 10;
         buyPrices["Beets"] = 8;
+		
         sellPrices["Corn"] = 20;
         sellPrices["Squash"] = 16;
         sellPrices["Beets"] = 14;
+		
+        capPrices["Corn"] = 20;
+        capPrices["Squash"] = 16;
+        capPrices["Beets"] = 14;
 
         //the UI game object that has all the static UI functions
         _panels = GameObject.FindObjectOfType<Panels>();
@@ -285,6 +294,7 @@ public class WarehouseManager : MonoBehaviour
         }
         value += 50 * duration;
         string client = OrderCompanies[Random.Range(0, OrderCompanies.Count)];
+	    duration += NewOrderDurationOffset;
         o.initialize(ord, client, value, duration, sellPrices);
         o.gameObject.GetComponent<Transform>().localScale = new Vector3(2, .6f, 1);
 	}
@@ -395,17 +405,17 @@ public class WarehouseManager : MonoBehaviour
 	}
 
 
-	void ChangeVeggiePrice(string veggie, int amount)
+	public void ChangeVeggiePrice(string veggie, int amount)
 	{
 		var minPrice = 5;
 
-		if (buyPrices[veggie] + amount > sellPrices[veggie])
+		if (buyPrices[veggie] + amount > capPrices[veggie])
 		{
-			buyPrices[veggie] = amount;
+			buyPrices[veggie] = capPrices[veggie];
 		}
 		else if (buyPrices[veggie] + amount < minPrice)
 		{
-			buyPrices[veggie] = amount;
+			buyPrices[veggie] = minPrice;
 		}
 		else
 		{

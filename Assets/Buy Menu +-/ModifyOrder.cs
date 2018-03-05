@@ -163,7 +163,7 @@ public class ModifyOrder : MonoBehaviour
 	public void UpdatePrices()
 	{
 		_buyPrices = GameObject.Find("Main Camera").GetComponent<WarehouseManager>().buyPrices;
-		GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): ";
+		GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): " + SupplyOrderQuantity;
 	}
 
 	public void DisableAddButton()

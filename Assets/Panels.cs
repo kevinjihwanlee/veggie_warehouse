@@ -134,6 +134,8 @@ public class Panels : MonoBehaviour {
             extra = "X";
         else if (lives == 0)
             extra = "";
+        else if (lives == 4)
+            extra = "XXXX";
         g.GetComponent<Text>().text = "Lives: " + extra;
     }
 }
