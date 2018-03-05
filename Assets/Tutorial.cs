@@ -21,7 +21,7 @@ public class Tutorial : MonoBehaviour
 	void Start ()
 	{
 		index = 0;
-		tutorialText = new string[9];
+		tutorialText = new string[10];
 		tutorialText[0] = "At the top right, you can see what day we are on, how many lives you have, and the button that allows you to go to the next day.";
 		tutorialText[1] = "To the left of that, you can see how much money you have spent and earned the previous day.";
 		tutorialText[2] = "At the top left, you can see how much of each vegetable you have.";
@@ -30,8 +30,10 @@ public class Tutorial : MonoBehaviour
 		tutorialText[5] =
 			"The order shows the buyer name, revenue made from completing it, how much you need of each vegetable, and when you need to fulfill the order by.";
 		tutorialText[6] = "This is the buy menu for replenishing your stock. Staged orders and buying for your stock both happen at end of day, when you click on the Next Day button.";
-		tutorialText[7] = "I invested my life savings into this warehouse,  so I have very high expectations. Miss 3 orders, and you're fired. I'll check up on you in 15 days, so you better impress me by then.";
-		tutorialText[8] = "I will be heading out now. Press Next and then Start to get going.";
+		tutorialText[7] =
+			"You can use this computer to communicate with your suppliers and buyers. Click on it to see what actions you can do.";
+		tutorialText[8] = "I invested my life savings into this warehouse,  so I have very high expectations. Miss 3 orders, and you're fired. I'll check up on you in 15 days, so you better impress me by then.";
+		tutorialText[9] = "I will be heading out now. Press Next and then Start to get going.";
 		
 		
 		_yesButton = GameObject.Find("YesButton").GetComponent<Button>();
@@ -39,7 +41,7 @@ public class Tutorial : MonoBehaviour
 		_nextButton = GameObject.Find("NextButton").GetComponent<Button>();
 
 		_nextButton.gameObject.transform.localScale = new Vector3(0, 0, 0);
-
+		
 		_yesButton.onClick.AddListener(Stage1);
 		_noButton.onClick.AddListener(PlayGame);
         _nextButton.onClick.AddListener(nextStage);
@@ -106,7 +108,12 @@ public class Tutorial : MonoBehaviour
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
 				break;
-			case 9:
+	        case 7:
+		        GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1,1,1);
+		        gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+		        index++;
+		        break;
+			case 10:
 				PlayGame();
 				break;
 			default: // otherwise just show tutorial text
@@ -115,15 +122,7 @@ public class Tutorial : MonoBehaviour
 				Debug.Log("no need to highlight anything");
 				break;
 		}
-		
-/*		if (index == 9)
-		{
-			
-			PlayGame();
-		}
-		gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
-		Debug.Log(index);
-		index++;*/
+
 		
 	}
 
