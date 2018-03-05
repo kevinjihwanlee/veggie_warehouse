@@ -76,7 +76,12 @@ public class Tutorial : MonoBehaviour
 				{
 					//child.localScale = new Vector3(1, 1, 1);
 					child.gameObject.SetActive(true);
-				}
+                }
+                foreach (Transform child in GameObject.Find("ProjectedInventory").gameObject.transform)
+                {
+                    //child.localScale = new Vector3(1, 1, 1);
+                    child.gameObject.SetActive(true);
+                }
 				index++;
 				break;
 			case 3: // highlight spoilage rate and limit
@@ -146,6 +151,10 @@ public class Tutorial : MonoBehaviour
         GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
         foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        foreach (Transform child in GameObject.Find("ProjectedInventory").gameObject.transform)
         {
             child.gameObject.SetActive(true);
         }

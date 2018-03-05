@@ -77,9 +77,9 @@ public class WarehouseManager : MonoBehaviour
         buyPrices["Corn"] = 12;
         buyPrices["Squash"] = 10;
         buyPrices["Beets"] = 8;
-        sellPrices["Corn"] = 16;
-        sellPrices["Squash"] = 13;
-        sellPrices["Beets"] = 10;
+        sellPrices["Corn"] = 20;
+        sellPrices["Squash"] = 16;
+        sellPrices["Beets"] = 14;
 
         //the UI game object that has all the static UI functions
         _panels = GameObject.FindObjectOfType<Panels>();
@@ -120,7 +120,12 @@ public class WarehouseManager : MonoBehaviour
 		{
 			//child.localScale = new Vector3(0, 0, 0);
 			child.gameObject.SetActive(false);
-		}
+        }
+        foreach (Transform child in GameObject.Find("ProjectedInventory").gameObject.transform)
+        {
+            //child.localScale = new Vector3(0, 0, 0);
+            child.gameObject.SetActive(false);
+        }
 		
 		GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(0, 0, 0);
 
@@ -231,6 +236,7 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateMoney();
         _panels.UpdateSupply();
         _panels.UpdateLives();
+        _panels.UpdateProjected();
 
         GameObject.Find("ChachingSound").GetComponent<AudioSource>().Play();
 
@@ -273,7 +279,7 @@ public class WarehouseManager : MonoBehaviour
             duration = Random.Range(1, 4);
         foreach (string product in SupportedProducts)
         {
-            ord[product] = Random.Range(0, 15 + 3 * duration);
+            ord[product] = Random.Range(0, 15 + 4 * duration);
             value += ord[product] * sellPrices[product];
             magnitude += ord[product];
         }
@@ -287,7 +293,7 @@ public class WarehouseManager : MonoBehaviour
 	// lets play you have to have the order items in the shipping dock to fulfill it 
 	// returns true if order is fulfilled, false if order isn't
     public bool StageOrder(Order o)
-	{
+    {
         Dictionary<string,int> order = o.order;
 		// sorry this is gross, prob a better way to do this
 		foreach (KeyValuePair<string, int> item in order)
@@ -300,8 +306,9 @@ public class WarehouseManager : MonoBehaviour
 		foreach (KeyValuePair<string, int> item in order)
 		{
             _supply.AddStaged(item.Key, item.Value);
-		}
-		return true;
+        }
+        _panels.UpdateProjected();
+        return true;
     }
 
     public void UnstageOrder(Order o)
@@ -312,6 +319,7 @@ public class WarehouseManager : MonoBehaviour
         {
             _supply.UndoStaged(item.Key, item.Value);
         }
+        _panels.UpdateProjected();
     }
 
 	void BuyMoreSupply(Dictionary<string, int> supplyOrder, string veg)

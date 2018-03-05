@@ -107,6 +107,7 @@ public class ModifyOrder : MonoBehaviour
         bm.TotalOrderCost += DeltaQuantity * _price;
         bm._totalOrder[ProductName] = SupplyOrderQuantity;
         GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
+        GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 	
 	void RemoveOrder()
@@ -126,6 +127,7 @@ public class ModifyOrder : MonoBehaviour
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
         	GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
         }
+        GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 	
 	void AddOrderOne()
@@ -136,6 +138,7 @@ public class ModifyOrder : MonoBehaviour
         bm.TotalOrderCost += _price;
         bm._totalOrder[ProductName] = SupplyOrderQuantity;
         GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
+        GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 	
 	void RemoveOrderOne()
@@ -154,6 +157,7 @@ public class ModifyOrder : MonoBehaviour
             bm._totalOrder[ProductName] = SupplyOrderQuantity;
         	GetComponent<Text>().text = _originalText + "($" + _buyPrices[ProductName] + "): "+ SupplyOrderQuantity.ToString();
         }
+        GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 
 	public void UpdatePrices()

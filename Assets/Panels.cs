@@ -52,6 +52,26 @@ public class Panels : MonoBehaviour {
         g.GetComponent<Text>().text = StoredItems["Beets"].ToString() + '/' + maxStorage;
     }
 
+    public void UpdateProjected()
+    {
+        //This function updates the counts that are shown for the users projected supply
+        Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
+        Dictionary<string, int> StagedItems = GameObject.FindObjectOfType<Supply>().StagedItems;
+        Dictionary<string, int> BoughtItems = GameObject.FindObjectOfType<BuyMenu2>()._totalOrder;
+        double spoilRate = GameObject.FindObjectOfType<Supply>().spoilRate;
+        GameObject g = GameObject.Find("Projected Corn");
+        int corn = (StoredItems["Corn"] - StagedItems["Corn"]) - Convert.ToInt32((StoredItems["Corn"] - StagedItems["Corn"]) * spoilRate) + BoughtItems["Corn"];
+        g.GetComponent<Text>().text = corn.ToString();
+
+        int squash = (StoredItems["Squash"] - StagedItems["Squash"]) - Convert.ToInt32((StoredItems["Squash"] - StagedItems["Squash"]) * spoilRate) + BoughtItems["Squash"];
+        g = GameObject.Find("Projected Squash");
+        g.GetComponent<Text>().text = squash.ToString();
+
+        int beets = (StoredItems["Beets"] - StagedItems["Beets"]) - Convert.ToInt32((StoredItems["Beets"] - StagedItems["Beets"]) * spoilRate) + BoughtItems["Beets"];
+        g = GameObject.Find("Projected Beets");
+        g.GetComponent<Text>().text = beets.ToString();
+    }
+
     public void UpdateSpoilRate()
     {
         var spoilPercent = Math.Round(FindObjectOfType<Supply>().spoilRate * 100.0, 2);
