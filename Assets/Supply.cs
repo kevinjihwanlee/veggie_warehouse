@@ -43,6 +43,7 @@ public class Supply : MonoBehaviour
 	{
 		MaxStorage *= multiplier;
 		FindObjectOfType<Panels>().UpdateSupply();
+		FindObjectOfType<Panels>().UpdateProjected();
 	}
 
 	public void ReduceSpoilRate(double reducer)
