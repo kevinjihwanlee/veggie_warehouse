@@ -263,7 +263,7 @@ public class WarehouseManager : MonoBehaviour
 	}
 
 	// very basic new order generator
-    private void GenerateNewOrder(Order o)
+    public void GenerateNewOrder(Order o)
     {
         int magnitude = 0;
 		var ord = new Dictionary<string, int>();

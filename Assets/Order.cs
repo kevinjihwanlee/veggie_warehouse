@@ -15,6 +15,7 @@ public class Order : MonoBehaviour {
     public Button stage;
     private float time;
     public int daysRemaining;
+    public Text daysRemainingDisplay;
 
     // Use this for initialization
     void Start()
@@ -47,17 +48,22 @@ public class Order : MonoBehaviour {
             else if (c.name == "OrderValue")
                 ((Text)c).text = "$" + value.ToString();
             else if (c.name == "Corn")
-                ((Text)c).text = "Corn: " + order["Corn"].ToString();
+                ((Text)c).text = order["Corn"].ToString();
             else if (c.name == "Squash")
-                ((Text)c).text = "Squash: " + order["Squash"].ToString();
+                ((Text)c).text = order["Squash"].ToString();
             else if (c.name == "Beets")
-                ((Text)c).text = "Beets: " + order["Beets"].ToString();
+                ((Text)c).text = order["Beets"].ToString();
             else if (c.name == "CornP")
-                ((Text)c).text = "$" + prices["Corn"].ToString() + " ea";
+                ((Text)c).text = "X $" + prices["Corn"].ToString() + " ea";
             else if (c.name == "SquashP")
-                ((Text)c).text = "$" + prices["Squash"].ToString() + " ea";
+                ((Text)c).text = "X $" + prices["Squash"].ToString() + " ea";
             else if (c.name == "BeetsP")
-                ((Text)c).text = "$" + prices["Beets"].ToString() + " ea";
+                ((Text)c).text = "X $" + prices["Beets"].ToString() + " ea";
+        }
+        foreach (Text t in GetComponentsInChildren<Text>())
+        {
+            if (t.name == "DaysRemaining")
+                daysRemainingDisplay = t;
         }
         setDay();
     }
@@ -88,6 +94,7 @@ public class Order : MonoBehaviour {
             Fulfilled = false;
             time = Time.time;
         }
+        setDay();
     }
 
     public void decrementDays()
@@ -101,11 +108,7 @@ public class Order : MonoBehaviour {
         string prestring = "Stage Today!";
         if (daysRemaining > 0)
             prestring = "Days Left: " + daysRemaining.ToString();
-        foreach (Text t in GetComponentsInChildren<Text>())
-        {
-            if (t.name == "DaysRemaining")
-                t.text = prestring;
-        }
+        daysRemainingDisplay.text = prestring;
     }
 
     void Update()
@@ -114,10 +117,12 @@ public class Order : MonoBehaviour {
         if (Fulfilled)
         {
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
+            daysRemainingDisplay.text = "Staged";
         }
         else if (FulfillFail)
         {
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
+            daysRemainingDisplay.text = "Not Enough!";
         }
         else
         {

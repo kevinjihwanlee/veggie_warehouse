@@ -9,6 +9,7 @@ public class Tutorial : MonoBehaviour
 	private Button _yesButton;
 	private Button _noButton;
 	private Button _nextButton;
+    private WarehouseManager wm;
 
 	private GameObject bossman;
 
@@ -41,7 +42,8 @@ public class Tutorial : MonoBehaviour
 
 		_yesButton.onClick.AddListener(Stage1);
 		_noButton.onClick.AddListener(PlayGame);
-		_nextButton.onClick.AddListener(nextStage);
+        _nextButton.onClick.AddListener(nextStage);
+        wm = GameObject.FindObjectOfType<WarehouseManager>();
 	}
 	
 	// Update is called once per frame
@@ -85,15 +87,17 @@ public class Tutorial : MonoBehaviour
 			case 4: // show order
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
+                wm.GenerateNewOrder(wm.Orders[0]);
 				GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				break;
 			case 5: // highlight attributes of an order
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
 				break;
-			case 6: // highlight buy menu
+            case 6: // highlight buy menu
+                wm.Orders[0].active = false;
+                wm.Orders[0].transform.localScale = new Vector3(0, 0, 0);
 				GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
-
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
 				break;
@@ -132,6 +136,18 @@ public class Tutorial : MonoBehaviour
 		GameObject.Find("Progress Button").GetComponent<Button>().interactable = true; 
 		gameObject.transform.localScale = new Vector3(0, 0, 0);
 		bossman = GameObject.Find("Boss");
-		bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        GameObject.Find("Money").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Day").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Lives").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Progress Button").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Receipt").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Upgrade Storage").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
 	}
 }
