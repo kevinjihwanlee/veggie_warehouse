@@ -22,13 +22,15 @@ public class UpgradeMenu : MonoBehaviour
 	private int _kissUpPrice = 1000;
 	private string _originalKissUpText;
 	
-	private int _wineCount = 0;
+	private bool _showWineMenu = false;
 	private int _wineAndDinePrice = 500;
 	private string _originalWineText;
 
 	private bool _shippingUpgradeLimit = false;
 	private int _upgradeShippingPrice = 1000;
 	private string _originalShippingText;
+
+	private bool _showInfoMenu = false;
 
 	private ModifyOrder _modifyOrder;
 	
@@ -53,6 +55,7 @@ public class UpgradeMenu : MonoBehaviour
 		
 		_kissUp.onClick.AddListener(KissUp);
 		_wine.onClick.AddListener(WineAndDine);
+		_info.onClick.AddListener(Info);
 		
 		_wineCorn.onClick.AddListener(WineCorn);
 		_wineBeets.onClick.AddListener(WineBeets);
@@ -69,6 +72,9 @@ public class UpgradeMenu : MonoBehaviour
 		_originalKissUpText = _kissUp.transform.Find("Text").GetComponent<Text>().text;
 		_kissUp.transform.Find("Text").GetComponent<Text>().text = _originalKissUpText + " ($" + _kissUpPrice + ")";
 		
+		HideInfoDescriptions();
+		
+		HideUpgradeMenu();
 	}
 	
 	// Update is called once per frame
@@ -105,8 +111,7 @@ public class UpgradeMenu : MonoBehaviour
 
 	void WineAndDine()
 	{
-		_wineCount++;
-		if (_wineCount % 2 == 1)
+		if (!_showWineMenu)
 		{
 			if (_whm.Money < _wineAndDinePrice)
 			{
@@ -121,20 +126,31 @@ public class UpgradeMenu : MonoBehaviour
 				_wineSquash.interactable = true;
 			}
 			
-			_wineCorn.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			_wineSquash.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			_wineBeets.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			
+			DisplayWineMenu();	
 		}
 		else
 		{
+			HideWineMenu();
+		}
+
+		_showWineMenu = !_showWineMenu;
+
+	}
+
+	void DisplayWineMenu()
+	{
+			_wineCorn.gameObject.transform.localScale = new Vector3(1, 1, 1);
+			_wineSquash.gameObject.transform.localScale = new Vector3(1, 1, 1);
+			_wineBeets.gameObject.transform.localScale = new Vector3(1, 1, 1);
+	}
+
+	void HideWineMenu()
+	{
             _wineCorn.gameObject.transform.localScale = new Vector3(0, 0, 0);
             _wineSquash.gameObject.transform.localScale = new Vector3(0, 0, 0);
             _wineBeets.gameObject.transform.localScale = new Vector3(0, 0, 0);
-		}
-		
 	}
-
+	
 	void WineCorn()
 	{
 		if (_whm.capPrices["Corn"] > 8)
@@ -146,7 +162,7 @@ public class UpgradeMenu : MonoBehaviour
             _modifyOrder.UpdatePrices();
 
 			_wineAndDinePrice = Mathf.RoundToInt(_wineAndDinePrice * 1.5f);
-			_wine.GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
+			_wine.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
 
 			if (_whm.Money < _wineAndDinePrice)
 			{
@@ -168,7 +184,7 @@ public class UpgradeMenu : MonoBehaviour
             _modifyOrder.UpdatePrices();
 
 			_wineAndDinePrice = Mathf.RoundToInt(_wineAndDinePrice * 1.5f);
-			_wine.GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
+			_wine.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
 
 			if (_whm.Money < _wineAndDinePrice)
 			{
@@ -190,7 +206,7 @@ public class UpgradeMenu : MonoBehaviour
             _modifyOrder.UpdatePrices();
 
 			_wineAndDinePrice = Mathf.RoundToInt(_wineAndDinePrice * 1.5f);
-			_wine.GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
+			_wine.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
 
 			if (_whm.Money < _wineAndDinePrice)
 			{
@@ -212,6 +228,52 @@ public class UpgradeMenu : MonoBehaviour
 
 	void Info()
 	{
+
+		if (!_showInfoMenu)
+		// bringing the menu up
+		{
+			if (_showWineMenu)
+			{
+				HideWineMenu();
+			}
+			DisplayInfoDescriptions();
+		}
+		else
+		// clicking the menu away
+		{
+			HideInfoDescriptions();
+			if (_showWineMenu)
+			{
+				DisplayWineMenu();
+			}
+		}
 		
+		_showInfoMenu = !_showInfoMenu;
+	}
+	
+	void DisplayInfoDescriptions()
+	{
+		var information = transform.Find("Info");
+        information.transform.Find("Upgrade Shipping Descripton").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
+        information.transform.Find("Wine Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
+        information.transform.Find("Kiss up Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
+	}
+
+	void HideInfoDescriptions()
+	{
+		var information = transform.Find("Info");
+        information.transform.Find("Upgrade Shipping Descripton").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
+        information.transform.Find("Wine Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
+        information.transform.Find("Kiss up Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
+	}
+
+	public void HideUpgradeMenu()
+	{
+		transform.localScale = new Vector3(0, 0, 0);
+	}
+	
+	public void ShowUpgradeMenu()
+	{
+		transform.localScale = new Vector3(1, 1, 1);
 	}
 }
