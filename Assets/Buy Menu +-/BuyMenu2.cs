@@ -41,4 +41,16 @@ public class BuyMenu2 : MonoBehaviour {
 			}
 		}
 	}
+
+	public void UpdateAllPrices()
+	{
+		foreach (Transform child in transform)
+		{
+			var product = child.gameObject.GetComponent<ModifyOrder>();
+			if (product != null)
+			{
+				product.UpdatePrices();
+			}
+		}
+	}
 }

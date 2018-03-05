@@ -42,6 +42,6 @@ public class UpgradeSupply : MonoBehaviour
 		UpgradePrice = _count * 250;
 		GetComponentInChildren<Text>().text = "Upgrade Supply: " + UpgradePrice;
 		FindObjectOfType<Supply>().UpgradeStorage(2);
-		FindObjectOfType<Supply>().ReduceSpoilRate(1.25);
+		FindObjectOfType<Supply>().ReduceSpoilRate(2);
 	}
 }
