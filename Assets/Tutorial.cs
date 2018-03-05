@@ -149,6 +149,7 @@ public class Tutorial : MonoBehaviour
         GameObject.Find("Upgrade Storage").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1, 1, 1);
         foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
         {
             child.gameObject.SetActive(true);
