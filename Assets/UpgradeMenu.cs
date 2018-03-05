@@ -64,7 +64,7 @@ public class UpgradeMenu : MonoBehaviour
 		_wine.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";
 
 		_originalShippingText = _shipping.transform.Find("Text").GetComponent<Text>().text;
-		_shipping.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _upgradeShippingPrice + ")";
+		_shipping.transform.Find("Text").GetComponent<Text>().text = _originalShippingText + " ($" + _upgradeShippingPrice + ")";
 		
 		_originalKissUpText = _kissUp.transform.Find("Text").GetComponent<Text>().text;
 		_kissUp.transform.Find("Text").GetComponent<Text>().text = _originalKissUpText + " ($" + _kissUpPrice + ")";
