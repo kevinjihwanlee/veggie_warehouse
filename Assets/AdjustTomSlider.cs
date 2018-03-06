@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AdjustSlider : MonoBehaviour
+public class AdjustTomSlider : MonoBehaviour
 {
 
-	private Dictionary<string, int> _totalInventory;
+	public int ProjectedInventory;
 	public int _maxStorage;
 	private Slider _slider;
 
@@ -20,9 +21,9 @@ public class AdjustSlider : MonoBehaviour
 
 	public void UpdateSlider()
 	{
+		ProjectedInventory = FindObjectOfType<Panels>().ProjectedInventory[Vegetable];
 		_maxStorage = FindObjectOfType<Supply>().MaxStorage;
-		_totalInventory = FindObjectOfType<Supply>().StoredItems;
-		_slider.value = _totalInventory[Vegetable]*100/ _maxStorage;
+		_slider.value = ProjectedInventory*100/ _maxStorage;
 	}
 	
 	// Update is called once per frame
@@ -30,3 +31,4 @@ public class AdjustSlider : MonoBehaviour
 		
 	}
 }
+

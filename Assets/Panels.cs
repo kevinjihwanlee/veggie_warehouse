@@ -10,7 +10,11 @@ public class Panels : MonoBehaviour {
     private int Day;
     public Order[] Orders;
     public int lastDay;
+    private WarehouseManager _manager;
 
+    public Dictionary<string, int> ProjectedInventory;
+
+	
     // Use this for initialization
     void Start()
     {
@@ -29,6 +33,26 @@ public class Panels : MonoBehaviour {
         //GameObject.Find("Left").GetComponent<Transform>().position = cam.ScreenToWorldPoint(left);
         //GameObject.Find("Top").GetComponent<Transform>().position = cam.ScreenToWorldPoint(top);
         UpdateSpoilRate();
+        _manager = FindObjectOfType<WarehouseManager>();
+
+        ProjectedInventory = new Dictionary<string, int>();
+        
+        var maxStorage = GameObject.FindObjectOfType<Supply>().MaxStorage;
+        Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
+        Dictionary<string, int> StagedItems = GameObject.FindObjectOfType<Supply>().StagedItems;
+        Dictionary<string, int> BoughtItems = GameObject.FindObjectOfType<BuyMenu2>()._totalOrder;
+        double spoilRate = GameObject.FindObjectOfType<Supply>().spoilRate;
+        GameObject g = GameObject.Find("Projected Corn");
+        
+        // first val is hardcoded
+        ProjectedInventory["Corn"] = 16;
+        g.GetComponent<Text>().text = ProjectedInventory["Corn"].ToString() + '/' + maxStorage.ToString();
+
+        ProjectedInventory["Squash"] = 16;
+        g.GetComponent<Text>().text = ProjectedInventory["Squash"].ToString() + '/' + maxStorage.ToString();
+
+        ProjectedInventory["Beets"] = 16;
+        g.GetComponent<Text>().text = ProjectedInventory["Beets"].ToString() + '/' + maxStorage.ToString();
     }
 	
 	// Update is called once per frame
@@ -52,24 +76,31 @@ public class Panels : MonoBehaviour {
         g.GetComponent<Text>().text = StoredItems["Beets"].ToString() + '/' + maxStorage;
     }
 
+
+
     public void UpdateProjected()
     {
+        var maxStorage = GameObject.FindObjectOfType<Supply>().MaxStorage;
         //This function updates the counts that are shown for the users projected supply
         Dictionary<string, int> StoredItems = GameObject.FindObjectOfType<Supply>().StoredItems;
         Dictionary<string, int> StagedItems = GameObject.FindObjectOfType<Supply>().StagedItems;
         Dictionary<string, int> BoughtItems = GameObject.FindObjectOfType<BuyMenu2>()._totalOrder;
         double spoilRate = GameObject.FindObjectOfType<Supply>().spoilRate;
         GameObject g = GameObject.Find("Projected Corn");
-        int corn = (StoredItems["Corn"] - StagedItems["Corn"]) - Convert.ToInt32((StoredItems["Corn"] - StagedItems["Corn"]) * spoilRate) + BoughtItems["Corn"];
-        g.GetComponent<Text>().text = corn.ToString();
+        ProjectedInventory["Corn"] = (StoredItems["Corn"] - StagedItems["Corn"]) -
+                                     Convert.ToInt32((StoredItems["Corn"] - StagedItems["Corn"]) * spoilRate) +
+                                     BoughtItems["Corn"];
+        g.GetComponent<Text>().text = ProjectedInventory["Corn"].ToString() + '/' + maxStorage.ToString();
 
-        int squash = (StoredItems["Squash"] - StagedItems["Squash"]) - Convert.ToInt32((StoredItems["Squash"] - StagedItems["Squash"]) * spoilRate) + BoughtItems["Squash"];
+        ProjectedInventory["Squash"] = (StoredItems["Squash"] - StagedItems["Squash"]) - Convert.ToInt32((StoredItems["Squash"] - StagedItems["Squash"]) * spoilRate) + BoughtItems["Squash"];
         g = GameObject.Find("Projected Squash");
-        g.GetComponent<Text>().text = squash.ToString();
+        g.GetComponent<Text>().text = ProjectedInventory["Squash"].ToString() + '/' + maxStorage.ToString();
 
-        int beets = (StoredItems["Beets"] - StagedItems["Beets"]) - Convert.ToInt32((StoredItems["Beets"] - StagedItems["Beets"]) * spoilRate) + BoughtItems["Beets"];
+        ProjectedInventory["Beets"] = (StoredItems["Beets"] - StagedItems["Beets"]) - Convert.ToInt32((StoredItems["Beets"] - StagedItems["Beets"]) * spoilRate) + BoughtItems["Beets"];
         g = GameObject.Find("Projected Beets");
-        g.GetComponent<Text>().text = beets.ToString();
+        g.GetComponent<Text>().text = ProjectedInventory["Beets"].ToString() + '/' + maxStorage.ToString();
+	    
+        _manager.UpdateAllSliders();
     }
 
     public void UpdateSpoilRate()

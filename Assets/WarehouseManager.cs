@@ -37,6 +37,10 @@ public class WarehouseManager : MonoBehaviour
 	private GameObject _buyMenu;
 	public GameObject _inventoryRecap;
 
+
+	public List<AdjustSlider> _AdjustSlider;
+	public List<AdjustTomSlider> _AdjustTomSlider;
+	
     public int failed;
 	// possibly make orders an object? 
 	// we should prob make it an object tbh if we're going to keep track of shit like price 
@@ -100,6 +104,22 @@ public class WarehouseManager : MonoBehaviour
         _supply.initialize(SupportedProducts, 20);
         _panels.UpdateSupply();
 
+		_AdjustSlider = new List<AdjustSlider>{};
+		var sliderObjects = FindObjectsOfType<AdjustSlider>();
+		foreach (var s in sliderObjects)
+		{
+			_AdjustSlider.Add(s.GetComponent<AdjustSlider>());			
+			s.GetComponent<AdjustSlider>().UpdateSlider();
+		}
+		
+		_AdjustTomSlider = new List<AdjustTomSlider>{};
+		var tomSliderObjects = FindObjectsOfType<AdjustTomSlider>();
+		foreach (var s in tomSliderObjects)
+		{
+			_AdjustTomSlider.Add(s.GetComponent<AdjustTomSlider>());			
+			s.GetComponent<AdjustTomSlider>().UpdateSlider();
+		}
+		
         // setting colors and active state of 3D models and UI
         //GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
 
@@ -252,6 +272,7 @@ public class WarehouseManager : MonoBehaviour
         _panels.UpdateSupply();
         _panels.UpdateLives();
         _panels.UpdateProjected();
+		UpdateAllSliders();
 
         GameObject.Find("ChachingSound").GetComponent<AudioSource>().Play();
 
@@ -263,6 +284,19 @@ public class WarehouseManager : MonoBehaviour
         if (failed > 2)
             LoseGame();
 		
+	}
+	
+	public void UpdateAllSliders()
+	{
+		foreach (var s in _AdjustSlider)
+		{
+			s.UpdateSlider();
+		}
+		
+		foreach (var s in _AdjustTomSlider)
+		{
+			s.UpdateSlider();
+		}
 	}
 
 	void RandomEventGenerator()
