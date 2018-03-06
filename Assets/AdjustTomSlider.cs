@@ -21,6 +21,7 @@ public class AdjustTomSlider : MonoBehaviour
 
 	public void UpdateSlider()
 	{
+		_slider = GetComponent<Slider>();
 		ProjectedInventory = FindObjectOfType<Panels>().ProjectedInventory[Vegetable];
 		_maxStorage = FindObjectOfType<Supply>().MaxStorage;
 		_slider.value = ProjectedInventory*100/ _maxStorage;
