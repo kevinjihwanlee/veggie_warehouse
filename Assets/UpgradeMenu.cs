@@ -30,7 +30,7 @@ public class UpgradeMenu : MonoBehaviour
 	private int _upgradeShippingPrice = 1000;
 	private string _originalShippingText;
 
-	private bool _showInfoMenu = false;
+	private bool _showInfoMenu = true;
 
 	private ModifyOrder _modifyOrder;
 	
@@ -72,7 +72,6 @@ public class UpgradeMenu : MonoBehaviour
 		_originalKissUpText = _kissUp.transform.Find("Text").GetComponent<Text>().text;
 		_kissUp.transform.Find("Text").GetComponent<Text>().text = _originalKissUpText + " ($" + _kissUpPrice + ")";
 		
-		HideInfoDescriptions();
 		
 		HideUpgradeMenu();
 	}
@@ -127,28 +126,30 @@ public class UpgradeMenu : MonoBehaviour
 			}
 			
 			DisplayWineMenu();	
+			HideInfoDescriptions();
 		}
 		else
 		{
 			HideWineMenu();
+			DisplayInfoDescriptions();
 		}
-
-		_showWineMenu = !_showWineMenu;
 
 	}
 
 	void DisplayWineMenu()
 	{
-			_wineCorn.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			_wineSquash.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			_wineBeets.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        _wineCorn.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        _wineSquash.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        _wineBeets.gameObject.transform.localScale = new Vector3(1, 1, 1);
+		_showWineMenu = true;
 	}
 
 	void HideWineMenu()
 	{
-            _wineCorn.gameObject.transform.localScale = new Vector3(0, 0, 0);
-            _wineSquash.gameObject.transform.localScale = new Vector3(0, 0, 0);
-            _wineBeets.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        _wineCorn.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        _wineSquash.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        _wineBeets.gameObject.transform.localScale = new Vector3(0, 0, 0);
+		_showWineMenu = false;
 	}
 	
 	void WineCorn()
