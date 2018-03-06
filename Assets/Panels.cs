@@ -42,17 +42,19 @@ public class Panels : MonoBehaviour {
         Dictionary<string, int> StagedItems = GameObject.FindObjectOfType<Supply>().StagedItems;
         Dictionary<string, int> BoughtItems = GameObject.FindObjectOfType<BuyMenu2>()._totalOrder;
         double spoilRate = GameObject.FindObjectOfType<Supply>().spoilRate;
-        GameObject g = GameObject.Find("Projected Corn");
         
+        GameObject g = GameObject.Find("Projected Corn");
         // first val is hardcoded
         ProjectedInventory["Corn"] = 16;
         g.GetComponent<Text>().text = ProjectedInventory["Corn"].ToString() + '/' + maxStorage.ToString();
 
+        var squash = GameObject.Find("Squash Inventory");
         ProjectedInventory["Squash"] = 16;
-        g.GetComponent<Text>().text = ProjectedInventory["Squash"].ToString() + '/' + maxStorage.ToString();
+        squash.GetComponent<Text>().text = ProjectedInventory["Squash"].ToString() + '/' + maxStorage.ToString();
 
+        var beets = GameObject.Find("Beets Inventory");
         ProjectedInventory["Beets"] = 16;
-        g.GetComponent<Text>().text = ProjectedInventory["Beets"].ToString() + '/' + maxStorage.ToString();
+        beets.GetComponent<Text>().text = ProjectedInventory["Beets"].ToString() + '/' + maxStorage.ToString();
     }
 	
 	// Update is called once per frame
