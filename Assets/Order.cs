@@ -105,9 +105,15 @@ public class Order : MonoBehaviour {
 
     public void setDay()
     {
+        daysRemainingDisplay.color = Color.red;
         string prestring = "Stage Today!";
         if (daysRemaining > 0)
+        {
             prestring = "Days Left: " + daysRemaining.ToString();
+            daysRemainingDisplay.color = Color.yellow;
+        }
+        if (daysRemaining > 1)
+            daysRemainingDisplay.color = Color.green;
         daysRemainingDisplay.text = prestring;
     }
 
@@ -118,11 +124,13 @@ public class Order : MonoBehaviour {
         {
             GetComponent<Image>().color = new Color32(21, 189, 12, 255);
             daysRemainingDisplay.text = "Staged";
+            daysRemainingDisplay.color = Color.white;
         }
         else if (FulfillFail)
         {
             GetComponent<Image>().color = new Color32(231, 65, 85, 255);
             daysRemainingDisplay.text = "Not Enough!";
+            daysRemainingDisplay.color = Color.white;
         }
         else
         {

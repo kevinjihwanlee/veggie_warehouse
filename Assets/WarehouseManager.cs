@@ -233,6 +233,8 @@ public class WarehouseManager : MonoBehaviour
             float calculatedOrderCount = (Day * 60 + v) / 730;
             if (calculatedOrderCount > OrderCount)
                 OrderCount = (int)calculatedOrderCount;
+            if (OrderCount > 5)
+                OrderCount = 5;
         }
 
         int i = 1;
