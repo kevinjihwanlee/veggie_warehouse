@@ -38,11 +38,11 @@ public class UpgradeSupply : MonoBehaviour
 	void UpgradeStorage()
 	{
         FindObjectOfType<WarehouseManager>().Buy(UpgradePrice);
-        FindObjectOfType<Panels>().UpdateProjected();
 		_count++;
 		UpgradePrice = _count * 250;
 		GetComponentInChildren<Text>().text = "Upgrade Supply: " + UpgradePrice;
 		FindObjectOfType<Supply>().UpgradeStorage(2);
-		FindObjectOfType<Supply>().ReduceSpoilRate(2);
+        FindObjectOfType<Supply>().ReduceSpoilRate(2);
+        FindObjectOfType<Panels>().UpdateProjected();
 	}
 }
