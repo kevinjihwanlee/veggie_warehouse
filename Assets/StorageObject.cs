@@ -29,9 +29,6 @@ public class StorageObject : MonoBehaviour {
 			child.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
 		}
 		_inventoryReceiptObject = GameObject.Find("InventoryReceipt");
-		_exitButton = GameObject.Find("ExitInvRecButton").GetComponent<Button>();
-		_exitButton.onClick.AddListener(ExitMenu);
-
 		//_inventoryTitles = GameObject.Find("Labels");
 		//_inventoryTitleTransforms= _inventoryTitles.gameObject.transform;
 	}

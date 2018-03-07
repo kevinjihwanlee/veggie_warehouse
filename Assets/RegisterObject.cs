@@ -12,7 +12,6 @@ public class RegisterObject : MonoBehaviour
 	void Start () {
 		_buyMenu = GameObject.Find("OrderSupplyMenu");
 		//_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
-		_present = true;
 		
 
 	}
@@ -24,15 +23,13 @@ public class RegisterObject : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		if (!_present)
+		if (_buyMenu.gameObject.transform.localScale.magnitude > 0)
 		{
-			_buyMenu.gameObject.transform.localScale = new Vector3(1, 1, 1);
-			_present = true;
+			_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
 		}
 		else
 		{
-			_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
-			_present = false;
+			_buyMenu.gameObject.transform.localScale = new Vector3(1, 1, 1);
 		}
 
 	}
