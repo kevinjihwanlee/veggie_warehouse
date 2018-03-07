@@ -10,7 +10,6 @@ public class Laptop : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_notVisible = true;
 	}
 	
 	// Update is called once per frame
@@ -20,15 +19,14 @@ public class Laptop : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		if (_notVisible)
+		var upgradeMenu = FindObjectOfType<UpgradeMenu>();
+		if (upgradeMenu.transform.localScale.magnitude > 0)
 		{
-			FindObjectOfType<UpgradeMenu>().ShowUpgradeMenu();
-			_notVisible = false;
+			FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
 		}
 		else
 		{
-			FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
-			_notVisible = true;
+			FindObjectOfType<UpgradeMenu>().ShowUpgradeMenu();
 		}
 	}
 }
