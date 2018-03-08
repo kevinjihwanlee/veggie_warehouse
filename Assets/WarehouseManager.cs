@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Remoting.Channels;
 using System.Security.AccessControl;
 using NUnit.Framework;
 using UnityEngine;
@@ -179,36 +180,37 @@ public class WarehouseManager : MonoBehaviour
         // BuyMoreSupply(_supplyTotalOrder);
 		
         int active = -1;
-        for (int j = 0; j < Orders.Count; j++)
-        {
-            Order o = Orders[j];
-	        if (o.active)
-	        {
-
-		        active = j;
-		        //if the player has hit fulfill and has enough inventory
-		        if (o.Fulfilled)
-		        {
-			        Money += o.value;
-			        orderRev += o.value;
-			        GenerateNewOrder(o);
-		        }
-		        else
-		        {
-			        o.FulfillFail = false;
-                    if (o.daysRemaining == 0)
-                    {
-                        failed += 1;
-                        GenerateNewOrder(o);
-                    }
-                    else
-                    {
-                        o.decrementDays();
-                    }
-		        }
-	        }
-        }
 		
+			for (int j = 0; j < Orders.Count; j++)
+			{
+				Order o = Orders[j];
+				if (o.active)
+				{
+
+					active = j;
+					//if the player has hit fulfill and has enough inventory
+					if (o.Fulfilled)
+					{
+						Money += o.value;
+						orderRev += o.value;
+						GenerateNewOrder(o);
+					}
+					else
+					{
+						o.FulfillFail = false;
+						if (o.daysRemaining == 0)
+						{
+							failed += 1;
+							GenerateNewOrder(o);
+						}
+						else
+						{
+							o.decrementDays();
+						}
+					}
+				}
+			}
+
 		orderSupplyMenu.NextDayReset();
 		
 		// I stuck UpdateInventoryReceipt logic in here for now
@@ -324,11 +326,16 @@ public class WarehouseManager : MonoBehaviour
 		var ord = new Dictionary<string, int>();
         int value = 0;
         int duration = 0;
-        if (Random.Range(1, 3) == 1)
-            duration = Random.Range(1, 4);
+	    int rand = Random.Range(1, 4);
+        if (rand == 1)
+            duration = 0;
+	    else if (rand == 2 || rand == 3)
+	        duration = 1;
+        else
+	        duration = 2;
         foreach (string product in SupportedProducts)
         {
-            ord[product] = Random.Range(0, 15 + 4 * duration);
+            ord[product] = Random.Range(0, 15 + 3 * duration);
             value += ord[product] * sellPrices[product];
             magnitude += ord[product];
         }

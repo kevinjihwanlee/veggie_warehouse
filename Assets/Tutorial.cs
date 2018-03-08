@@ -103,7 +103,7 @@ public class Tutorial : MonoBehaviour
 				break;
             case 6: // highlight buy menu
                 wm.Orders[0].active = false;
-                wm.Orders[0].transform.localScale = new Vector3(0, 0, 0);
+	            wm.Orders[0].transform.localScale = new Vector3(0, 0, 0);
 				GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;

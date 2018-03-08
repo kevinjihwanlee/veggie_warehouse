@@ -60,8 +60,10 @@ public class UpgradeMenu : MonoBehaviour
 		_wineCorn.onClick.AddListener(WineCorn);
 		_wineBeets.onClick.AddListener(WineBeets);
 		_wineSquash.onClick.AddListener(WineSquash);
+		_shipping.onClick.AddListener(UpgradeShipping);
 
 		_modifyOrder = FindObjectOfType<ModifyOrder>();
+		
 
 		_originalWineText = _wine.transform.Find("Text").GetComponent<Text>().text;
 		_wine.transform.Find("Text").GetComponent<Text>().text = _originalWineText + " ($" + _wineAndDinePrice + ")";

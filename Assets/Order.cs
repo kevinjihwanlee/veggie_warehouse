@@ -134,7 +134,7 @@ public class Order : MonoBehaviour {
         }
         else
         {
-            GetComponent<Image>().color = new Color32(83, 65, 36, 255);
+            GetComponent<Image>().color = Color.blue;
         }
     }
 
