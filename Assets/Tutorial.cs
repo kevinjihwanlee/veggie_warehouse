@@ -119,7 +119,6 @@ public class Tutorial : MonoBehaviour
 			default: // otherwise just show tutorial text
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
-				Debug.Log("no need to highlight anything");
 				break;
 		}
 
