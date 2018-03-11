@@ -20,7 +20,7 @@ public class Supply : MonoBehaviour
 	void Start ()
 	{
 		MaxStorage = 50;
-		spoilRate = 0.2;
+		spoilRate = 0.0;
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
         OrderedItems = new Dictionary<string, int>();

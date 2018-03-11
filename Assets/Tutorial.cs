@@ -112,7 +112,9 @@ public class Tutorial : MonoBehaviour
 				break;
 	        case 7:
 		        GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1,1,1);
-		        gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+                gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+                GameObject.FindObjectOfType<Supply>().spoilRate = .2;
+                GameObject.FindObjectOfType<Panels>().UpdateSpoilRate();
 		        index++;
 		        break;
 			case 10:
@@ -138,7 +140,7 @@ public class Tutorial : MonoBehaviour
 
 	void PlayGame()
 	{
-		GameObject.Find("Progress Button").GetComponent<Button>().interactable = true; 
+		GameObject.Find("Progress Button").GetComponent<Button>().interactable = true;
 		gameObject.transform.localScale = new Vector3(0, 0, 0);
 		bossman = GameObject.Find("Boss");
         bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);
@@ -159,5 +161,7 @@ public class Tutorial : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+        GameObject.FindObjectOfType<Supply>().spoilRate = .2;
+        GameObject.FindObjectOfType<Panels>().UpdateSpoilRate();
 	}
 }
