@@ -25,7 +25,7 @@ public class BuyMenu2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		AvailableFunds = _warehouseManager.Money;
-		transform.Find("Cost").gameObject.GetComponent<Text>().text = "Total Cost: " + TotalOrderCost;
+        transform.Find("Cost").gameObject.GetComponent<Text>().text = "Balance: $" + AvailableFunds.ToString() + " - $" + TotalOrderCost.ToString() + " = $" + (AvailableFunds - TotalOrderCost).ToString();
 	}
 
 	public void NextDayReset()
