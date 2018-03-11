@@ -102,6 +102,8 @@ public class Tutorial : MonoBehaviour
 				index++;
 				break;
             case 6: // highlight buy menu
+                if (wm.Orders[0].Fulfilled)
+                    wm.UnstageOrder(wm.Orders[0]);
                 wm.Orders[0].active = false;
 	            wm.Orders[0].transform.localScale = new Vector3(0, 0, 0);
 				GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
