@@ -14,17 +14,17 @@ public class Supply : MonoBehaviour
 	public int MaxStorage;
 	public double spoilRate;
     // dictionary of all items stored
-	
-	
-	// Use this for initialization
-	void Start ()
-	{
-		MaxStorage = 50;
-		spoilRate = 0.0;
+
+
+    // Use this for initialization
+    void Start()
+    {
+        spoilRate = 0.0;
+        MaxStorage = 30;
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
         OrderedItems = new Dictionary<string, int>();
-	}
+    }
 
     public void initialize(List<string> SupportedProducts, int quantity)
     {
@@ -39,9 +39,9 @@ public class Supply : MonoBehaviour
         }
     }
 
-	public void UpgradeStorage(int multiplier)
+	public void UpgradeStorage(int increment)
 	{
-		MaxStorage *= multiplier;
+		MaxStorage += increment;
 		FindObjectOfType<Panels>().UpdateSupply();
 		FindObjectOfType<Panels>().UpdateProjected();
 	}
