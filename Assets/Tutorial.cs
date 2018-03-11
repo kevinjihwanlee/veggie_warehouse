@@ -84,6 +84,7 @@ public class Tutorial : MonoBehaviour
                     //child.localScale = new Vector3(1, 1, 1);
                     child.gameObject.SetActive(true);
                 }
+                GameObject.FindObjectOfType<Panels>().UpdateProjected();
 				index++;
 				break;
 			case 3: // highlight spoilage rate and limit
@@ -163,5 +164,6 @@ public class Tutorial : MonoBehaviour
         }
         GameObject.FindObjectOfType<Supply>().spoilRate = .2;
         GameObject.FindObjectOfType<Panels>().UpdateSpoilRate();
+        GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 }
