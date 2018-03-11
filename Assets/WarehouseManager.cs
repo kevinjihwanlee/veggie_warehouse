@@ -273,6 +273,10 @@ public class WarehouseManager : MonoBehaviour
         }
 		
 		Day += 1;
+        if (Day > 0){
+            _supply.spoilRate = .2;
+            _panels.UpdateSpoilRate();
+        }
         if (OrderCount < 5)
         {
             int v = Money;

@@ -114,8 +114,6 @@ public class Tutorial : MonoBehaviour
 	        case 7:
 		        GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1,1,1);
                 gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
-                GameObject.FindObjectOfType<Supply>().spoilRate = .2;
-                GameObject.FindObjectOfType<Panels>().UpdateSpoilRate();
 		        index++;
 		        break;
 			case 10:
@@ -162,8 +160,6 @@ public class Tutorial : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
-        GameObject.FindObjectOfType<Supply>().spoilRate = .2;
-        GameObject.FindObjectOfType<Panels>().UpdateSpoilRate();
         GameObject.FindObjectOfType<Panels>().UpdateProjected();
 	}
 }
