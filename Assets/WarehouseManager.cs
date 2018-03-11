@@ -29,7 +29,9 @@ public class WarehouseManager : MonoBehaviour
     public List<Order> Orders; 
     public Panels _panels;
     public int OrderCount;
+    public int SpawnedOrderCount;
 	public int NewOrderDurationOffset;
+    public List<Dictionary<string, int>> firstOrders;
 	
     public AudioClip chaching;
 
@@ -69,6 +71,28 @@ public class WarehouseManager : MonoBehaviour
             "Squash",
 			"Beets",
         };
+
+        firstOrders = new List<Dictionary<string, int>>();
+        Dictionary<string, int> order = new Dictionary<string, int>();
+        foreach(string s in SupportedProducts)
+            order[s] = 10;
+        firstOrders.Add(order);
+
+        order = new Dictionary<string, int>();
+        foreach (string s in SupportedProducts)
+            order[s] = 5;
+        order["Corn"] = 20;
+        firstOrders.Add(order);
+
+        order = new Dictionary<string, int>();
+        foreach (string s in SupportedProducts)
+            order[s] = 5;
+        firstOrders.Add(order);
+
+        order = new Dictionary<string, int>();
+        foreach (string s in SupportedProducts)
+            order[s] = 22;
+        firstOrders.Add(order);
 
 		Satisfaction = 50f;
 
@@ -127,6 +151,7 @@ public class WarehouseManager : MonoBehaviour
         GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(0, 0, 0);
 		
         OrderCount = 1;
+        SpawnedOrderCount = 0;
 
         Orders = new List<Order>();
         for (int i = 1; i < 6; i ++)
@@ -322,28 +347,46 @@ public class WarehouseManager : MonoBehaviour
 	// very basic new order generator
     public void GenerateNewOrder(Order o)
     {
-        int magnitude = 0;
-		var ord = new Dictionary<string, int>();
+        Dictionary<string, int> orderD = new Dictionary<string, int>();
         int value = 0;
         int duration = 0;
-	    int rand = Random.Range(1, 4);
-        if (rand == 1)
-            duration = 0;
-	    else if (rand == 2 || rand == 3)
-	        duration = 1;
-        else
-	        duration = 2;
-        foreach (string product in SupportedProducts)
+        var ord = new Dictionary<string, int>();
+        if (SpawnedOrderCount >= firstOrders.Count)
         {
-            ord[product] = Random.Range(0, 15 + 3 * duration);
-            value += ord[product] * sellPrices[product];
-            magnitude += ord[product];
+            int rand = Random.Range(1, 4);
+            if (rand == 1)
+                duration = 0;
+            else if (rand == 2 || rand == 3)
+                duration = 1;
+            else
+                duration = 2;
+            foreach (string product in SupportedProducts)
+            {
+                orderD[product] = Random.Range(0, 15 + 3 * duration);
+            }
+            value += 50 * duration;
         }
-        value += 50 * duration;
+        else
+        {
+            orderD = firstOrders[SpawnedOrderCount];
+            duration = 1;
+            if (SpawnedOrderCount == 0 || SpawnedOrderCount == 2)
+                duration = 0;
+            else if (SpawnedOrderCount == 3)
+                duration = 2;
+            value += 50 * duration;
+        }
+
+        foreach (string product in orderD.Keys)
+        {
+            ord[product] = orderD[product];
+            value += ord[product] * sellPrices[product];
+        }
         string client = OrderCompanies[Random.Range(0, OrderCompanies.Count)];
-	    duration += NewOrderDurationOffset;
+        duration += NewOrderDurationOffset;
         o.initialize(ord, client, value, duration, sellPrices);
         o.gameObject.GetComponent<Transform>().localScale = new Vector3(2, .6f, 1);
+        SpawnedOrderCount += 1;
 	}
 
 	// this function checks the shipping dock to see if orders can be fulfilled
