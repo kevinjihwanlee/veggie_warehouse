@@ -43,7 +43,7 @@ public class ModifyOrder : MonoBehaviour
         ProductName = name;
 		
         _originalText = GetComponent<Text>().text;
-		Debug.Log(ProductName);
+		//Debug.Log(ProductName);
         GetComponent<Text>().text = _originalText + SupplyOrderQuantity.ToString();
 
         _price = 10;

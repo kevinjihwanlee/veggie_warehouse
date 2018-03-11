@@ -23,7 +23,7 @@ public class AdjustSlider : MonoBehaviour
 		_slider = GetComponent<Slider>();
 		_maxStorage = FindObjectOfType<Supply>().MaxStorage;
 		_totalInventory = FindObjectOfType<Supply>().StoredItems;
-		Debug.Log(_totalInventory[Vegetable]);
+		//Debug.Log(_totalInventory[Vegetable]);
 		
 		_slider.value = _totalInventory[Vegetable]*100/ _maxStorage;
 	}
