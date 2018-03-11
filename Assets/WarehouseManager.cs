@@ -353,7 +353,6 @@ public class WarehouseManager : MonoBehaviour
         var ord = new Dictionary<string, int>();
         if (SpawnedOrderCount >= firstOrders.Count)
         {
-            Debug.Log(SpawnedOrderCount.ToString() + " Not FO");
             int rand = Random.Range(1, 4);
             if (rand == 1)
                 duration = 0;
@@ -369,7 +368,6 @@ public class WarehouseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(SpawnedOrderCount.ToString() + " FO");
             orderD = firstOrders[SpawnedOrderCount];
             duration = 1;
             if (SpawnedOrderCount == 0 || SpawnedOrderCount == 2)
