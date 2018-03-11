@@ -205,36 +205,38 @@ public class WarehouseManager : MonoBehaviour
         // BuyMoreSupply(_supplyTotalOrder);
 		
         int active = -1;
-		
-			for (int j = 0; j < Orders.Count; j++)
-			{
-				Order o = Orders[j];
-				if (o.active)
-				{
 
-					active = j;
-					//if the player has hit fulfill and has enough inventory
-					if (o.Fulfilled)
-					{
-						Money += o.value;
-						orderRev += o.value;
-						GenerateNewOrder(o);
-					}
-					else
-					{
-						o.FulfillFail = false;
-						if (o.daysRemaining == 0)
-						{
-							failed += 1;
-							GenerateNewOrder(o);
-						}
-						else
-						{
-							o.decrementDays();
-						}
-					}
-				}
-			}
+        for (int j = 0; j < Orders.Count; j++)
+        {
+            Order o = Orders[j];
+            if (o.active)
+            {
+
+                active = j;
+                //if the player has hit fulfill and has enough inventory
+                if (o.Fulfilled)
+                {
+                    Money += o.value;
+                    orderRev += o.value;
+                    GenerateNewOrder(o);
+                }
+                else
+                {
+                    o.FulfillFail = false;
+                    if (o.daysRemaining == 0)
+                    {
+
+                        GameObject.Find("FailedOrder").GetComponent<AudioSource>().Play();
+                        failed += 1;
+                        GenerateNewOrder(o);
+                    }
+                    else
+                    {
+                        o.decrementDays();
+                    }
+                }
+            }
+        }
 
 		orderSupplyMenu.NextDayReset();
 		
