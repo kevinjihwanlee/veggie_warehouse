@@ -32,7 +32,9 @@ public class Panels : MonoBehaviour {
 
         //GameObject.Find("Left").GetComponent<Transform>().position = cam.ScreenToWorldPoint(left);
         //GameObject.Find("Top").GetComponent<Transform>().position = cam.ScreenToWorldPoint(top);
+        GameObject.FindObjectOfType<Supply>().spoilRate = 0.2;
         UpdateSpoilRate();
+        GameObject.FindObjectOfType<Supply>().spoilRate = 0.0;
         _manager = FindObjectOfType<WarehouseManager>();
 
         ProjectedInventory = new Dictionary<string, int>();
