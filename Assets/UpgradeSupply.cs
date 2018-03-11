@@ -41,8 +41,8 @@ public class UpgradeSupply : MonoBehaviour
 		_count++;
 		UpgradePrice = _count * 250;
 		GetComponentInChildren<Text>().text = "Upgrade Storage: " + UpgradePrice;
-		FindObjectOfType<Supply>().UpgradeStorage(2);
-        FindObjectOfType<Supply>().ReduceSpoilRate(2);
+		FindObjectOfType<Supply>().UpgradeStorage(_count * 10);
+        FindObjectOfType<Supply>().ReduceSpoilRate(1.25);
         FindObjectOfType<Panels>().UpdateProjected();
 	}
 }

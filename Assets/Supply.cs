@@ -19,7 +19,7 @@ public class Supply : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		MaxStorage = 50;
+		MaxStorage = 30;
 		spoilRate = 0.2;
         StoredItems = new Dictionary<string, int>();
         StagedItems = new Dictionary<string, int>();
@@ -39,9 +39,9 @@ public class Supply : MonoBehaviour
         }
     }
 
-	public void UpgradeStorage(int multiplier)
+	public void UpgradeStorage(int increment)
 	{
-		MaxStorage *= multiplier;
+		MaxStorage += increment;
 		FindObjectOfType<Panels>().UpdateSupply();
 		FindObjectOfType<Panels>().UpdateProjected();
 	}
