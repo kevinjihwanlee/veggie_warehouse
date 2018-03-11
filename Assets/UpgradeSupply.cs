@@ -40,7 +40,7 @@ public class UpgradeSupply : MonoBehaviour
         FindObjectOfType<WarehouseManager>().Buy(UpgradePrice);
 		_count++;
 		UpgradePrice = _count * 250;
-		GetComponentInChildren<Text>().text = "Upgrade Supply: " + UpgradePrice;
+		GetComponentInChildren<Text>().text = "Upgrade Storage: " + UpgradePrice;
 		FindObjectOfType<Supply>().UpgradeStorage(2);
         FindObjectOfType<Supply>().ReduceSpoilRate(2);
         FindObjectOfType<Panels>().UpdateProjected();
