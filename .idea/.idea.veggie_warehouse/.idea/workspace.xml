@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="" />
+    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/UpgradeSupply.cs" afterPath="$PROJECT_DIR$/Assets/UpgradeSupply.cs" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +16,7 @@
     <favorites_list name="veggie_warehouse" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6068004">
+    <splitter split-orientation="horizontal" split-proportion="0.5405405">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="WarehouseManager.cs" pinned="false" current-in-tab="false">
@@ -110,7 +112,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BuyMenu2.cs" pinned="false" current-in-tab="true">
+          <file leaf-file-name="BuyMenu2.cs" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Assets/Buy Menu +-/BuyMenu2.cs">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="30">
@@ -190,16 +192,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UpgradeSupply.cs" pinned="false" current-in-tab="false">
+          <file leaf-file-name="UpgradeSupply.cs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Assets/UpgradeSupply.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="22" column="81" lean-forward="false" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+                <state relative-caret-position="601">
+                  <caret line="42" column="88" lean-forward="false" selection-start-line="42" selection-start-column="88" selection-end-line="42" selection-end-column="88" />
                   <folding>
-                    <marker date="1520837512403" expanded="false" signature="6:114" ph="..." />
-                    <marker date="1520837512403" expanded="true" signature="158:1168" ph="{...}" />
-                    <marker date="1520837512403" expanded="true" signature="339:553" ph="{...}" />
-                    <marker date="1520837512403" expanded="true" signature="992:1166" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="6:114" ph="..." />
+                    <marker date="1520892217330" expanded="true" signature="158:1184" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="339:581" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="597:791" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="670:726" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="733:788" ph="{...}" />
+                    <marker date="1520892217330" expanded="true" signature="815:1182" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -314,13 +319,13 @@
         <option value="$PROJECT_DIR$/Assets/Order.cs" />
         <option value="$PROJECT_DIR$/Assets/UpgradeMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Supply.cs" />
-        <option value="$PROJECT_DIR$/Assets/UpgradeSupply.cs" />
         <option value="$PROJECT_DIR$/Assets/StorageObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Tutorial.cs" />
         <option value="$PROJECT_DIR$/Assets/InventoryBook.cs" />
         <option value="$PROJECT_DIR$/Assets/StartScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/WarehouseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Buy Menu +-/BuyMenu2.cs" />
+        <option value="$PROJECT_DIR$/Assets/UpgradeSupply.cs" />
       </list>
     </option>
   </component>
@@ -494,7 +499,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50687000" />
+    <option name="totallyTimeSpent" value="51043000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -928,19 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/UpgradeSupply.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="81" lean-forward="false" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
-          <folding>
-            <marker date="1520837512403" expanded="false" signature="6:114" ph="..." />
-            <marker date="1520837512403" expanded="true" signature="158:1168" ph="{...}" />
-            <marker date="1520837512403" expanded="true" signature="339:553" ph="{...}" />
-            <marker date="1520837512403" expanded="true" signature="992:1166" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/StorageObject.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-242">
@@ -1130,6 +1122,22 @@
             <marker date="1520889478810" expanded="true" signature="1297:1477" ph="{...}" />
             <marker date="1520889478810" expanded="true" signature="1341:1474" ph="{...}" />
             <marker date="1520889478810" expanded="true" signature="1432:1470" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/UpgradeSupply.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="42" column="88" lean-forward="false" selection-start-line="42" selection-start-column="88" selection-end-line="42" selection-end-column="88" />
+          <folding>
+            <marker date="1520892217330" expanded="true" signature="6:114" ph="..." />
+            <marker date="1520892217330" expanded="true" signature="158:1184" ph="{...}" />
+            <marker date="1520892217330" expanded="true" signature="339:581" ph="{...}" />
+            <marker date="1520892217330" expanded="true" signature="597:791" ph="{...}" />
+            <marker date="1520892217330" expanded="true" signature="670:726" ph="{...}" />
+            <marker date="1520892217330" expanded="true" signature="733:788" ph="{...}" />
+            <marker date="1520892217330" expanded="true" signature="815:1182" ph="{...}" />
           </folding>
         </state>
       </provider>
