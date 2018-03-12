@@ -1,7 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="" />
+    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Book_Cisco.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Book_Cisco.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Book_Shelf.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Book_Shelf.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Chear_Dif.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Chear_Dif.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Door.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Door.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/ElectricalBox_Hight.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/ElectricalBox_Hight.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Fan_Dif.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Fan_Dif.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Fiberglass.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Fiberglass.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Glass_Tile.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Glass_Tile.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Green_Board_Dif.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Green_Board_Dif.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Lamp.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Lamp.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Metal.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Metal.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/PC_Dif.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/PC_Dif.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Posters.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Posters.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Projector.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Projector.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Projector_Screen.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Projector_Screen.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Shelf.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Shelf.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Tables_Dif.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Tables_Dif.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Teachers_Board.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Teachers_Board.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Wood.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/Wood.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/printer.mat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Materials/printer.mat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Board_Big.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Board_Big.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Book.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Book.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Book_Shelfs.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Book_Shelfs.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Chair.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Chair.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Door.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Door.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Electricity_Box.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Electricity_Box.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Fan.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Fan.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Lamp.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Lamp.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/PC.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/PC.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Posters.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Posters.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Printer.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Printer.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Projector.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Projector.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Projector_Screen.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Projector_Screen.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Table_Big.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Table_Big.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Table_Small.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Table_Small.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Tables_Few.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Tables_Few.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Teachers_Board.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Teachers_Board.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Window.FBX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Meshes/Window.FBX.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/Bundle.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/Bundle.jpg.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0000_Layer 5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0000_Layer 5.jpg.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0003_Layer 2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0003_Layer 2.jpg.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0004_Layer 1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/ScreenShots/RoomRedone_0004_Layer 1.jpg.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Showcase.unity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Showcase.unity.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_3d_games.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_3d_games.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Cisco.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Cisco.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Shelf.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Shelf.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Shelf_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Shelf_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Unity.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_Unity.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_VR.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Book_VR.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Chair_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Chair_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Chair_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Chair_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Door.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Door.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/ElectricalBox2_Nrm.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/ElectricalBox2_Nrm.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/ElectricalBox_Hight.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/ElectricalBox_Hight.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Fan_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Fan_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Fiberglass.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Fiberglass.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Glass_Tile.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Glass_Tile.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Green_Board_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Green_Board_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Green_Board_NRM_1.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Green_Board_NRM_1.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Lamp.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Lamp.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Lamp_Illum.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Lamp_Illum.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Metal_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Metal_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Dif_1.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Dif_1.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Emi.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Emi.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Illum.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Illum.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Illum_1.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_Illum_1.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/PC_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Posters.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Posters.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector_Screen.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Projector_Screen.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Shelf.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Shelf.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Shelf_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Shelf_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Tables_Dif.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Tables_Dif.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Tables_NRM.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Tables_NRM.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Teachers_Board.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Teachers_Board.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Wood.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/Wood.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/printer.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/printer.tga.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/printer_NRM_1.tga" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/ClassRoom Stuff/Textures/printer_NRM_1.tga.meta" afterPath="" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -400,7 +566,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47956000" />
+    <option name="totallyTimeSpent" value="48148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
