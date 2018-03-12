@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class WarehouseManager : MonoBehaviour
 {
@@ -448,12 +449,12 @@ public class WarehouseManager : MonoBehaviour
 
 	void WinGame()
 	{
-		EndGame(true);
+		SceneManager.LoadScene("victory_screen");
 	}
 
 	void LoseGame()
 	{
-		EndGame(false);
+		SceneManager.LoadScene("game_over_screen");
 	}
 
 	void EndGame(bool win)

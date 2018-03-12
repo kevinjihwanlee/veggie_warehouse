@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/warehouse_screen.unity
     guid: a3ae20f4cad8c4d2e8323cdb3d911554
+  - enabled: 1
+    path: Assets/game_over_screen.unity
+    guid: d9578dfeffd624d578111e059d2f0cb8
+  - enabled: 1
+    path: Assets/victory_screen.unity
+    guid: 4a6ae34f6c8a54890a97186d357fcc2e
