@@ -22,11 +22,12 @@ public class StorageObject : MonoBehaviour {
 	
 
 	// Use this for initialization
-	void Start () {
-        gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+	void Start ()
+	{
+		gameObject.GetComponent<MeshRenderer>().material.color = Color.grey;
 		foreach (Transform child in gameObject.transform)
 		{
-			child.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+			child.gameObject.GetComponent<MeshRenderer>().material.color = Color.grey;
 		}
 		_inventoryReceiptObject = GameObject.Find("InventoryReceipt");
 		//_inventoryTitles = GameObject.Find("Labels");

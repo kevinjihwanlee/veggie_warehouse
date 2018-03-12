@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.veggie_warehouse/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.veggie_warehouse/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Tutorial.cs" afterPath="$PROJECT_DIR$/Assets/Tutorial.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/StorageObject.cs" afterPath="$PROJECT_DIR$/Assets/StorageObject.cs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tutorial.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tutorial.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Tutorial.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
+            <state relative-caret-position="604">
               <caret line="140" column="18" lean-forward="false" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
               <folding>
                 <marker date="1520837577165" expanded="true" signature="6:100" ph="..." />
@@ -105,16 +104,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StorageObject.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StorageObject.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/StorageObject.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+            <state relative-caret-position="42">
+              <caret line="26" column="76" lean-forward="false" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
               <folding>
-                <marker date="1520837512401" expanded="false" signature="6:138" ph="..." />
-                <marker date="1520837512401" expanded="true" signature="183:4418" ph="{...}" />
-                <marker date="1520837512401" expanded="true" signature="365:532" ph="/* trying to get the children of each title ... */" />
-                <marker date="1520837512401" expanded="true" signature="4413:4416" ph="{...}" />
+                <marker date="1520838146881" expanded="false" signature="6:138" ph="..." />
+                <marker date="1520838146881" expanded="true" signature="183:4375" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="365:532" ph="/* trying to get the children of each title ... */" />
+                <marker date="1520838146881" expanded="true" signature="618:1018" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="744:830" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="898:1015" ph="/* _inventoryTitles = GameObject.Find(&quot;Labels&quot;); ... */" />
+                <marker date="1520838146881" expanded="true" signature="1073:1080" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1101:1219" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1237:1334" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1453:4373" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1681:1735" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1766:1822" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1852:1908" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1915:1988" ph="{...}" />
+                <marker date="1520838146881" expanded="true" signature="1992:4370" ph="/* int counter; ... */" />
               </folding>
             </state>
           </provider>
@@ -212,13 +222,13 @@
         <option value="$PROJECT_DIR$/Assets/Close.cs" />
         <option value="$PROJECT_DIR$/Assets/Laptop.cs" />
         <option value="$PROJECT_DIR$/Assets/RegisterObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/StorageObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Order.cs" />
         <option value="$PROJECT_DIR$/Assets/UpgradeMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/WarehouseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Supply.cs" />
         <option value="$PROJECT_DIR$/Assets/UpgradeSupply.cs" />
         <option value="$PROJECT_DIR$/Assets/Tutorial.cs" />
+        <option value="$PROJECT_DIR$/Assets/StorageObject.cs" />
       </list>
     </option>
   </component>
@@ -392,7 +402,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47455000" />
+    <option name="totallyTimeSpent" value="47877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -738,19 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/StorageObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-          <folding>
-            <marker date="1520837512401" expanded="false" signature="6:138" ph="..." />
-            <marker date="1520837512401" expanded="true" signature="183:4418" ph="{...}" />
-            <marker date="1520837512401" expanded="true" signature="365:532" ph="/* trying to get the children of each title ... */" />
-            <marker date="1520837512401" expanded="true" signature="4413:4416" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Buy Menu +-/BuyMenu2.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -888,7 +885,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Tutorial.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
+        <state relative-caret-position="604">
           <caret line="140" column="18" lean-forward="false" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
           <folding>
             <marker date="1520837577165" expanded="true" signature="6:100" ph="..." />
@@ -909,6 +906,30 @@
             <marker date="1520837577165" expanded="true" signature="7980:9460" ph="{...}" />
             <marker date="1520837577165" expanded="true" signature="9164:9230" ph="{...}" />
             <marker date="1520837577165" expanded="true" signature="9326:9392" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/StorageObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="26" column="76" lean-forward="false" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
+          <folding>
+            <marker date="1520838146881" expanded="false" signature="6:138" ph="..." />
+            <marker date="1520838146881" expanded="true" signature="183:4375" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="365:532" ph="/* trying to get the children of each title ... */" />
+            <marker date="1520838146881" expanded="true" signature="618:1018" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="744:830" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="898:1015" ph="/* _inventoryTitles = GameObject.Find(&quot;Labels&quot;); ... */" />
+            <marker date="1520838146881" expanded="true" signature="1073:1080" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1101:1219" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1237:1334" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1453:4373" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1681:1735" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1766:1822" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1852:1908" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1915:1988" ph="{...}" />
+            <marker date="1520838146881" expanded="true" signature="1992:4370" ph="/* int counter; ... */" />
           </folding>
         </state>
       </provider>
