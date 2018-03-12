@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/StorageObject.cs" afterPath="$PROJECT_DIR$/Assets/StorageObject.cs" />
-    </list>
+    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -402,7 +400,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47877000" />
+    <option name="totallyTimeSpent" value="47956000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
