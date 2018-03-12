@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" />
-    </list>
+    <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -497,7 +495,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50349000" />
+    <option name="totallyTimeSpent" value="50419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -870,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/RegisterObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/UpgradeMenu.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -1118,6 +1109,22 @@
             <marker date="1520835797420" expanded="true" signature="7062:7310" ph="{...}" />
             <marker date="1520835797420" expanded="true" signature="7339:7622" ph="{...}" />
             <marker date="1520835797420" expanded="true" signature="7653:8154" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/RegisterObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520835797422" expanded="false" signature="6:78" ph="..." />
+            <marker date="1520835797422" expanded="true" signature="123:672" ph="{...}" />
+            <marker date="1520835797422" expanded="true" signature="230:356" ph="{...}" />
+            <marker date="1520835797422" expanded="true" signature="411:418" ph="{...}" />
+            <marker date="1520835797422" expanded="true" signature="440:668" ph="{...}" />
+            <marker date="1520835797422" expanded="true" signature="505:581" ph="{...}" />
+            <marker date="1520835797422" expanded="true" signature="588:664" ph="{...}" />
           </folding>
         </state>
       </provider>
