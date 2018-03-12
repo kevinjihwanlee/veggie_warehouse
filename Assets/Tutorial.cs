@@ -68,20 +68,20 @@ public class Tutorial : MonoBehaviour
 				GameObject.Find("Lives").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				GameObject.Find("Progress Button").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				GameObject.Find("Progress Button").GetComponent<Button>().interactable = false;
-				//GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+				GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				index++;
 				break;
 			case 2: // highlight recap panel
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				GameObject.Find("Receipt").gameObject.transform.localScale = new Vector3(1, 1, 1);
-				//GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-				//GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+				GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				index++;
 				break;
 			case 3: // highlight supply
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
-				//GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-				//GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+				GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
 				{
 					//child.localScale = new Vector3(1, 1, 1);
@@ -97,14 +97,14 @@ public class Tutorial : MonoBehaviour
 				break;
 			case 4: // highlight spoilage rate and limit
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
-				//GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-				//GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+				GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				GameObject.Find("Upgrade Storage").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				index++;
 				break;
 			case 5: // show order
-				//GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-				//GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+				GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
                 wm.GenerateNewOrder(wm.Orders[0]);
@@ -115,8 +115,8 @@ public class Tutorial : MonoBehaviour
 				index++;
 				break;
             case 7: // highlight buy menu
-	            //GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-	            //GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+	            GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+	            GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
                 if (wm.Orders[0].Fulfilled)
                     wm.UnstageOrder(wm.Orders[0]);
                 wm.Orders[0].active = false;
@@ -126,8 +126,8 @@ public class Tutorial : MonoBehaviour
 				index++;
 				break;
 	        case 8:
-		        //GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
-		        //GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+		        GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		        GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(1, 1, 1);
 		        GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1, 1, 1);
                 gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 		        index++;
@@ -138,7 +138,11 @@ public class Tutorial : MonoBehaviour
 				index++;
 				break;
 			case 10:
-				//GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
+				index++;
+				break;
+			case 11:
 				PlayGame();
 				break;
 			default: // otherwise just show tutorial text

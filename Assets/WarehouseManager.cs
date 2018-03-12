@@ -185,6 +185,13 @@ public class WarehouseManager : MonoBehaviour
 		GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(0, 0, 0);
 
 		_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
 		GameObject.Find("Book").gameObject.transform.localScale = new Vector3(0 ,0, 0);
 		GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(0,0,0);
 		FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
