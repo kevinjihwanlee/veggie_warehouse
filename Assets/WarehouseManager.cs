@@ -146,7 +146,6 @@ public class WarehouseManager : MonoBehaviour
 		}
 		
         // setting colors and active state of 3D models and UI
-        //GameObject.Find("SupplyDock").GetComponent<MeshRenderer>().material.color = new Color32(47,50,159,255);
 
         GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(0, 0, 0);
 		
@@ -185,8 +184,17 @@ public class WarehouseManager : MonoBehaviour
 		GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(0, 0, 0);
 
 		_buyMenu.gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("InventoryBook").gameObject.transform.localScale = new Vector3(0, 0, 0);
 		
 		GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(0,0,0);
+		GameObject.Find("DayHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("RecapHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("StorageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("SpoilageHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("OrderHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("BuyHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		GameObject.Find("ComputerHighlight").gameObject.transform.localScale = new Vector3(0, 0, 0);
+		
 		FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
 		
 	}
@@ -442,6 +450,7 @@ public class WarehouseManager : MonoBehaviour
 	void WinGame()
 	{
 		EndGame(true);
+		
 	}
 
 	void LoseGame()

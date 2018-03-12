@@ -18,19 +18,15 @@ public class StorageObject : MonoBehaviour {
 	// used in UpdateInventoryReceipt
 	private string _veggieTypeComp;
 
-	
-	
-
 	// Use this for initialization
 	void Start () {
-        gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
 		foreach (Transform child in gameObject.transform)
 		{
-			child.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(47, 50, 159, 255);
+			child.gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
 		}
 		_inventoryReceiptObject = GameObject.Find("InventoryReceipt");
-		//_inventoryTitles = GameObject.Find("Labels");
-		//_inventoryTitleTransforms= _inventoryTitles.gameObject.transform;
+
 	}
 	
 	// Update is called once per frame
@@ -80,108 +76,5 @@ public class StorageObject : MonoBehaviour {
 			Debug.Log("You are trying to update an unsupported veggie.");
 		}
 		
-/*		int counter;
-		int totalVeg;
-
-		int totalShipped = 0;
-		int totalBought = 0;
-		int totalSpoiled = 0;
-		int totalGained = 0;
-		
-		foreach (Transform child in _inventoryTitleTransforms)
-		{
-			counter = 0;
-			totalVeg = 0;
-			
-			
-			if (child.name.Equals("Titles"))
-			{
-				continue;
-			}
-			foreach (Transform entry in child)
-			{
-				_veggieTypeComp = entry.name.Substring(0, 4);
-				
-				if (_veggieTypeComp.Equals("Corn"))
-				{
-					if (counter == 0)
-					{
-						entry.GetComponent<Text>().text = oSup["Corn"].ToString();
-						totalVeg -= oSup["Corn"];
-						totalShipped += oSup["Corn"];
-					}
-					if (counter == 1)
-					{
-						entry.GetComponent<Text>().text = oBuy["Corn"].ToString();
-						totalVeg += oBuy["Corn"];
-						totalBought += oBuy["Corn"];
-					}
-					if (counter == 3)
-					{
-						entry.GetComponent<Text>().text = totalVeg.ToString();
-						totalGained += totalVeg;
-					}
-					counter++;
-				}
-				else if (_veggieTypeComp.Equals("Squa"))
-				{
-					if (counter == 0)
-					{
-						entry.GetComponent<Text>().text = oSup["Squash"].ToString();
-						totalVeg -= oSup["Squash"];
-						totalShipped += oSup["Squash"];
-					}
-					if (counter == 1)
-					{
-						entry.GetComponent<Text>().text = oBuy["Squash"].ToString();
-						totalVeg += oBuy["Squash"];
-						totalBought += oBuy["Squash"];
-					}
-					if (counter == 3)
-					{
-						entry.GetComponent<Text>().text = totalVeg.ToString();
-						totalGained += totalVeg;
-					}
-					counter++;
-				}
-				else if (_veggieTypeComp.Equals("Beet"))
-				{
-					if (counter == 0)
-					{
-						entry.GetComponent<Text>().text = oSup["Beets"].ToString();
-						totalVeg -= oSup["Beets"];
-						totalShipped += oSup["Beets"];
-					}
-					if (counter == 1)
-					{
-						entry.GetComponent<Text>().text = oBuy["Beets"].ToString();
-						totalVeg += oBuy["Beets"];
-						totalBought += oBuy["Beets"];
-					}
-					if (counter == 3)
-					{
-						entry.GetComponent<Text>().text = totalVeg.ToString();
-						totalGained += totalVeg;
-					}
-					counter++;
-				}
-				else
-				{
-					if (counter == 0)
-					{
-						entry.GetComponent<Text>().text = totalShipped.ToString();
-					}
-					if (counter == 1)
-					{
-						entry.GetComponent<Text>().text = totalBought.ToString();
-					}
-					if (counter == 3)
-					{
-						entry.GetComponent<Text>().text = totalGained.ToString();
-					}
-					counter++;
-				}
-			}
-		}*/
 	}
 }
