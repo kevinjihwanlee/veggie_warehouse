@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="debac727-ad50-45c4-8318-6acb10653f0b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.veggie_warehouse/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.veggie_warehouse/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Tutorial.cs" afterPath="$PROJECT_DIR$/Assets/Tutorial.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/WarehouseManager.cs" afterPath="$PROJECT_DIR$/Assets/WarehouseManager.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/warehouse_screen.unity" afterPath="$PROJECT_DIR$/Assets/warehouse_screen.unity" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/InventoryBook.cs" afterPath="$PROJECT_DIR$/Assets/InventoryBook.cs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -90,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tutorial.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tutorial.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Tutorial.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="141" column="85" lean-forward="false" selection-start-line="141" selection-start-column="85" selection-end-line="141" selection-end-column="85" />
+            <state relative-caret-position="209">
+              <caret line="149" column="24" lean-forward="false" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
               <folding>
                 <marker date="1520881812746" expanded="true" signature="6:100" ph="..." />
                 <marker date="1520881812746" expanded="true" signature="139:9573" ph="{...}" />
@@ -135,18 +132,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InventoryBook.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InventoryBook.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/InventoryBook.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state relative-caret-position="330">
+              <caret line="24" column="101" lean-forward="false" selection-start-line="24" selection-start-column="101" selection-end-line="24" selection-end-column="101" />
               <folding>
-                <marker date="1520838794087" expanded="false" signature="6:78" ph="..." />
-                <marker date="1520838794087" expanded="true" signature="123:469" ph="{...}" />
-                <marker date="1520838794087" expanded="true" signature="173:180" ph="{...}" />
-                <marker date="1520838794087" expanded="true" signature="235:242" ph="{...}" />
-                <marker date="1520838794087" expanded="true" signature="263:467" ph="{...}" />
-                <marker date="1520838794087" expanded="true" signature="363:464" ph="{...}" />
+                <marker date="1520882431165" expanded="false" signature="6:78" ph="..." />
+                <marker date="1520882431165" expanded="true" signature="123:584" ph="{...}" />
+                <marker date="1520882431165" expanded="true" signature="173:180" ph="{...}" />
+                <marker date="1520882431165" expanded="true" signature="235:242" ph="{...}" />
+                <marker date="1520882431165" expanded="true" signature="263:582" ph="{...}" />
+                <marker date="1520882431165" expanded="true" signature="365:468" ph="{...}" />
+                <marker date="1520882431165" expanded="true" signature="475:579" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -250,9 +248,9 @@
         <option value="$PROJECT_DIR$/Assets/Supply.cs" />
         <option value="$PROJECT_DIR$/Assets/UpgradeSupply.cs" />
         <option value="$PROJECT_DIR$/Assets/StorageObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/InventoryBook.cs" />
         <option value="$PROJECT_DIR$/Assets/WarehouseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Tutorial.cs" />
+        <option value="$PROJECT_DIR$/Assets/InventoryBook.cs" />
       </list>
     </option>
   </component>
@@ -426,7 +424,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49422000" />
+    <option name="totallyTimeSpent" value="49674000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -999,21 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/InventoryBook.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <marker date="1520838794087" expanded="false" signature="6:78" ph="..." />
-            <marker date="1520838794087" expanded="true" signature="123:469" ph="{...}" />
-            <marker date="1520838794087" expanded="true" signature="173:180" ph="{...}" />
-            <marker date="1520838794087" expanded="true" signature="235:242" ph="{...}" />
-            <marker date="1520838794087" expanded="true" signature="263:467" ph="{...}" />
-            <marker date="1520838794087" expanded="true" signature="363:464" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/WarehouseManager.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -1084,8 +1067,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Tutorial.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="141" column="85" lean-forward="false" selection-start-line="141" selection-start-column="85" selection-end-line="141" selection-end-column="85" />
+        <state relative-caret-position="209">
+          <caret line="149" column="24" lean-forward="false" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
           <folding>
             <marker date="1520881812746" expanded="true" signature="6:100" ph="..." />
             <marker date="1520881812746" expanded="true" signature="139:9573" ph="{...}" />
@@ -1099,6 +1082,22 @@
             <marker date="1520881812746" expanded="true" signature="8009:9571" ph="{...}" />
             <marker date="1520881812746" expanded="true" signature="9275:9341" ph="{...}" />
             <marker date="1520881812746" expanded="true" signature="9437:9503" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/InventoryBook.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="101" lean-forward="false" selection-start-line="24" selection-start-column="101" selection-end-line="24" selection-end-column="101" />
+          <folding>
+            <marker date="1520882431165" expanded="false" signature="6:78" ph="..." />
+            <marker date="1520882431165" expanded="true" signature="123:584" ph="{...}" />
+            <marker date="1520882431165" expanded="true" signature="173:180" ph="{...}" />
+            <marker date="1520882431165" expanded="true" signature="235:242" ph="{...}" />
+            <marker date="1520882431165" expanded="true" signature="263:582" ph="{...}" />
+            <marker date="1520882431165" expanded="true" signature="365:468" ph="{...}" />
+            <marker date="1520882431165" expanded="true" signature="475:579" ph="{...}" />
           </folding>
         </state>
       </provider>

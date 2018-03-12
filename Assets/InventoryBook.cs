@@ -16,9 +16,14 @@ public class InventoryBook : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (GameObject.Find("InventoryReceipt").gameObject.transform.localScale == new Vector3(0,0,0))
+		if (GameObject.Find("InventoryReceipt").gameObject.transform.localScale == new Vector3(0, 0, 0))
 		{
-			GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(1,1,1);
+			GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(1, 1, 1);
+		}
+		else
+		{
+			GameObject.Find("InventoryReceipt").gameObject.transform.localScale = new Vector3(0, 0, 0);
+
 		}
 	}
 }
