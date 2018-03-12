@@ -133,7 +133,7 @@ public class Tutorial : MonoBehaviour
 		        index++;
 		        break;
 			case 9:
-				//GameObject.Find("InventoryBook").gameObject.transform.localScale = new Vector3(2 ,2, 2);
+				GameObject.Find("Book").gameObject.transform.localScale = new Vector3(2 ,2, 1);
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];
 				index++;
 				break;
@@ -174,6 +174,7 @@ public class Tutorial : MonoBehaviour
         GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("OrderSupplyMenu").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(1, 1, 1);
+		GameObject.Find("Book").gameObject.transform.localScale = new Vector3(2, 2, 1);
         foreach (Transform child in GameObject.Find("Inventory").gameObject.transform)
         {
             child.gameObject.SetActive(true);
