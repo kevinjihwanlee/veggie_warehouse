@@ -14,6 +14,7 @@ public class Restart : MonoBehaviour
     {
         _startGame = GameObject.Find("Restart").GetComponent<Button>();
         _startGame.onClick.AddListener(RestartGame);
+        GameObject.Find("FailedOrder").GetComponent<AudioSource>().Play();
     }
 	
     // Update is called once per frame

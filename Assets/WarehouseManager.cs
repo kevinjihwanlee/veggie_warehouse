@@ -33,6 +33,8 @@ public class WarehouseManager : MonoBehaviour
     public int SpawnedOrderCount;
 	public int NewOrderDurationOffset;
     public List<Dictionary<string, int>> firstOrders;
+
+	public bool hasKissedUp;
 	
     public AudioClip chaching;
 
@@ -53,11 +55,15 @@ public class WarehouseManager : MonoBehaviour
 	public int Money;
 
 	private GameObject _endScreen;
+	private Tutorial tutorial;
+	private string[] dialogue;
 
 	private Dictionary<string, int> _supplyTotalOrder;
 	// Use this for initialization
 	void Start()
 	{
+		tutorial = FindObjectOfType<Tutorial>();
+		hasKissedUp = false;	
 		NewOrderDurationOffset = 0;
 		_buyMenu = GameObject.Find("OrderSupplyMenu");
 		_endScreen = GameObject.Find("EndGame");
@@ -197,6 +203,9 @@ public class WarehouseManager : MonoBehaviour
 		GameObject.Find("Laptop").gameObject.transform.localScale = new Vector3(0,0,0);
 		FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
 		
+		dialogue = new string[2];
+		dialogue[0] = "Hey! This is your first warning! Don't get sloppy now.";
+		dialogue[1] = "Another missed order already?! Maybe I made a mistake . . .";
 	}
 
 	public void NextDay()
@@ -235,6 +244,11 @@ public class WarehouseManager : MonoBehaviour
                     {
 
                         GameObject.Find("FailedOrder").GetComponent<AudioSource>().Play();
+	                    
+                        if (failed > 2)
+                            LoseGame();
+	                    
+	                    if (failed < 2) LostLifeEvent();
                         failed += 1;
                         GenerateNewOrder(o);
                     }
@@ -320,9 +334,9 @@ public class WarehouseManager : MonoBehaviour
 		{
 			WinGame();	
 		}
-		
         if (failed > 2)
             LoseGame();
+		
 		
 	}
 	
@@ -454,6 +468,7 @@ public class WarehouseManager : MonoBehaviour
 
 	void LoseGame()
 	{
+        GameObject.Find("FailedOrder").GetComponent<AudioSource>().Play();
 		SceneManager.LoadScene("game_over_screen");
 	}
 
@@ -467,38 +482,17 @@ public class WarehouseManager : MonoBehaviour
 		}
 	}
 
-	bool CanFulfillOrders()
+	void LostLifeEvent()
 	{
-		var fulfillableOrder = false;
-		
-		foreach (Order o in Orders)
+		if (hasKissedUp)
 		{
-			var lackSupply = false;
-
-			if (!o.active)
-			{
-				continue;
-			}
-			
-			foreach (KeyValuePair<string, int> item in o.order)
-			{
-				if (!_supply.AvailableItem(item.Key, item.Value))
-				{
-					lackSupply = true;
-					break;
-				}					
-			}
-
-			if (lackSupply)
-			{
-				continue;
-			}
-
-			fulfillableOrder = true;
-
+			tutorial.BossSpeak("I expected better from you.");
+			hasKissedUp = false;
 		}
-
-		return fulfillableOrder;
+		else
+		{
+			tutorial.BossSpeak(dialogue[failed]);
+		}
 	}
 
 	public void Buy(int amount)

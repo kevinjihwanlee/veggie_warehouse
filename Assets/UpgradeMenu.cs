@@ -27,10 +27,10 @@ public class UpgradeMenu : MonoBehaviour
 	private string _originalWineText;
 
 	private bool _shippingUpgradeLimit = false;
-	private int _upgradeShippingPrice = 1000;
+	private int _upgradeShippingPrice = 1500;
 	private string _originalShippingText;
 
-	private bool _showInfoMenu = true;
+	private bool _showInfoMenu = false;
 
 	private ModifyOrder _modifyOrder;
 	
@@ -76,6 +76,7 @@ public class UpgradeMenu : MonoBehaviour
 		
 		
 		HideUpgradeMenu();
+		HideInfoDescriptions();
 	}
 	
 	// Update is called once per frame
@@ -225,8 +226,12 @@ public class UpgradeMenu : MonoBehaviour
 		_gainedLife = true;
 		_kissUp.interactable = false;
 		_whm.failed -= 1;
+		_whm.hasKissedUp = true;
 		_panels.UpdateLives();
 		_whm.Buy(_kissUpPrice);
+
+		var tutorial = FindObjectOfType<Tutorial>();
+		tutorial.BossSpeakKissUp();
 	}
 
 	void Info()
@@ -260,6 +265,7 @@ public class UpgradeMenu : MonoBehaviour
         information.transform.Find("Upgrade Shipping Descripton").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
         information.transform.Find("Wine Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
         information.transform.Find("Kiss up Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
+        information.transform.Find("Upgrade Storage Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(1, 1, 1);
 	}
 
 	void HideInfoDescriptions()
@@ -268,6 +274,7 @@ public class UpgradeMenu : MonoBehaviour
         information.transform.Find("Upgrade Shipping Descripton").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
         information.transform.Find("Wine Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
         information.transform.Find("Kiss up Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
+        information.transform.Find("Upgrade Storage Description").gameObject.GetComponent<Text>().gameObject.transform.localScale = new Vector3(0, 0, 0);
 	}
 
 	public void HideUpgradeMenu()

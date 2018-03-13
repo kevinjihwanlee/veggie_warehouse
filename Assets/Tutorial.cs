@@ -16,6 +16,8 @@ public class Tutorial : MonoBehaviour
 	private int index;
 
 	private string[] tutorialText;
+	private string[] lostLifeText;
+	private string[] kissUpText;
 
 	// Use this for initialization
 	void Start ()
@@ -37,6 +39,16 @@ public class Tutorial : MonoBehaviour
 			"This book contains an inventory recap that shows how much of each vegetable you have gained or lost in the past day. Click on it to see.";
 		tutorialText[10] = "I invested my life savings into this warehouse, so I have very high expectations. Miss 3 orders, and you're fired. I'll check up on you in 15 days, so you better impress me by then.";
 		tutorialText[11] = "I will be heading out now. Press Next and then Start to get going.";
+
+		lostLifeText = new string[3];
+		lostLifeText[0] = "Hey! This is your first warning! Don't get sloppy now.";
+		lostLifeText[1] = "Another missed order already?! Maybe I made a mistake . . .";
+		lostLifeText[2] = "That's it. You're gone!";
+
+		kissUpText = new string[2];
+		kissUpText[0] = "Thanks for the gift, but I still got my eye on you . . .";
+		kissUpText[1] = "I expected better from you.";
+		
 		
 		
 		_yesButton = GameObject.Find("YesButton").GetComponent<Button>();
@@ -166,9 +178,7 @@ public class Tutorial : MonoBehaviour
 	void PlayGame()
 	{
 		GameObject.Find("Progress Button").GetComponent<Button>().interactable = true;
-		gameObject.transform.localScale = new Vector3(0, 0, 0);
-		bossman = GameObject.Find("Boss");
-        bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);
+		HideBoss();
         GameObject.Find("Money").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("Day").gameObject.transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("Lives").gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -188,5 +198,69 @@ public class Tutorial : MonoBehaviour
             child.gameObject.SetActive(true);
         }
         GameObject.FindObjectOfType<Panels>().UpdateProjected();
+		_yesButton.transform.localScale = new Vector3(0, 0, 0);
+		_noButton.transform.localScale = new Vector3(0, 0, 0);
+	}
+
+	public void BossSpeak(string lines)
+	{
+		ShowBoss();
+		gameObject.GetComponentInChildren<Text>().text = lines;
+		Button[] buttons= (Button[]) GameObject.FindObjectsOfType (typeof(Button));
+		foreach (Button b in buttons)
+		{
+			b.interactable = false;
+		}
+
+		var nextButton = GameObject.Find("NextButton");
+		nextButton.transform.localScale = new Vector3(1, 1, 1);
+		nextButton.GetComponentInChildren<Text>().text = "Sorry sir . . .";
+		nextButton.GetComponent<Button>().interactable = true;
+		nextButton.GetComponent<Button>().onClick.RemoveAllListeners();
+		nextButton.GetComponent<Button>().onClick.AddListener(FinishTalking);
+	}
+
+	public void BossSpeakKissUp()
+	{
+		ShowBoss();
+		gameObject.GetComponentInChildren<Text>().text = "Thank you for this gift! But I still have my eye on you . . .";
+		Button[] buttons= (Button[]) GameObject.FindObjectsOfType (typeof(Button));
+		foreach (Button b in buttons)
+		{
+			b.interactable = false;
+		}
+
+		var nextButton = GameObject.Find("NextButton");
+		nextButton.transform.localScale = new Vector3(1, 1, 1);
+		nextButton.GetComponentInChildren<Text>().text = "You're welcome!";
+		nextButton.GetComponent<Button>().interactable = true;
+		nextButton.GetComponent<Button>().onClick.RemoveAllListeners();
+		nextButton.GetComponent<Button>().onClick.AddListener(FinishTalking);
+	}
+
+	void FinishTalking()
+	{
+		Button[] buttons= (Button[]) GameObject.FindObjectsOfType (typeof(Button));
+		foreach (Button b in buttons)
+		{
+			b.interactable = true;
+		}
+		
+		HideBoss();
+	}
+
+	void HideBoss()
+	{
+		gameObject.transform.localScale = new Vector3(0, 0, 0);
+		bossman = GameObject.Find("Boss");
+        bossman.gameObject.transform.localScale = new Vector3(0, 0, 0);
+	}
+	
+	void ShowBoss()
+	{
+		FindObjectOfType<UpgradeMenu>().HideUpgradeMenu();
+		gameObject.transform.localScale = new Vector3(1, 1, 1);
+		bossman = GameObject.Find("Boss");
+        bossman.gameObject.transform.localScale = new Vector3(2, 2, 1);
 	}
 }
