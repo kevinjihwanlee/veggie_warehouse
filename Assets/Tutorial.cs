@@ -29,7 +29,7 @@ public class Tutorial : MonoBehaviour
 		tutorialText[2] = "Moving left, you can see how much money you have spent and earned the previous day.";
 		tutorialText[3] = "At the very left of that, you can see how much of each vegetable you have, divided into Current and Tomorrow's Storage.";
 		tutorialText[4] = "Notice that there is a spoilage rate and a limit - my storage racks aren't the best. You should invest in upgrading storage later down the road. ";
-		tutorialText[5] = "To the left, there are orders that you need to fulfill. You can stage an order and prepare it for shipment by clicking on it. Try clicking on it now!";
+		tutorialText[5] = "To the left, there are orders that you need to fulfill. You can stage an order and prepare it for shipment by clicking on it.";
 		tutorialText[6] =
 			"The order shows the buyer name, revenue made from completing it, how much you need of each vegetable, and when you need to fulfill the order by.";
 		tutorialText[7] = "This is the buy menu for replenishing your stock. Staged orders and buying for your stock both happen at end of day, when you click on the Next Day button.";
@@ -121,6 +121,11 @@ public class Tutorial : MonoBehaviour
 				index++;
                 wm.GenerateNewOrder(wm.Orders[0]);
 				GameObject.Find("IncomingOrdersTitle").gameObject.transform.localScale = new Vector3(1, 1, 1);
+				var orders = GameObject.FindObjectsOfType<Order>();
+				foreach (var o in orders)
+				{
+					o.GetComponent<Button>().interactable = true;
+				}
 				break;
 			case 6: // highlight attributes of an order
 				gameObject.GetComponentInChildren<Text>().text = tutorialText[index];

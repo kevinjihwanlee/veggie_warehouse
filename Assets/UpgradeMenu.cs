@@ -30,7 +30,7 @@ public class UpgradeMenu : MonoBehaviour
 	private int _upgradeShippingPrice = 1500;
 	private string _originalShippingText;
 
-	private bool _showInfoMenu = false;
+	private bool _showInfoMenu = true;
 
 	private ModifyOrder _modifyOrder;
 	
@@ -76,7 +76,6 @@ public class UpgradeMenu : MonoBehaviour
 		
 		
 		HideUpgradeMenu();
-		HideInfoDescriptions();
 	}
 	
 	// Update is called once per frame
